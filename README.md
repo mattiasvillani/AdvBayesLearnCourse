@@ -1,6 +1,26 @@
 # Advanced Bayesian Learning - PhD course
 
+---
+
+This is the website for the PhD course Advanced Bayesian Learning.
+
+
+##### **Lecturer**
+[**Mattias Villani**](https://www.mattiasvillani.com/) \
+Professor of Statistics
+
+### Course information
+**The typical participant** has is PhD student in Statistics or related fields (Mathematical Statistics, Automatic Control, Quantitative Finance, Computer Science, ...). The participants are expected to have taken a basic course in Bayesian methods, for example Bayesian Learning at Linköping University or Bayesian Statistics I at Stockholm University.
+
+**Examination and Grades**: The course is graded Pass or Fail. Examination is through individual reports on distributed problenms for each topic. Many of the problems will require computer implementations of Bayesian learning algorithms.
+
+**Course organization**
+The course is organized in four topics, each containing four lecture hours. Course participants will spend most of their study time by solving the problem sets for each topic on their own computers without supervision.
+
 All lectures are at Stockholm University, B-building in room B705 (at the Department of Statistics).
+
+---
+
 
 ### Topic 1 - Gaussian Processes
 
@@ -65,20 +85,3 @@ Code:
 
 **Problems Topic 4**\
 [Problems topic 4](TBA)
-
-
----
-
-##### **Lecturer**
-[**Mattias Villani**](https://www.mattiasvillani.com/) \
-Professor of Statistics
-
----
-
-### Course information
-**The typical participant** has is PhD student in Statistics or related fields (Mathematical Statistics, Automatic Control, Quantitative Finance, Computer Science, ...). The participants are expected to have taken a basic course in Bayesian methods, for example Bayesian Learning at Linköping University or Bayesian Statistics I at Stockholm University.
-
-**Examination and Grades**: The course is graded Pass or Fail. Examination is through individual reports on distributed problenms for each topic. Many of the problems will require computer implementations of Bayesian learning algorithms.
-
-**Course organization**
-The course is organized in four topics, each containing four lecture hours. Course participants will spend most of their study time by solving the problem sets for each topic on their own computers without supervision.
