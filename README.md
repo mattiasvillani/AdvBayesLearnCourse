@@ -1,21 +1,17 @@
 # Advanced Bayesian Learning - PhD course
 
-<img src="./Images/LiU_secondary_1_black.png" alt="LiU logo" align="left" height="145"/><img src="./Images/MachineLearning.jpg" alt="Course logo" align="middle" height="145"/><img src="./Images/LogoAICompetence.png" alt="AI Sweden logo" align="right" height="145"/>
-
----
-
 
 ### Topic 1 - Gaussian Processes
 
-**Lecture 1 - TBA ** \
+**Lecture 1 - TBA **
 Reading:
 Code:
 
-**Lecture 2 - TBA ** \
+**Lecture 2 - TBA **
 Reading:
 Code:
 
-**Problems Topic 1**\
+**Problems Topic 1**
 [Problems topic 1](TBA)
 
 
