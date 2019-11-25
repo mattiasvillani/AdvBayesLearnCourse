@@ -3,11 +3,11 @@
 
 ### Topic 1 - Gaussian Processes
 
-**Lecture 1 - TBA **
+**Lecture 1 - TBA**
 Reading:
 Code:
 
-**Lecture 2 - TBA **
+**Lecture 2 - TBA**
 Reading:
 Code:
 
@@ -20,11 +20,11 @@ Code:
 
 ### Topic 2 - Finite and Infinite Mixtures, Mixture-of-Experts, and Mixed-Membership models
 
-**Lecture 3 - TBA ** \
+**Lecture 3 - TBA** \
 Reading:
 Code:
 
-**Lecture 4 - TBA ** \
+**Lecture 4 - TBA** \
 Reading:
 Code:
 
@@ -36,11 +36,11 @@ Code:
 
 ### Topic 3 -  Variational Inference
 
-**Lecture 5 - TBA ** \
+**Lecture 5 - TBA** \
 Reading:
 Code:
 
-**Lecture 6 - TBA ** \
+**Lecture 6 - TBA** \
 Reading:
 Code:
 
@@ -53,11 +53,11 @@ Code:
 
 ### Topic 4 - Bayesian Model Inference
 
-**Lecture 7 - TBA ** \
+**Lecture 7 - TBA** \
 Reading:
 Code:
 
-**Lecture 8 - TBA ** \
+**Lecture 8 - TBA** \
 Reading:
 Code:
 
