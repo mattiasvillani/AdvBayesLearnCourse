@@ -1,13 +1,14 @@
 # Advanced Bayesian Learning - PhD course
 
+All lectures are at Stockholm University, B-building in room B705 (at the Department of Statistics).
 
 ### Topic 1 - Gaussian Processes
 
-**Lecture 1 - TBA**\
+**Lecture 1 - April 17, hours 10-12**\
 Reading:
 Code:
 
-**Lecture 2 - TBA**\
+**Lecture 2 - April 17, hours 13-15**\
 Reading:
 Code:
 
@@ -20,15 +21,15 @@ Code:
 
 ### Topic 2 - Finite and Infinite Mixtures, Mixture-of-Experts, and Mixed-Membership models
 
-**Lecture 3 - TBA**\
+**Lecture 3 - April 28, hours 10-12**\
 Reading:
 Code:
 
-**Lecture 4 - TBA**\
+**Lecture 4 - April 28, hours 13-15**\
 Reading:
 Code:
 
-**Problems Topic 1**\
+**Problems Topic 2**\
 [Problems topic 2](TBA)
 
 
@@ -37,15 +38,15 @@ Code:
 
 ### Topic 3 -  Variational Inference
 
-**Lecture 5 - TBA**\
+**Lecture 5 - May 15, hours 10-12**\
 Reading:
 Code:
 
-**Lecture 6 - TBA**\
+**Lecture 6 - May 15, hours 13-15**\
 Reading:
 Code:
 
-**Problems Topic 1**\
+**Problems Topic 3**\
 [Problems topic 3](TBA)
 
 
@@ -54,28 +55,25 @@ Code:
 
 ### Topic 4 - Bayesian Model Inference
 
-**Lecture 7 - TBA**\
+**Lecture 7 - May 29, hours 10-12**\
 Reading:
 Code:
 
-**Lecture 8 - TBA**\
+**Lecture 8 - May 29, hours 13-15**\
 Reading:
 Code:
 
-**Problems Topic 1**\
+**Problems Topic 4**\
 [Problems topic 4](TBA)
 
 
 ---
 
-
-### Teachers
-<br>
-
 ##### **Lecturer**
 [**Mattias Villani**](https://www.mattiasvillani.com/) \
 Professor of Statistics
 
+---
 
 ### Course information
 **The typical participant** has is PhD student in Statistics or related fields (Mathematical Statistics, Automatic Control, Quantitative Finance, Computer Science, ...). The participants are expected to have taken a basic course in Bayesian methods, for example Bayesian Learning at Linköping University or Bayesian Statistics I at Stockholm University.
