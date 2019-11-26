@@ -23,7 +23,7 @@ Professor of Statistics, Stockholm and Linköping University
 ---
 
 
-### Topic 1 - Gaussian Processes
+### Topic 1 - Gaussian Processes with Applications
 
 **Lecture 1 - April 17, hours 10-12**\
 Reading:
@@ -40,7 +40,7 @@ Code:
 ---
 
 
-### Topic 2 - Finite and Infinite Mixtures, Mixture-of-Experts, and Mixed-Membership models
+### Topic 2 - Bayesian Nonparametrics
 
 **Lecture 3 - April 28, hours 10-12**\
 Reading:
