@@ -4,12 +4,24 @@
 
 ### Course information
 
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)`Due to the Corona virus I am looking into the possibilities of live streaming the lectures for the course. There is still time for things to settle down, but be prepared that the course may have to be given online. So please wait a bit before you buy tickets. I will update this text when I know more.`
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
+This is the website for the PhD course Advanced Bayesian Learning.
+
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Due to the Corona virus, the lectures for the first two topics will be given on Zoom. Probably also the other topics, but let's not decide that just yet.
+
+Here is what YOU need to do to get the Zoom-link: send me an email with title
+
+Zoom for Advanced Bayesian Learning
+
+In the body of the email write
+
+- Your Name
+- Which Swedish PhD programme you are admitted to (I can only accept students from Swedish programmes due to time constraints).
+
+I will then add you to an email list and send out an email before the course stats with the Zoom link.
+Please send me this email even if you have already sent me an email before.  ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 
-This is the website for the PhD course Advanced Bayesian Learning.
 
 **The typical participant** is a PhD student in Statistics or related fields (Mathematical Statistics, Engineering Science, Quantitative Finance, Computer Science, ...). The participants are expected to have taken a basic course in Bayesian methods, for example Bayesian Learning at Linköping University or Bayesian Statistics I at Stockholm University.
 
