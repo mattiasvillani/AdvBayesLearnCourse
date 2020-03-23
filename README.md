@@ -6,7 +6,7 @@
 
 This is the website for the PhD course Advanced Bayesian Learning.
 
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Due to the Corona virus, the lectures for the first two topics will be given on Zoom. Probably also the other topics, but let's not decide that just yet.
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) **Due to the Corona virus**, the lectures for the first two topics will be given on Zoom. Probably also the other topics, but let's not decide that just yet.
 
 Here is what YOU need to do to get the Zoom-link: send me an email with title
 
