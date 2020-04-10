@@ -40,18 +40,19 @@ Professor of Statistics, Stockholm and Linköping University
 ---
 
 
-### Topic 1 - Gaussian Processes with Applications
+### Topic 1 - Gaussian Processes Regression and Classification
+
+Reading:  [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf) - Chapters 1, 2.1-2.5, 3.1-3.4, 3.7, 4.1-4.3, 5.1-5.4. \
+Code: [GPML for Matlab](http://mlg.eng.cam.ac.uk/carl/gpml/) | [GPy for Python](https://sheffieldml.github.io/GPy/) | [Gausspr in R](https://rdrr.io/cran/kernlab/man/gausspr.html) | [Gaussianprocesses.jl in Julia](https://github.com/STOR-i/GaussianProcesses.jl) | [GPyTorch - GPs in PyTorch](https://gpytorch.ai/)
+
 
 **Lecture 1 - April 17, hours 10-12**\
-Reading:
-Code:
-
+[slides](TBA)\
 **Lecture 2 - April 17, hours 13-15**\
-Reading:
-Code:
+[slides](TBA)
 
-**Problems Topic 1**\
-[Problems topic 1](TBA)
+**Lab Topic 1**\
+[Problems](TBA)
 
 
 ---
@@ -59,16 +60,16 @@ Code:
 
 ### Topic 2 - Bayesian Nonparametrics
 
+Reading:
+Code:
+
 **Lecture 3 - April 28, hours 10-12**\
-Reading:
-Code:
-
+[slides](TBA)\
 **Lecture 4 - April 28, hours 13-15**\
-Reading:
-Code:
+[slides](TBA)
 
-**Problems Topic 2**\
-[Problems topic 2](TBA)
+**Lab Topic 2**\
+[Problems](TBA)
 
 
 ---
@@ -76,16 +77,16 @@ Code:
 
 ### Topic 3 -  Variational Inference
 
+Reading: \
+Code:
+
 **Lecture 5 - May 15, hours 10-12**\
-Reading:
-Code:
-
+[slides](TBA)\
 **Lecture 6 - May 15, hours 13-15**\
-Reading:
-Code:
+[slides](TBA)
 
-**Problems Topic 3**\
-[Problems topic 3](TBA)
+**Lab Topic 3**\
+[Problems](TBA)
 
 
 ---
@@ -93,13 +94,13 @@ Code:
 
 ### Topic 4 - Bayesian Model Inference
 
-**Lecture 7 - May 29, hours 10-12**\
-Reading:
+Reading: \
 Code:
 
+**Lecture 7 - May 29, hours 10-12** \
+[slides](TBA)\
 **Lecture 8 - May 29, hours 13-15**\
-Reading:
-Code:
+[slides](TBA)
 
-**Problems Topic 4**\
-[Problems topic 4](TBA)
+**Lab Topic 4**\
+[Problems](TBA)
