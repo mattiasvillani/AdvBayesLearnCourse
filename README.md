@@ -42,14 +42,14 @@ Professor of Statistics, Stockholm and Linköping University
 
 ### Topic 1 - Gaussian Processes Regression and Classification
 
-Reading:  [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf) - Chapters 1, 2.1-2.5, 3.1-3.4, 3.7, 4.1-4.3, 5.1-5.4. \
+Reading:  [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf) - Chapters 1, 2.1-2.5, 3.1-3.4, 3.7, 4.1-4.3. \
 Code: [GPML for Matlab](http://mlg.eng.cam.ac.uk/carl/gpml/) | [GPy for Python](https://sheffieldml.github.io/GPy/) | [Gausspr in R](https://rdrr.io/cran/kernlab/man/gausspr.html) | [Gaussianprocesses.jl in Julia](https://github.com/STOR-i/GaussianProcesses.jl) | [GPyTorch - GPs in PyTorch](https://gpytorch.ai/)
 
 
 **Lecture 1 - April 17, hours 10-12**\
-[slides](TBA)\
+[slides](/Slides/ABL1.pdf)\
 **Lecture 2 - April 17, hours 13-15**\
-[slides](TBA)
+[slides](/Slides/ABL2.pdf)
 
 **Lab Topic 1**\
 [Problems](TBA)
@@ -60,7 +60,7 @@ Code: [GPML for Matlab](http://mlg.eng.cam.ac.uk/carl/gpml/) | [GPy for Python](
 
 ### Topic 2 - Bayesian Nonparametrics
 
-Reading:
+Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 23\
 Code:
 
 **Lecture 3 - April 28, hours 10-12**\
@@ -94,7 +94,8 @@ Code:
 
 ### Topic 4 - Bayesian Model Inference
 
-Reading: \
+Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 7
+ | [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf) - Chapters 5.1-5.4 \
 Code:
 
 **Lecture 7 - May 29, hours 10-12** \
