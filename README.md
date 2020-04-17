@@ -52,7 +52,7 @@ Code: [GPML for Matlab](http://mlg.eng.cam.ac.uk/carl/gpml/) | [GPy for Python](
 [slides](/Slides/ABL2.pdf)
 
 **Lab Topic 1**\
-[Problems](TBA)
+[Problems](/Labs/Lab1.pdf) | [Lidar data](/Labs/LidarData.dat)
 
 
 ---
