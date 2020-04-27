@@ -41,13 +41,12 @@ Code: [GPML for Matlab](http://mlg.eng.cam.ac.uk/carl/gpml/) | [GPy for Python](
 
 ### Topic 2 - Bayesian Nonparametrics
 
-Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 23\
-Code:
+Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 23 | [The Neal (2000) article on MCMC for Dirichlet Process Mixtures](http://www.stat.columbia.edu/npbayes/papers/neal_sampling.pdf)\
 
 **Lecture 3 - April 28, hours 10-12**\
 [slides](/Slides/ABL3.pdf)\
 **Lecture 4 - April 28, hours 13-15**\
-[slides](/Slides/ABL3.pdf)
+[slides](/Slides/ABL4.pdf)
 
 **Lab Topic 2**\
 [Problems](TBA)
