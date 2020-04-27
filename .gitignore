@@ -1,5 +1,8 @@
 /Hidden
+/Labs/SubmissionLab1
 /RecordedLectures
 *.~lyx
 *.lyx~
+*.lyx
 *.lyx#
+.Rhistory

@@ -2750,7 +2750,7 @@ marginal likelihood
 
 \begin_inset Formula 
 \[
-p(\mathbf{y}\vert\theta)=\int p(\mathbf{y},\mathbf{f}\vert\theta)d\mathbf{f}\approx\sqrt{2\pi}p(\mathbf{y},\hat{\mathbf{f}}_{\theta}\vert\theta)\left(\frac{\partial^{2}p(\mathbf{y},\mathbf{f}\vert\theta)}{\partial\mathbf{f}\partial\mathbf{f}^{T}}\vert_{\mathbf{f}=\hat{\mathbf{f}}_{\theta}}\right)^{-1/2},
+p(\mathbf{y}\vert\theta)=\int p(\mathbf{y},\mathbf{f}\vert\theta)d\mathbf{f}\approx\sqrt{2\pi}p(\mathbf{y},\hat{\mathbf{f}}_{\theta}\vert\theta)\left(-\frac{\partial^{2}\log p(\mathbf{y},\mathbf{f}\vert\theta)}{\partial\mathbf{f}\partial\mathbf{f}^{T}}\vert_{\mathbf{f}=\hat{\mathbf{f}}_{\theta}}\right)^{-1/2},
 \]
 
 \end_inset
