@@ -49,7 +49,7 @@ Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3
 [slides](/Slides/ABL4.pdf)
 
 **Lab Topic 2**\
-[Problems](TBA)
+[Problems](/Labs/Lab2.pdf) | [Galaxy data](/Labs/GalaxyData.dat)
 
 
 ---
