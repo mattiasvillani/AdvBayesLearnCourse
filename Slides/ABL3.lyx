@@ -1,0 +1,2241 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+% you can play with different themes and color themes to find your favorite combination.
+\mode<presentation> {
+  \usetheme{Luebeck}
+  \usecolortheme{beaver}
+  \beamertemplatenavigationsymbolsempty
+  \setbeamertemplate{headline}{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% include necessary packages here
+\usepackage{graphicx} % for including images
+\usepackage{pgf} % for logo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\date{} % Date, can be changed to a custom date
+
+\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}\hspace*{3.5cm}~%
+   \includegraphics[width=2cm]{LiU_secondary_1_black.png}
+}
+
+
+\definecolor{blue}{RGB}{38, 122, 181}
+\definecolor{orange}{RGB}{255, 128, 0}
+\definecolor{red}{RGB}{255, 128, 0}
+
+
+\setbeamertemplate{itemize item}{\color{orange}$\blacksquare$}
+\setbeamertemplate{itemize subitem}{\color{orange}$\blacktriangleright$}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{wasysym}
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+\usepackage{fontawesome}
+%\faSmileO (happy)
+%\faMehO (indifferent)
+%\faFrownO (sad)
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\size largest
+\color orange
+Advanced Bayesian Learning
+\size default
+
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+\color gray
+Bayesian Nonparametrics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+
+\color orange
+Lecture 3 - Dirichlet Process Priors
+\end_layout
+
+\begin_layout Author
+Mattias Villani
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color gray
+Advanced Bayesian Learning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+Department of Statistics
+\begin_inset Newline newline
+\end_inset
+
+Stockholm University
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Department of Computer and Information Science
+\begin_inset Newline newline
+\end_inset
+
+Linköping University 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Linköping and Stockholm University
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Topic overview
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reminder: 
+\series bold
+\color blue
+Multinomial data
+\series default
+\color inherit
+ - 
+\series bold
+\color blue
+Dirichlet prior
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Bayesian histograms
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+\color blue
+Dirichlet process
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Beyond DP: 
+\series bold
+\color blue
+Pitman-Yor
+\series default
+\color inherit
+ and 
+\series bold
+\color blue
+Probit stick-breaking
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Dirichlet process mixtures
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+MCMC
+\series default
+\color inherit
+ for Dirichlet process mixtures
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Dependent Dirichlet Process
+\series default
+\color inherit
+ constructions
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+The Dirichlet distribution
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\theta\sim\mathrm{Dirichlet}(a_{1},...,a_{k})$
+\end_inset
+
+ with density
+\begin_inset Formula 
+\[
+p(\theta_{1},\theta_{2},...,\theta_{k})\propto\prod_{j=1}^{k}\theta_{j}^{a_{j}-1}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Define 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\alpha=\sum_{j=1}^{k}a_{j}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ and 
+\begin_inset Formula $\pi_{0}=a/\alpha$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Expected value
+\series default
+\color inherit
+ and 
+\series bold
+\color blue
+variance
+\series default
+\color inherit
+ of 
+\begin_inset Formula $\mathrm{Dirichlet}(a_{1},...,a_{k})$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\mathrm{E}(\theta_{j}) & =\frac{a_{j}}{\alpha}=\pi_{0j}\qquad\quad\mathrm{V}(\theta_{j})=\frac{\mathrm{E}(\theta_{j})\left[1-\mathrm{E}(\theta_{j})\right]}{1+\alpha}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is a 
+\series bold
+\color blue
+precision
+\series default
+\color inherit
+ parameter (large 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, low variance).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Conjugate analysis for multinomial data
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Data
+\series default
+\color inherit
+: 
+\begin_inset Formula $y=(n_{1},...,n_{k})$
+\end_inset
+
+, where 
+\begin_inset Formula $n_{j}=$
+\end_inset
+
+ # items in category 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Prior
+\series default
+\color inherit
+ 
+\begin_inset Formula 
+\[
+\theta\sim\mathrm{Dirichlet}(a_{1},...,a_{k})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Likelihood
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p(n_{1},n_{2},...,n_{k}|\theta_{1},\theta_{2},...,\theta_{k})\propto\prod_{j=1}^{k}\theta_{j}^{n_{j}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Posterior
+\series default
+\color inherit
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\theta|n_{1},...,n_{k}\sim\mathrm{Dirichlet}(n_{1}+a_{1},...,n_{k}+a_{k})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Posterior mean
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+E(\theta_{j}|n_{1},...,n_{k})=\frac{n_{j}+a_{j}}{n+\alpha}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Bayesian histograms
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Partition
+\series default
+\color inherit
+ the data space 
+\begin_inset Formula $\xi_{0}<\xi_{1}<...<\xi_{k}$
+\end_inset
+
+ in 
+\begin_inset Formula $k$
+\end_inset
+
+ 
+\series bold
+\color blue
+bins
+\series default
+\color inherit
+ 
+\begin_inset Formula $B_{h}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Probability model for 
+\series bold
+\color blue
+histograms
+\color inherit
+ 
+\begin_inset Formula 
+\[
+f(y)=\sum_{h=1}^{k}1_{\xi_{h-1}<y\leq\xi_{h}}\frac{\pi_{h}}{(\xi_{h}-\xi_{h-1})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n_{h}=$
+\end_inset
+
+ number of obs in 
+\begin_inset Formula $B_{h}$
+\end_inset
+
+: 
+\begin_inset Formula $\xi_{h-1}<y\leq\xi_{h}$
+\end_inset
+
+.
+ Multinomial.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Prior
+\series default
+\color inherit
+ on 
+\begin_inset Formula $\pi=(\pi_{1},...,\pi_{k})$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\pi\sim Dirichlet(a_{1},...,a_{k})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Posterior
+\series default
+\color inherit
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\pi|n_{1},...,n_{k}\sim\mathrm{Dirichlet}(n_{1}+a_{1},...,n_{k}+a_{k})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Illustration of Bayesian histograms
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/bayesianhist.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Bayesian histograms
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Posterior
+\series default
+\color inherit
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\pi|n_{1},...,n_{k}\sim\mathrm{Dirichlet}(n_{1}+a_{1},...,n_{k}+a_{k})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Specify 
+\begin_inset Formula $a_{1},..,a_{k}$
+\end_inset
+
+ through 
+\begin_inset Formula $\pi_{0}=(\pi_{01},...,\pi_{0k})$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha=\sum_{j=1}^{k}a_{j}$
+\end_inset
+
+.
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Specify 
+\begin_inset Formula $\pi_{0}$
+\end_inset
+
+ from a 
+\series bold
+\color blue
+base distribution
+\series default
+\color inherit
+ 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+.
+ For the 
+\begin_inset Formula $h$
+\end_inset
+
+th bin:
+\begin_inset Formula 
+\[
+\pi_{0h}=P_{0}(B_{h})=\mathrm{Pr}(\xi_{h-1}<y\leq\xi_{h}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Properties of Dirichlet prior:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+easy computations 
+\series default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+faSmileO
+\end_layout
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+easy to specify hyperparameter 
+\series default
+\color inherit
+
+\begin_inset Formula $\pi_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+faSmileO
+\end_layout
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+no smoothness
+\series default
+\color inherit
+: adjacent bin are negatively correlated.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+faFrownO
+\end_layout
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+sensitive
+\series default
+\color inherit
+ to the choice of 
+\series bold
+\color blue
+bins
+\series default
+\color inherit
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+faFrownO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Bayesian histogram example
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/Data.eps
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/Prior.eps
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha10.eps
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Larger 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ give higher weight to prior
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha1.eps
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha10.eps
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha100.eps
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha1000.eps
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Histograms are sensitive to the choice of bins
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha1.eps
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha1NewBins.eps
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha10.eps
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha10NewBins.eps
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+The Dirichlet process
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $B_{1},B_{2},...,B_{k}$
+\end_inset
+
+ be a partition of the outcome space 
+\begin_inset Formula $\text{\Omega}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P(B_{1}),...,P(B_{k})$
+\end_inset
+
+ denotes the distribution over the partition.
+\end_layout
+
+\begin_layout Itemize
+Dirichlet distribution is a 
+\series bold
+\color blue
+distribution over distributions
+\series default
+\color inherit
+:
+\begin_inset Formula 
+\[
+(P(B_{1}),...,P(B_{k}))\sim\mathrm{Dirichlet}(\alpha P_{0}(B_{1}),...,\alpha P_{0}(B_{k}))
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ is a fixed probability measure (e.g.
+ 
+\begin_inset Formula $N(0,1)$
+\end_inset
+
+).
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dirichlet is 
+\series bold
+\color blue
+closed under summation or splitting
+\series default
+\color inherit
+ of bins.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ consistent definition of a 
+\series bold
+\color blue
+stochastic process
+\series default
+\color inherit
+.
+ c.f.
+ GPs.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A random probability measure 
+\begin_inset Formula $P$
+\end_inset
+
+ follows a 
+\series bold
+\color blue
+Dirichlet process
+\series default
+\color inherit
+ 
+\begin_inset Formula $P\sim\mathrm{DP}(\alpha\cdot P_{0})$
+\end_inset
+
+ with 
+\series bold
+\color blue
+base measure
+\series default
+\color inherit
+ 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ iff 
+\begin_inset Formula 
+\[
+(P(B_{1}),...,P(B_{k}))\sim\mathrm{Dirichlet}(\alpha P_{0}(B_{1}),...,\alpha P_{0}(B_{k}))
+\]
+
+\end_inset
+
+for any finite measureable partition 
+\begin_inset Formula $B_{1},...,B_{k}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+The Dirichlet process - properties
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $P\sim\mathrm{DP}(\alpha P_{0})$
+\end_inset
+
+ then
+\begin_inset Formula 
+\[
+P(B)\sim\mathrm{Beta}\left[\alpha P_{0}(B),\alpha\left(1-P_{0}(B)\right)\right],\;\text{for any }B\in\mathcal{B}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+E\left[P(B)\right]=P_{0}(B)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathrm{Var}\left[P(B)\right]=P_{0}(B)\left[1-P_{0}(B)\right]/(1+\alpha)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Model
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+y_{i}|P\overset{iid}{\sim}P\;,\;\text{for }i=1,...,n
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Prior
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+P\sim\mathrm{DP}(\alpha P_{0})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Posterior
+\series default
+\color inherit
+ for a 
+\series bold
+\color blue
+finite partition
+\series default
+\color inherit
+, 
+\begin_inset Formula $P(B_{1}),...,P(B_{k})|\mathbf{y}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\mathrm{Dirichlet}\left(\alpha P_{0}(B_{1})+\sum_{i=1}^{n}1_{y_{i}\in B_{1}},...,\alpha P_{0}(B_{k})+\sum_{i=1}^{n}1_{y_{i}\in B_{k}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+The Dirichlet process - properties
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Posterior
+\series default
+\color inherit
+ for the unknown probability distribution 
+\begin_inset Formula $P$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P|y_{1},...,y_{n}\sim\mathrm{DP}\left(\alpha P_{0}+\sum_{i=1}^{n}\delta_{y_{i}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula 
+\[
+P(B)\sim\mathrm{Beta}\left(\alpha P_{0}(B)+\sum_{i=1}^{n}1_{y_{i}\in B},\alpha(1-P_{0}(B))+\sum_{i=1}^{n}1_{y_{i}\in B^{c}}\right)
+\]
+
+\end_inset
+
+so
+\begin_inset Formula 
+\[
+E\left(P(B)|y_{1},...,y_{n}\right)=\left(\frac{\alpha}{\alpha+n}\right)P_{0}(B)+\left(\frac{n}{\alpha+n}\right)\sum_{i=1}^{n}\frac{1}{n}\delta_{y_{i}}(B)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Estimating a distribution function with a DP prior
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $B=(-\infty,y]$
+\end_inset
+
+ then
+\begin_inset Formula 
+\[
+E\left(F(y)|y_{1},...,y_{n}\right)=\left(\frac{\alpha}{\alpha+n}\right)F_{0}(y)+\left(\frac{n}{\alpha+n}\right)F_{n}(y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $F(y)$
+\end_inset
+
+ is the unknown d.f.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F_{0}(y)$
+\end_inset
+
+ is the d.f.
+ from 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F_{n}(y)=\frac{1}{n}\sum1_{y_{i}\leq y}$
+\end_inset
+
+ is the empirical d.f.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $F(\cdot)$
+\end_inset
+
+ is 
+\series bold
+\color blue
+discrete with probability one
+\series default
+\color inherit
+ in the DP posterior.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Realisations from a DP are discrete with probability one
+\series default
+\color inherit
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Clearly a bad property for continuous data ...
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+But very useful for clustering (mixture models).
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Estimating a distribution function with a DP prior
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/Dirichlet4CDF.eps
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Stick-breaking characterization of the DP
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $P\sim DP(\alpha P_{0})$
+\end_inset
+
+ 
+\begin_inset Formula $\equiv$
+\end_inset
+
+ 
+\series bold
+\color blue
+infinite mixture of point masses
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{i}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\pi_{h}=V_{h}\prod_{\ell<h}(1-V_{\ell})
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{h}\overset{iid}{\sim}Beta(1,\alpha)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\theta_{h}\overset{iid}{\sim}P_{0}
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alternative notation for 
+\begin_inset Formula $P\sim DP(\alpha P_{0})$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\pi=(\pi_{1},\pi_{2},...)\sim\mathrm{Stick}(\alpha)\mbox{\text{ and }}\theta_{h}\sim P_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Simulating stick-breaking 
+\begin_inset Formula $\alpha=10,$
+\end_inset
+
+
+\begin_inset Formula $P_{0}=N(1,3^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/CompareSticksAlpha10.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Simulating stick-breaking 
+\begin_inset Formula $\alpha=100,$
+\end_inset
+
+ 
+\begin_inset Formula $P_{0}=N(1,3^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/CompareSticksAlpha100.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Simulating stick-breaking 
+\begin_inset Formula $\alpha=1,$
+\end_inset
+
+
+\begin_inset Formula $P_{0}=N(1,3^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/CompareSticksAlpha1.png
+	scale 50
+
+\end_inset
+
+´
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Simulating stick-breaking 
+\begin_inset Formula $\alpha=1000,$
+\end_inset
+
+ 
+\begin_inset Formula $P_{0}=N(1,3^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/CompareSticksAlpha1000.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Beyond DP - Pitman-Yor and Probit sticks
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Pitman-Yor process
+\color inherit
+ 
+\series default
+with parameters 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $0\leq a<1$
+\end_inset
+
+ and 
+\begin_inset Formula $b>-a$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{i}}\quad\theta_{h}\overset{iid}{\sim}P_{0}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\pi_{h}=V_{h}\prod_{\ell<h}(1-V_{\ell})
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{h}\overset{iid}{\sim}Beta(1-a,b+ha)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Probit stick-breaking
+\color inherit
+ 
+\series default
+with parameters 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{i}}\quad\theta_{h}\overset{iid}{\sim}P_{0}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\pi_{h}=V_{h}\prod_{\ell<h}(1-V_{\ell})
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{h}=\Phi(x_{h}),\;\text{ where \ensuremath{x_{h}\overset{iid}{\sim}N(\mu,\sigma^{2})}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

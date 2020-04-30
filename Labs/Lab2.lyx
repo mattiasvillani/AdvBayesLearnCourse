@@ -1,0 +1,668 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="right" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset space \hspace{}
+\length 1.7cm
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Advanced Bayesian Learning
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Department of Statistics
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stockholm University
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dept of Computer and Information Science
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Linköping University
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="1">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size large
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+Computer Lab 2 - Bayesian Nonparametrics
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+width "97.5col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The labs are the only examination, so you should do the labs 
+\series bold
+individually
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+You can use any programming language you prefer, but do 
+\series bold
+submit the code
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Submit a readable report in 
+\series bold
+PDF
+\series default
+ (no Word documents!) or a 
+\series bold
+JuPyteR notebook
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+width "97.5col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Dirichlet process
+\series default
+.
+ Let 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ be iid observations from some unknown probability distribution 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $P\sim DP(\alpha P_{0})$
+\end_inset
+
+ a priori, where 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ is the 
+\begin_inset Formula $N(20,3^{2})$
+\end_inset
+
+ base measure.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Plot the empirical CDF (cumulative distribution function) for the Galaxy
+ velocity data (as given in the file 
+\family sans
+GalaxyData.dat
+\family default
+).
+\end_layout
+
+\begin_layout Enumerate
+Use the stick-breaking construction to simulate draws of 
+\begin_inset Formula $P$
+\end_inset
+
+ from the 
+\emph on
+prior
+\emph default
+ of 
+\begin_inset Formula $P\sim DP(\alpha P_{0})$
+\end_inset
+
+.
+ Plot the CDF for some of the draws in a graph to illustrate the prior variation.
+ Plot also the prior mean of 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Try this for 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha=10$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha=100$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Use the stick-breaking construction to simulate draws of 
+\begin_inset Formula $P$
+\end_inset
+
+ from the 
+\emph on
+posterior
+\emph default
+ of 
+\begin_inset Formula $P$
+\end_inset
+
+ based on the Galaxy data.
+ Plot the CDF for some of the posterior draws in a graph to illustrate the
+ posterior variation.
+ Plot also the posterior mean of 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Again, try this for 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha=10$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha=100$
+\end_inset
+
+.
+ Compare with the prior.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Dirichlet process mixture
+\series default
+.
+ Consider again the Galaxy velocity data, but now modelled by an infinite
+ DP mixture model with a normal/Gaussian density kernel 
+\begin_inset Formula 
+\[
+\mathcal{K}(y_{i}|\theta_{i})=\frac{1}{\sqrt{2\pi\sigma_{i}^{2}}}\exp\left(-\frac{1}{2\sigma_{i}^{2}}(y_{i}-\mu_{i})^{2}\right)
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\theta_{i}=(\mu_{i},\sigma_{i}^{2})$
+\end_inset
+
+ are the parameters for the 
+\begin_inset Formula $i$
+\end_inset
+
+th observation 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $(\mu_{i},\sigma_{i}^{2})\sim P$
+\end_inset
+
+ where 
+\begin_inset Formula $P\sim DP(\alpha P_{0})$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ is the conjugate prior
+\begin_inset Formula 
+\[
+\mu_{i}|\sigma_{i}^{2}\sim N(\mu_{0},\sigma_{i}^{2}/\kappa_{0})\text{ and }\sigma_{i}^{2}\sim\mathrm{Inv}-\chi^{2}(\nu_{0},\sigma_{0}^{2}).
+\]
+
+\end_inset
+
+ Set 
+\begin_inset Formula $\mu_{0}=20$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{0}^{2}=3^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\kappa_{0}=5$
+\end_inset
+
+ and 
+\begin_inset Formula $\nu_{0}=3$
+\end_inset
+
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Implement the Blocked Gibbs sampler on page 552 in BDA3.
+ [Hint: the results from Page 67-69 from the BDA3 book will be useful].
+\end_layout
+
+\begin_layout Enumerate
+Analyze the Galaxy data using the Blocked Gibbs sampler in 2a) above.
+ Plot the posterior distribution of the number of non-empty components.
+ Plot a regular (non-Bayesian) histogram of the data and overlay the fitted
+ DPM density.
+ Investigate the effect of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ by performing the analysis with 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha=10$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha=100$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Now treat 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ as unknown with prior 
+\begin_inset Formula $\alpha\sim Gamma(a_{\alpha},b_{\alpha})$
+\end_inset
+
+.
+ Add an updating step for 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ in the Blocked Gibbs sampler (see page 553 in BDA3).
+ Analyze the Galaxy data again using some suitable values for 
+\begin_inset Formula $a_{\alpha}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{\alpha}$
+\end_inset
+
+.
+ Plot the prior and posterior of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Note that BDA3 uses the so called 
+\emph on
+rate parametrization
+\emph default
+ of the Gamma density where if 
+\begin_inset Formula $X\sim Gamma(a_{\alpha},b_{\alpha})$
+\end_inset
+
+ then the pdf is of the form
+\begin_inset Formula 
+\[
+p(x)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Good luck! All problems have solutions almost surely!
+\end_layout
+
+\end_body
+\end_document

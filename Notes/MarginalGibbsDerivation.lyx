@@ -1,0 +1,352 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+\setcounter{MaxMatrixCols}{10}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{plain}
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{axiom}{Axiom}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{remark}{Remark}[section]
+\numberwithin{equation}{section}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.7cm
+\topmargin 3.2cm
+\rightmargin 2.7cm
+\bottommargin 3.2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Marginal Gibbs sampler
+\end_layout
+
+\end_inset
+
+Derivation of full conditional posterior for marginal gibbs sampler
+\end_layout
+
+\begin_layout Author
+Mattias Villani
+\end_layout
+
+\begin_layout Thanks
+Villani: 
+\shape italic
+Department of Statistics, Stockholm University
+\shape default
+ and Dept of Computer and Information Science, Linkoping University.
+ 
+\shape italic
+E-mail: mattias.villani@gmail.
+\shape default
+com.
+\end_layout
+
+\begin_layout Abstract
+Just a little derivation of the full conditional posterior for the marginal
+ Gibbs sampler for DP mixtures.
+\end_layout
+
+\begin_layout Section
+Derivation
+\end_layout
+
+\begin_layout Standard
+The aim is to derive the posterior for 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+ conditional on all other 
+\begin_inset Formula $\theta_{-i}=(\theta_{1},\ldots,\theta_{i-1},\theta_{i+1},\ldots,\theta_{n})$
+\end_inset
+
+.
+ The prior is given by the Polya scheme
+\begin_inset Formula 
+\[
+p(\theta_{i}\vert\theta_{1},\ldots,\theta_{i-1})=\frac{\alpha}{\alpha+i-1}P_{0}(\theta_{i})+\frac{1}{\alpha+i-1}\sum_{j=1}^{i-1}\delta_{\theta_{j}}.
+\]
+
+\end_inset
+
+So for the last observation 
+\begin_inset Formula $i=n$
+\end_inset
+
+ we have the full conditional prior
+\begin_inset Formula 
+\[
+p(\theta_{i}\vert\theta_{-i})=\frac{\alpha}{\alpha+n-1}P_{0}(\theta_{i})+\frac{1}{\alpha+n-1}\sum_{j=1}^{n-1}\delta_{\theta_{j}}.
+\]
+
+\end_inset
+
+Since the order of the observations 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ does matter in this model (the 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ are exchangeable), this can be taken as the full conditional prior for
+ any 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\theta_{1}^{*},\ldots,\theta_{k^{(-i)}}^{*}$
+\end_inset
+
+ denote the 
+\begin_inset Formula $k^{(-i)}$
+\end_inset
+
+ unique values among the elements in 
+\begin_inset Formula $\theta_{-i}$
+\end_inset
+
+, and let 
+\begin_inset Formula $n_{j}^{(-i)}$
+\end_inset
+
+ be the number of values that are exactly 
+\begin_inset Formula $\theta_{j}^{*}$
+\end_inset
+
+.
+ The prior can be written
+\begin_inset Formula 
+\[
+p(\theta_{i}\vert\theta_{-i})=\frac{\alpha}{\alpha+n-1}P_{0}(\theta_{i})+\frac{1}{\alpha+n-1}\sum_{j=1}^{k^{(-i)}}n_{j}^{(-i)}\delta_{\theta_{j}^{*}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The full conditional posterior is
+\begin_inset Formula 
+\[
+p(\theta_{i}\vert\theta_{-i},\boldsymbol{y})\propto p(\boldsymbol{y}\vert\theta_{i},\theta_{-i})p(\theta_{i}\vert\theta_{-i})\propto p(y_{i}\vert\theta_{i})p(\theta_{i}\vert\theta_{-i})=\mathcal{K}(y_{i}\vert\theta_{i})p(\theta_{i}\vert\theta_{-i}),
+\]
+
+\end_inset
+
+since 
+\begin_inset Formula $p(\boldsymbol{y}\vert\theta_{i},\theta_{-i})=\prod_{i=1}^{n}p(y_{i}\vert\theta_{i})$
+\end_inset
+
+.
+ Now, substituting the conditional prior gives
+\begin_inset Formula 
+\begin{align*}
+p(\theta_{i}\vert\theta_{-i},\boldsymbol{y}) & =\frac{\alpha}{\alpha+n-1}\mathcal{K}(y_{i}\vert\theta_{i})P_{0}(\theta_{i})+\frac{1}{\alpha+n-1}\sum_{j=1}^{k^{(-i)}}n_{j}^{(-i)}\mathcal{K}(y_{i}\vert\theta_{i})\delta_{\theta_{j}^{*}}\\
+ & =\frac{\alpha}{\alpha+n-1}p_{0}(y_{i})p_{0}(\theta_{i}\vert y_{i})+\frac{1}{\alpha+n-1}\sum_{j=1}^{k^{(-i)}}n_{j}^{(-i)}\mathcal{K}(y_{i}\vert\theta_{j}^{*})\delta_{\theta_{j}^{*}},
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $p_{0}(\theta_{i}\vert y_{i})=\mathcal{K}(y_{i}\vert\theta_{i})P_{0}(\theta_{i})/p_{0}(y_{i})$
+\end_inset
+
+ is the posterior based on 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{0}(y_{i})=\int\mathcal{K}(y_{i}\vert\theta_{i})dP_{0}(\theta_{i})$
+\end_inset
+
+ is the marginal likelihood of 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ under the base measure 
+\begin_inset Formula $P_{0}(\theta_{i})$
+\end_inset
+
+.
+ The full conditional posterior of 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+ is therefore a mixture distribution with one component being 
+\begin_inset Formula $p_{0}(\theta_{i}\vert y_{i})$
+\end_inset
+
+ and the other components being point masses 
+\begin_inset Formula $\delta_{\theta_{j}^{*}}$
+\end_inset
+
+ for 
+\begin_inset Formula $j=1,...,k^{(-i)}.$
+\end_inset
+
+ The unnormalized weights of the mixture components are proportional to
+ 
+\begin_inset Formula $\alpha p_{0}(y_{i})$
+\end_inset
+
+ and 
+\begin_inset Formula $n_{j}^{(-i)}\mathcal{K}(y_{i}\vert\theta_{j}^{*})$
+\end_inset
+
+.
+ Hence by formulating a mixture in terms of the indicators 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ for component membership we obtain 
+\begin_inset Formula 
+\[
+\mathrm{Pr}(I_{i}=j\vert I_{-i},\boldsymbol{y})\propto\begin{cases}
+n_{j}^{(-i)}\mathcal{K}(y_{i}\vert\theta_{j}^{*}) & \text{ for }j=1,\ldots,k^{(-i)}\\
+\alpha p_{0}(y_{i})=\int\mathcal{K}(y_{i}\vert\theta_{i})dP_{0}(\theta_{i}) & \text{ for }j=k^{(-i)}+1
+\end{cases}.
+\]
+
+\end_inset
+
+Of course, when we simulate the indicators, we need normalize so that 
+\begin_inset Formula $\sum_{j=1}^{k^{(-i)+1}}\mathrm{Pr}(I_{i}=j\vert I_{-i},\boldsymbol{y})=1$
+\end_inset
+
+, by dividing by the sum of the unnormalized weights.
+\end_layout
+
+\begin_layout Standard
+After having simulated 
+\begin_inset Formula $I_{1},\ldots,I_{n}$
+\end_inset
+
+, we sample the unique 
+\begin_inset Formula $\theta_{j}^{*}$
+\end_inset
+
+ from
+\begin_inset Formula 
+\begin{align*}
+p(\theta_{j}^{*}\vert I_{1},\ldots,I_{n},\theta_{-j}^{*},\boldsymbol{y}) & \propto p(\boldsymbol{y}\vert I_{1},\ldots,I_{n},\theta_{j}^{*},\theta_{-j}^{*})p(\theta_{j}^{*}\vert I_{1},\ldots,I_{n},\theta_{-j}^{*}).\\
+ & =\left(\prod_{i:I_{i}=1}\mathcal{K}(y_{i}\vert\theta_{1}^{*})\cdots\prod_{i:I_{i}=k}\mathcal{K}(y_{i}\vert\theta_{k}^{*})\right)P_{0}(\theta_{j}^{*})\propto P_{0}(\theta_{j}^{*})\prod_{i:I_{i}=j}\mathcal{K}(y_{i}\vert\theta_{j}^{*}),
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $k$
+\end_inset
+
+ is the number of unique 
+\begin_inset Formula $\theta_{j}^{*}$
+\end_inset
+
+ (as dictated by 
+\begin_inset Formula $I_{1},\ldots,I_{n}$
+\end_inset
+
+).
+ Note that simulating from 
+\begin_inset Formula $\mathrm{Pr}(I_{i}=j\vert I_{-i},\boldsymbol{y})$
+\end_inset
+
+ may have opened up new components and for those components, 
+\begin_inset Formula $\theta_{j}^{*}$
+\end_inset
+
+ is drawn from a posterior based on a single observation.
+\end_layout
+
+\end_body
+\end_document

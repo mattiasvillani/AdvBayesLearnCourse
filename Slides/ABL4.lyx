@@ -1,0 +1,1637 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+% you can play with different themes and color themes to find your favorite combination.
+\mode<presentation> {
+  \usetheme{Luebeck}
+  \usecolortheme{beaver}
+  \beamertemplatenavigationsymbolsempty
+  \setbeamertemplate{headline}{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% include necessary packages here
+\usepackage{graphicx} % for including images
+\usepackage{pgf} % for logo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\date{} % Date, can be changed to a custom date
+
+\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}\hspace*{3.5cm}~%
+   \includegraphics[width=2cm]{LiU_secondary_1_black.png}
+}
+
+
+\definecolor{blue}{RGB}{38, 122, 181}
+\definecolor{orange}{RGB}{255, 128, 0}
+\definecolor{red}{RGB}{255, 128, 0}
+
+
+\setbeamertemplate{itemize item}{\color{orange}$\blacksquare$}
+\setbeamertemplate{itemize subitem}{\color{orange}$\blacktriangleright$}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{wasysym}
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\size largest
+\color orange
+Advanced Bayesian Learning
+\size default
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\color gray
+Bayesian Nonparametrics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+
+\color orange
+Lecture 4 - Dirichlet Process Mixtures
+\end_layout
+
+\begin_layout Author
+Mattias Villani
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color gray
+Advanced Bayesian Learning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+Department of Statistics
+\begin_inset Newline newline
+\end_inset
+
+Stockholm University
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Department of Computer and Information Science
+\begin_inset Newline newline
+\end_inset
+
+Linköping University 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Linköping and Stockholm University
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Finite mixture models
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Mixture of normals
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p(y)=\sum_{j=1}^{k}\pi_{j}\cdot\phi(y;\mu_{j},\sigma_{j}^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Allocation variables
+\series default
+\color inherit
+: 
+\begin_inset Formula $I_{i}=j$
+\end_inset
+
+ if 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ comes from 
+\begin_inset Formula $\phi(y;\mu_{j},\sigma_{j}^{2})$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $I=(I_{1},...,I_{n})$
+\end_inset
+
+ and 
+\begin_inset Formula $n_{j}=\sum_{i=1}^{n}\left(I_{i}=j\right)$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Gibbs sampling
+\series default
+\color inherit
+:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\pi_{1},...,\pi_{k}$
+\end_inset
+
+ 
+\begin_inset Formula $|$
+\end_inset
+
+ 
+\begin_inset Formula $I,y\sim\mathrm{Dirichlet}(a_{1}+n_{1},a_{2}+n_{2},...,a_{k}+n_{k})$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma_{j}^{2}$
+\end_inset
+
+ 
+\begin_inset Formula $|$
+\end_inset
+
+ 
+\begin_inset Formula $I,y\sim\mathrm{Inv}$
+\end_inset
+
+-
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu_{j}|I,\sigma_{j}^{2},y\sim\mathrm{Normal}$
+\end_inset
+
+ for 
+\begin_inset Formula $j=1,...,k$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ 
+\begin_inset Formula $|$
+\end_inset
+
+ 
+\begin_inset Formula $\pi,\mu,\sigma^{2},y\sim\mathrm{Categorical}(\omega_{i1},...,\omega_{ik})$
+\end_inset
+
+, 
+\begin_inset Formula $i=1,...,n,$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\omega_{ij}=\frac{\pi_{j}\cdot\phi(y_{i};\mu_{j},\sigma_{j}^{2})}{\sum_{q=1}^{k}\pi_{q}\cdot\phi(y_{i};\mu_{q},\sigma_{q}^{2})}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Infinite mixture models - DP mixtures
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+General mixture
+\color inherit
+
+\begin_inset Formula 
+\[
+f(y|P)=\int\mathcal{K}(y|\theta)dP(\theta)
+\]
+
+\end_inset
+
+
+\series default
+where 
+\begin_inset Formula $\mathcal{K}(y|\theta)$
+\end_inset
+
+ is a 
+\series bold
+\color blue
+kernel
+\series default
+\color inherit
+ and 
+\begin_inset Formula $P(\theta)$
+\end_inset
+
+ is a 
+\series bold
+\color blue
+mixing measure
+\series default
+\color inherit
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Student-
+\begin_inset Formula $t$
+\end_inset
+
+
+\series default
+\color inherit
+: 
+\begin_inset Formula $y\sim t_{\nu}(\mu,\sigma^{2})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{K}(y|\theta)=\phi(y|\mu,\lambda)$
+\end_inset
+
+ where 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is fixed, 
+\begin_inset Formula $\theta=\lambda$
+\end_inset
+
+ and 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P(\theta)$
+\end_inset
+
+ is the 
+\begin_inset Formula $Inv-\chi^{2}(\nu,\sigma^{2})$
+\end_inset
+
+ distribution.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Finite mixture of normals
+\series default
+\color inherit
+: 
+\begin_inset Formula $p(y)=\sum_{j=1}^{k}\pi_{j}\cdot\phi(y;\mu_{j},\sigma_{j}^{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{K}(y|\theta)=\phi(y|\mu,\sigma^{2})$
+\end_inset
+
+, 
+\begin_inset Formula $\theta=(\mu,\sigma^{2})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P(\theta)$
+\end_inset
+
+ is discrete with 
+\begin_inset Formula $\mathrm{Pr}\{\theta=(\mu_{j},\sigma_{j}^{2})\}=\pi_{j}$
+\end_inset
+
+, for 
+\begin_inset Formula $j=1,...,k.$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dirichlet Process Mixture: 
+\begin_inset Formula $P\sim DP(\alpha P_{0})$
+\end_inset
+
+,
+\series bold
+\color blue
+ infinite mixture
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+f(y)=\sum_{h=1}^{\infty}\pi_{h}\mathcal{K}(y|\theta_{h}^{*}),\qquad\pi\sim\mathrm{Stick}(\alpha)\text{ and }\theta_{h}\overset{iid}{\sim}P_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+DP mixture is like a finite mixture with large 
+\begin_inset Formula $k$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Infinite mixture: 
+\series bold
+\color blue
+every observation has its own parameter
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+y_{i}\sim\mathcal{K}(\theta_{i})
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+DP is a.s.
+ discrete 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\series bold
+\color blue
+ties
+\series default
+\color inherit
+: some 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+ exactly the same value.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+DP implies 
+\series bold
+\color blue
+clustering
+\series default
+\color inherit
+ of the 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Each observation has 
+\series bold
+\color blue
+potentially
+\series default
+\color inherit
+ its own parameter 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+, but that 
+\series bold
+\color blue
+parameter may be shared by other observations
+\series default
+\color inherit
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Finite mixtures
+\series default
+\color inherit
+: observations share 
+\begin_inset Formula $k$
+\end_inset
+
+ parameter values.
+ 
+\begin_inset Formula 
+\[
+y_{i}|I_{i}\sim\mathcal{K}(\theta_{I_{i}})
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+I_{i}|\pi\sim\mathrm{Categorical}(\pi_{1},...,\pi_{k})
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\theta_{1},\ldots,\theta_{k}\overset{iid}{\sim}P_{0}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\pi\sim\mathrm{Dirichlet}(\alpha/k,....,\alpha/k)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Finite mixture approaches DP mixture as 
+\begin_inset Formula $k\rightarrow\infty$
+\end_inset
+
+ [Neal2000].
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Marginalizing out 
+\begin_inset Formula $P$
+\end_inset
+
+ from a DP - Polya scheme
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Hierarchical representation
+\color inherit
+ 
+\series default
+of
+\series bold
+ 
+\color blue
+DP mixtures
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+y_{i}\sim\mathcal{K}(\theta_{i}),\qquad\theta_{i}\sim P\qquad P\sim DP(\alpha P_{0})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can 
+\series bold
+\color blue
+marginalize out 
+\color inherit
+
+\begin_inset Formula $P$
+\end_inset
+
+
+\series default
+ to obtain the 
+\series bold
+\color blue
+Polya scheme
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p(\theta_{i}|\theta_{1},...,\theta_{i-1})\sim\left(\frac{\alpha}{\alpha+i-1}\right)P_{0}(\theta_{i})+\left(\frac{1}{\alpha+i-1}\right)\sum_{j=1}^{i-1}\delta_{\theta_{j}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So 
+\begin_inset Formula $p(\theta_{i}|\theta_{1},...,\theta_{i-1})$
+\end_inset
+
+ is a mixture of the base measure 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and point masses at the previously 
+\begin_inset Quotes eld
+\end_inset
+
+drawn
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+-values.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+'Marginalizing out 
+\begin_inset Formula $P$
+\end_inset
+
+': integrate out 
+\begin_inset Formula $\pi$
+\end_inset
+
+ in the finite mixture model and let 
+\begin_inset Formula $k\rightarrow\infty$
+\end_inset
+
+ [Neal2000].
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+DPs and the Chinese restaurant process
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Polya scheme
+\series default
+\color inherit
+:
+\begin_inset Formula 
+\[
+p(\theta_{i}|\theta_{1},...,\theta_{i-1})\sim\left(\frac{\alpha}{\alpha+i-1}\right)P_{0}(\theta_{i})+\left(\frac{1}{\alpha+i-1}\right)\sum_{j=1}^{i-1}\delta_{\theta_{j}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Chinese restaurant process
+\series default
+\color inherit
+: 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+first customer sits at empty table and gets the dish 
+\begin_inset Formula $\theta_{1}^{*}$
+\end_inset
+
+ from 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+second customer has options: 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+sit at first customer's table with probability 
+\begin_inset Formula $\frac{1}{1+\alpha}$
+\end_inset
+
+ and eat 
+\begin_inset Formula $\theta_{1}^{*}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+sit at a new table with probability 
+\begin_inset Formula $\frac{\alpha}{1+\alpha}$
+\end_inset
+
+ and eat 
+\begin_inset Formula $\theta_{2}^{*}\sim P_{0}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+the 
+\begin_inset Formula $i$
+\end_inset
+
+th customer has options: 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+sit at table with dish 
+\begin_inset Formula $\theta_{j}^{*}$
+\end_inset
+
+ with a probability proportional to 
+\begin_inset Formula $n_{j}$
+\end_inset
+
+, the number of customers sitting at table 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+sit at a new table with probability proportional to 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Gibbs sampling DP mixtures - marginalizing 
+\begin_inset Formula $P$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Similar to Gibbs sampling for finite mixtures.
+ Data augmentation with mixture component indicators 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\color blue
+Update component allocation
+\series default
+\color inherit
+ for 
+\begin_inset Formula $i$
+\end_inset
+
+th observation 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ by sampling from multinomial
+\begin_inset Formula 
+\[
+\mathrm{Pr}(I_{i}=j|\cdot)\propto\begin{cases}
+n_{j}^{(-i)}\mathcal{K}(y_{i}|\theta_{j}^{*}) & \text{ for }j=1,...,k^{(-i)}\\
+\alpha\int\mathcal{K}(y_{i}|\theta)dP_{0}(\theta) & \text{ for }j=k^{(-i)}+1
+\end{cases}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\color blue
+Update
+\color inherit
+ 
+\series default
+the unique 
+\series bold
+\color blue
+parameter values
+\series default
+\color inherit
+ 
+\begin_inset Formula $\theta^{*}$
+\end_inset
+
+ by sampling from
+\begin_inset Formula 
+\[
+p(\theta_{j}^{*}|\cdot)\propto P_{0}(\theta_{c}^{*})\prod_{i:I_{i}=j}\mathcal{K}(y_{i}|\theta_{j}^{*})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that, unlike finite mixtures, the 
+\series bold
+
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ 
+\color blue
+are not independent
+\series default
+\color inherit
+ conditional on 
+\begin_inset Formula $\theta^{*}$
+\end_inset
+
+.
+ This because we have marginalized out 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ They have to be sampled 
+\series bold
+\color blue
+sequentially
+\series default
+\color inherit
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Gibbs sampling for truncated DP mixtures
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Set upper bound 
+\begin_inset Formula $N$
+\end_inset
+
+ for the number of components.
+ Approximate DP mixture with 
+\begin_inset Formula $\pi_{h}=0$
+\end_inset
+
+ for 
+\begin_inset Formula $h=N+1,...$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Posterior samping for infinite mixtures is now very similar to finite mixture.
+ The 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ can be sampled independently.
+\end_layout
+
+\begin_layout Enumerate
+Update component allocation for 
+\begin_inset Formula $i$
+\end_inset
+
+th observation 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ by sampling from multinomial
+\begin_inset Formula 
+\[
+\mathrm{Pr}(I_{i}=j|\cdot)\propto\pi_{j}\mathcal{K}(y_{i}|\theta_{j}^{*})\quad\text{for }j=1,2,...,N.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Update the stick-breaking weights [
+\begin_inset Formula $\pi_{h}=V_{h}\prod_{\ell<h}(1-V_{\ell})$
+\end_inset
+
+]
+\begin_inset Formula 
+\[
+V_{j}|\cdot\sim Beta\left(1+n_{j},\alpha+\sum_{q=j+1}^{N}n_{q}\right)\qquad\text{for }j=1,...,N-1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Update 
+\begin_inset Formula $\theta_{1}^{*},...\theta_{N}^{*}$
+\end_inset
+
+ by sampling like in the finite mixture model.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Sample 
+\begin_inset Formula $\theta^{*}$
+\end_inset
+
+ from prior 
+\begin_inset Formula $P_{0}(\theta)$
+\end_inset
+
+ for empty clusters.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+MCMC for DP mixtures
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let's look at the updating step:
+\begin_inset Formula 
+\[
+\mathrm{Pr}(I_{i}=j|\cdot)\propto\begin{cases}
+n_{j}^{(-i)}\mathcal{K}(y_{i}|\theta_{c}^{*}) & \text{ for }j=1,...,k^{(-i)}\\
+\alpha\int\mathcal{K}(y_{i}|\theta)dP_{0}(\theta) & \text{ for }j=k^{(-i)}+1
+\end{cases}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+A customer chooses table based on
+\series default
+:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the number of existing customers at the tables (with imaginary 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ customers at a new table)
+\end_layout
+
+\begin_layout Itemize
+how compatible the taste of the customer (
+\begin_inset Formula $y_{i}$
+\end_inset
+
+) is to the different dishes served at occupied tables (
+\begin_inset Formula $\theta_{c}^{*}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+how compatible the taste of the customer (
+\begin_inset Formula $y_{i}$
+\end_inset
+
+) is to the different dishes that 
+\emph on
+may
+\emph default
+ be served at a new table.
+ 
+\end_layout
+
+\begin_layout Itemize
+A 
+\begin_inset Formula $P_{0}(\theta)$
+\end_inset
+
+ with large variance is equivalent to an very experimental cook.
+ You never know what you get ...
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\alpha$
+\end_inset
+
+ matters for the number of clusters (tables), but so does 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha$
+\end_inset
+
+ can be learned from data.
+ Just add updating step.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ may have hyperparameters (e.g.
+ 
+\begin_inset Formula $P_{0}=N(\mu,\sigma^{2})$
+\end_inset
+
+).
+ Just add updating steps for those.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Mixture of multivariate regressions - Model
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The response vector 
+\begin_inset Formula $\mathbf{y}$
+\end_inset
+
+ is 
+\begin_inset Formula $p$
+\end_inset
+
+-dim.
+ Covariates 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ is 
+\begin_inset Formula $q$
+\end_inset
+
+-dim.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The model is of the form
+\begin_inset Formula 
+\[
+p(\mathbf{y}|\mathbf{x})=\sum_{j=1}^{\infty}\pi_{j}\cdot N(\mathbf{y}_{i}|\mathbf{B}_{j}\mathbf{x}_{i},\Sigma_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Each mixture component is a Gaussian multivariate regression with its own
+ regression coefficient and covariance matrix:
+\begin_inset Formula 
+\[
+\underset{p\times1}{\mathbf{y}_{i}}=\underset{p\times q}{\mathbf{B}_{j}}\underset{q\times1}{\mathbf{x}_{i}}+\underset{p\times1}{\varepsilon_{i}},\;\varepsilon_{i}\overset{iid}{\sim}N\left(0,\Sigma_{j}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The mixture weights follow a DP stick prior 
+\begin_inset Formula $\pi\sim Stick(\alpha)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Mixture of multivariate regressions - Data
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/MultiRegSimulatedData.eps
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Mixture of multivariate regressions - DPM
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/MultiRegDPMalpha2.eps
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Mixture of multivariate regressions - DPM
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../AdvBayesLearn/VT2014/BayesianNP/MultiRegPosterior.eps
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

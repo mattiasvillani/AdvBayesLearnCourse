@@ -46,7 +46,7 @@ Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3
 **Lecture 3 - April 28, hours 10-12**\
 [slides](/Slides/ABL3.pdf)\
 **Lecture 4 - April 28, hours 13-15**\
-[slides](/Slides/ABL4.pdf)
+[slides](/Slides/ABL4.pdf) | [derivation marginal Gibbs](/Notes/MarginalGibbsDerivation.pdf)
 
 **Lab Topic 2**\
 [Problems](/Labs/Lab2.pdf) | [Galaxy data](/Labs/GalaxyData.dat)
