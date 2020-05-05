@@ -15,7 +15,8 @@ All lectures are given online using Zoom this year.
 
 Welcome!
 
-[**Mattias Villani**](https://www.mattiasvillani.com/) \
+[**Mattias Villani**](https://www.mattiasvillani.com/)
+
 Professor of Statistics, Stockholm and Linköping University
 
 ---
