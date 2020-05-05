@@ -45,7 +45,7 @@ Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3
 
 
 **Lecture 3 - April 28, hours 10-12**  
-[slides](/Slides/ABL3.pdf)\
+[slides](/Slides/ABL3.pdf)  
 **Lecture 4 - April 28, hours 13-15**  
 [slides](/Slides/ABL4.pdf) | [derivation marginal Gibbs](/Notes/MarginalGibbsDerivation.pdf)
 
@@ -61,9 +61,9 @@ Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3
 Reading:  
 Code:
 
-**Lecture 5 - May 15, hours 10-12**\
+**Lecture 5 - May 15, hours 10-12**  
 [slides](TBA)  
-**Lecture 6 - May 15, hours 13-15**\
+**Lecture 6 - May 15, hours 13-15**  
 [slides](TBA)
 
 **Lab Topic 3**  
