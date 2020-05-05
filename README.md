@@ -15,8 +15,7 @@ All lectures are given online using Zoom this year.
 
 Welcome!
 
-[**Mattias Villani**](https://www.mattiasvillani.com/)
-
+[**Mattias Villani**](https://www.mattiasvillani.com/)  
 Professor of Statistics, Stockholm and Linköping University
 
 ---
@@ -28,9 +27,9 @@ Reading:  [Gaussian Processes for Machine Learning](http://www.gaussianprocess.o
 Code: [GPML for Matlab](http://mlg.eng.cam.ac.uk/carl/gpml/) | [GPy for Python](https://sheffieldml.github.io/GPy/) | [Gausspr in R](https://rdrr.io/cran/kernlab/man/gausspr.html) | [Gaussianprocesses.jl in Julia](https://github.com/STOR-i/GaussianProcesses.jl) | [GPyTorch - GPs in PyTorch](https://gpytorch.ai/)
 
 
-**Lecture 1 - April 17, hours 10-12**\
-[slides](/Slides/ABL1.pdf)\
-**Lecture 2 - April 17, hours 13-15**\
+**Lecture 1 - April 17, hours 10-12**  
+[slides](/Slides/ABL1.pdf)  
+**Lecture 2 - April 17, hours 13-15**  
 [slides](/Slides/ABL2.pdf)
 
 **Lab Topic 1**\
