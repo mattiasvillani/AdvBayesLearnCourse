@@ -5,3 +5,4 @@
 *.lyx~
 *.lyx#
 .Rhistory
+.Rproj.user
