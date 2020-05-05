@@ -32,7 +32,7 @@ Code: [GPML for Matlab](http://mlg.eng.cam.ac.uk/carl/gpml/) | [GPy for Python](
 **Lecture 2 - April 17, hours 13-15**  
 [slides](/Slides/ABL2.pdf)
 
-**Lab Topic 1**\
+**Lab Topic 1**  
 [Problems](/Labs/Lab1.pdf) | [Lidar data](/Labs/LidarData.dat)
 
 
@@ -41,14 +41,14 @@ Code: [GPML for Matlab](http://mlg.eng.cam.ac.uk/carl/gpml/) | [GPy for Python](
 
 ### Topic 2 - Bayesian Nonparametrics
 
-Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 23 | [The Neal (2000) article on MCMC for Dirichlet Process Mixtures](http://www.stat.columbia.edu/npbayes/papers/neal_sampling.pdf)\
+Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 23 | [The Neal (2000) article on MCMC for Dirichlet Process Mixtures](http://www.stat.columbia.edu/npbayes/papers/neal_sampling.pdf)  
 
-**Lecture 3 - April 28, hours 10-12**\
+**Lecture 3 - April 28, hours 10-12**  
 [slides](/Slides/ABL3.pdf)\
-**Lecture 4 - April 28, hours 13-15**\
+**Lecture 4 - April 28, hours 13-15**  
 [slides](/Slides/ABL4.pdf) | [derivation marginal Gibbs](/Notes/MarginalGibbsDerivation.pdf)
 
-**Lab Topic 2**\
+**Lab Topic 2**  
 [Problems](/Labs/Lab2.pdf) | [Galaxy data](/Labs/GalaxyData.dat)
 
 
@@ -57,15 +57,15 @@ Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3
 
 ### Topic 3 -  Variational Inference
 
-Reading: \
+Reading:  
 Code:
 
 **Lecture 5 - May 15, hours 10-12**\
-[slides](TBA)\
+[slides](TBA)  
 **Lecture 6 - May 15, hours 13-15**\
 [slides](TBA)
 
-**Lab Topic 3**\
+**Lab Topic 3**  
 [Problems](TBA)
 
 
@@ -75,13 +75,13 @@ Code:
 ### Topic 4 - Bayesian Model Inference
 
 Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 7
- | [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf) - Chapters 5.1-5.4 \
+ | [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf) - Chapters 5.1-5.4  
 Code:
 
-**Lecture 7 - May 29, hours 10-12** \
-[slides](TBA)\
-**Lecture 8 - May 29, hours 13-15**\
+**Lecture 7 - May 29, hours 10-12**  
+[slides](TBA)  
+**Lecture 8 - May 29, hours 13-15**  
 [slides](TBA)
 
-**Lab Topic 4**\
+**Lab Topic 4**  
 [Problems](TBA)
