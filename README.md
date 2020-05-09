@@ -58,8 +58,7 @@ Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3
 
 ### Topic 3 -  Variational Inference
 
-Reading:  
-Code:
+Reading: [Blei et al JASA](https://amstat.tandfonline.com/doi/abs/10.1080/01621459.2017.1285773#.XraDPXUzaLI) | [Tran's VI Notes](/Material/VBnotesMNT.pdf)
 
 **Lecture 5 - May 15, hours 10-12**  
 [slides](TBA)  
@@ -77,7 +76,6 @@ Code:
 
 Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 7
  | [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf) - Chapters 5.1-5.4  
-Code:
 
 **Lecture 7 - May 29, hours 10-12**  
 [slides](TBA)  
