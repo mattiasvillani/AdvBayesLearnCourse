@@ -1,0 +1,2067 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+% you can play with different themes and color themes to find your favorite combination.
+\mode<presentation> {
+  \usetheme{Luebeck}
+  \usecolortheme{beaver}
+  \beamertemplatenavigationsymbolsempty
+  \setbeamertemplate{headline}{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% include necessary packages here
+\usepackage{graphicx} % for including images
+\usepackage{pgf} % for logo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\date{} % Date, can be changed to a custom date
+
+\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}\hspace*{3.5cm}~%
+   \includegraphics[width=2cm]{LiU_secondary_1_black.png}
+}
+
+
+\definecolor{blue}{RGB}{38, 122, 181}
+\definecolor{orange}{RGB}{255, 128, 0}
+\definecolor{red}{RGB}{255, 128, 0}
+
+
+\setbeamertemplate{itemize item}{\color{orange}$\blacksquare$}
+\setbeamertemplate{itemize subitem}{\color{orange}$\blacktriangleright$}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{wasysym}
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\size largest
+\color orange
+Advanced Bayesian Learning
+\size default
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\color gray
+Variational Inference
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+
+\color orange
+Lecture 5 - Mean field and stochastic variational inference
+\end_layout
+
+\begin_layout Author
+Mattias Villani
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color gray
+Advanced Bayesian Learning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+Department of Statistics
+\begin_inset Newline newline
+\end_inset
+
+Stockholm University
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Department of Computer and Information Science
+\begin_inset Newline newline
+\end_inset
+
+Linköping University 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Linköping and Stockholm University
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Overview
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Variational inference (VI)
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Mean-field VI
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stochastic VI
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Fixed form VI
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stochastic gradients
+\series default
+\color inherit
+ and 
+\series bold
+\color blue
+variance reduction
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Automatic differentiation
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Variational inference
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Literature: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Variational Inference: A Review for Statisticians
+\emph default
+, JASA article by Blei et al (2017).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+A practical tutorial on Variational Bayes
+\emph default
+ - notes by Minh-Ngoc Tran at Sydney University.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Aim: approximate 
+\begin_inset Formula $p(\boldsymbol{\theta}|\boldsymbol{y})$
+\end_inset
+
+ with a (simpler) distribution 
+\begin_inset Formula $q(\boldsymbol{\theta})$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Laplace approximation
+\series default
+\color inherit
+ from optimization: 
+\begin_inset Formula 
+\[
+q(\boldsymbol{\theta})=N\left[\tilde{\boldsymbol{\theta}},\left(-\nabla\nabla\log p(\boldsymbol{\theta}\vert\boldsymbol{y})\vert_{\tilde{\boldsymbol{\theta}}}\right)^{-1}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Kullback-Leibler divergence 
+\series default
+\color inherit
+of 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ from 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathrm{KL}(f\left\Vert g\right.)=\int\ln\frac{f(x)}{g(x)}f(x)dx=\mathbb{E}_{f}\left(\ln\frac{f(x)}{g(x)}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Properties
+\series default
+\color inherit
+ of KL:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathrm{KL}(f\left\Vert g\right.)\geq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathrm{KL}(f\left\Vert g\right.)\neq\mathrm{KL}(g\left\Vert f\right.)$
+\end_inset
+
+ in general.
+ First density is the judge.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Variational inference
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+VI
+\series default
+\color inherit
+: approximate 
+\begin_inset Formula $p(\boldsymbol{\theta}|\boldsymbol{y})$
+\end_inset
+
+ by 
+\begin_inset Formula $q(\boldsymbol{\theta})\in\mathcal{Q}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+q^{\star}(\theta)=\underset{q(\theta)\in\mathcal{Q}}{\arg\min}\mathrm{KL}(q\left\Vert p\right.)=\int q(\boldsymbol{\theta})\ln\frac{q(\boldsymbol{\theta})}{p(\boldsymbol{\theta}|\boldsymbol{y})}d\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Turns an inference problem, 
+\begin_inset Formula $p(\boldsymbol{y}|\boldsymbol{\theta})$
+\end_inset
+
+, into 
+\series bold
+\color blue
+optimization
+\series default
+\color inherit
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Ideal
+\series default
+\color inherit
+: 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+let 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ be 
+\series bold
+\color blue
+large enough to approx
+\series default
+\color inherit
+ 
+\begin_inset Formula $p(\boldsymbol{\theta}|\boldsymbol{y})$
+\end_inset
+
+ well
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+let 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ be 
+\series bold
+\color blue
+small enough for efficient
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+optimization
+\series default
+\color inherit
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Early
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+VI
+\series default
+\color inherit
+: use restrictive 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ and live with poor approximation.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+- Location of 
+\begin_inset Formula $p(\boldsymbol{\theta}|\boldsymbol{y})$
+\end_inset
+
+ is fairly correct.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+- Underestimates the variance (badly).
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Modern
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+VI
+\series default
+\color inherit
+: use larger 
+\begin_inset Formula $\mathcal{Q}$
+\end_inset
+
+ + better optimization algorithms + stochastic gradients.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+ELBO - evidence lower bound
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathrm{KL}(q,p)$
+\end_inset
+
+ is intractable when 
+\begin_inset Formula $p(\boldsymbol{\theta}|\boldsymbol{y})$
+\end_inset
+
+ is intractable, but
+\begin_inset Formula 
+\begin{align*}
+\mathrm{KL}(q\left\Vert p\right.) & =\int q(\boldsymbol{\theta})\ln\frac{q(\boldsymbol{\theta})}{p(\boldsymbol{\theta}|\boldsymbol{y})}d\theta=\int q(\boldsymbol{\theta})\ln\frac{p(\boldsymbol{y})q(\boldsymbol{\theta})}{p(\boldsymbol{y}|\boldsymbol{\theta})p(\boldsymbol{\theta})}d\theta\\
+ & =-\int q(\boldsymbol{\theta})\ln\frac{p(\boldsymbol{y}|\boldsymbol{\theta})p(\boldsymbol{\theta})}{q(\boldsymbol{\theta})}d\theta+\int p(\boldsymbol{y})q(\boldsymbol{\theta})d\theta
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence 
+\begin_inset Formula $\mathrm{KL}(q\left\Vert p\right.)=-\mathrm{LB}(q)+p(\boldsymbol{y})$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\[
+\mathrm{LB}(q)\overset{\mathrm{def}}{=}\int q(\boldsymbol{\theta})\ln\frac{p(\boldsymbol{y}|\boldsymbol{\theta})p(\boldsymbol{\theta})}{q(\boldsymbol{\theta})}d\theta
+\]
+
+\end_inset
+
+is a 
+\series bold
+\color blue
+lower bound for the marginal likelihood
+\series default
+\color inherit
+ 
+\begin_inset Formula $p(\boldsymbol{y})$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\mathrm{KL}(q\left\Vert p\right.)\geq0\Longrightarrow\mathrm{LB}(q)\leq p(\boldsymbol{y})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathrm{LB}(q)$
+\end_inset
+
+ sometimes called 
+\series bold
+\color blue
+evidence lower bound
+\series default
+\color inherit
+ (
+\series bold
+\color blue
+ELBO
+\series default
+\color inherit
+).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Mean field approximation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Mean field VI
+\series default
+\color inherit
+ is based on factorized approximation:
+\begin_inset Formula 
+\[
+q(\theta)=\prod_{j=1}^{p}q_{j}(\theta_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+No specific functional forms
+\series default
+ 
+\color black
+are assumed
+\color inherit
+ for the 
+\begin_inset Formula $q_{j}(\theta)$
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Optimal densities
+\series default
+\color inherit
+ can be shown to satisfy (MNT Notes):
+\begin_inset Formula 
+\[
+q_{j}(\theta)\propto\exp\left(E_{-\theta_{j}}\ln p(\mathbf{y},\theta)\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $E_{-\theta_{j}}(\cdot)$
+\end_inset
+
+ is the expectation with respect to 
+\begin_inset Formula $\prod_{k\neq j}q_{k}(\theta_{k})$
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Structured mean field approximation
+\series default
+\color inherit
+.
+ Group subset of parameters in tractable blocks.
+ Similar to Gibbs sampling.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Mean field VI - algorithm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Initialize: 
+\begin_inset Formula $q_{2}^{*}(\theta_{2}),...,q_{M}^{*}(\theta_{p})$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Repeat until convergence:
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $q_{1}^{*}(\theta_{1})\leftarrow\frac{\exp\left[E_{-\theta_{1}}\ln p(\mathbf{y},\theta)\right]}{\int\exp\left[E_{-\theta_{1}}\ln p(\mathbf{y},\theta)\right]d\theta_{1}}$
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $q_{2}^{*}(\theta_{2})\leftarrow\frac{\exp\left[E_{-\theta_{2}}\ln p(\mathbf{y},\theta)\right]}{\int\exp\left[E_{-\theta_{2}}\ln p(\mathbf{y},\theta)\right]d\theta_{2}}$
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $q_{p}^{*}(\theta_{p})\leftarrow\frac{\exp\left[E_{-\theta_{p}}\ln p(\mathbf{y},\theta)\right]}{\int\exp\left[E_{-\theta_{p}}\ln p(\mathbf{y},\theta)\right]d\theta_{p}}$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+No assumptions about parametric form
+\series default
+\color inherit
+ of the 
+\begin_inset Formula $q_{j}(\theta)$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Optimal 
+\begin_inset Formula $q_{j}(\theta)$
+\end_inset
+
+ often 
+\series bold
+\color blue
+turn out
+\series default
+\color inherit
+ to be known distributions.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Just update hyperparameters
+\series default
+\color inherit
+ in the optimal densities.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Mean field VI
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Alternative formulation that connects to
+\series bold
+ 
+\color blue
+Gibbs sampling
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+q_{i}^{*}(\theta_{i})\propto\exp\left[E_{-\theta_{i}}\ln p(\theta_{i}|\theta_{-i},\boldsymbol{y})\right]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $p(\theta_{i}|\theta_{-i},\boldsymbol{y})$
+\end_inset
+
+ is the full conditional posterior of 
+\begin_inset Formula $\theta_{i}$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Structured
+\color inherit
+ 
+\color blue
+mean field VI
+\series default
+\color inherit
+.
+ Group parameters in tractable blocks.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Make life easy.
+ When deriving 
+\begin_inset Formula $q_{\theta_{1}}^{*}(\theta_{1})$
+\end_inset
+
+:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ignore additive terms in 
+\begin_inset Formula $\ln p(\theta_{1},\theta_{2},\theta_{3},\mathbf{y})$
+\end_inset
+
+ not involving 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+mean-field: 
+\begin_inset Formula $\mathbb{E}_{-\theta_{1}}f(\theta_{2})g(\theta_{3})=\mathbb{E}_{q_{2}(\theta_{2})}f(\theta_{2})\cdot\mathbb{E}_{q_{3}(\theta_{3})}g(\theta_{3})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Mean field approximation - Normal model
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Model
+\series default
+\color inherit
+: 
+\begin_inset Formula $X_{i}|\theta,\sigma^{2}\overset{iid}{\sim}N(\theta,\sigma^{2})$
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Prior
+\series default
+\color inherit
+: 
+\begin_inset Formula $\theta\sim N(\mu_{0},\tau_{0}^{2})$
+\end_inset
+
+ 
+\emph on
+independent
+\emph default
+ of 
+\begin_inset Formula $\sigma^{2}\sim Inv-\chi^{2}(\nu_{0},\sigma_{0}^{2})$
+\end_inset
+
+.
+ 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Mean-field approximation
+\series default
+\color inherit
+: 
+\begin_inset Formula $q(\theta,\sigma^{2})=q_{\theta}(\theta)\cdot q_{\sigma^{2}}(\sigma^{2})$
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Optimal densities
+\begin_inset Formula 
+\begin{align*}
+q_{\theta}^{*}(\theta) & \propto\exp\left[E_{q(\sigma^{2})}\ln p(\theta,\sigma^{2},\mathbf{x})\right]\\
+q_{\sigma^{2}}^{*}(\sigma^{2}) & \propto\exp\left[E_{q(\theta)}\ln p(\theta,\sigma^{2},\mathbf{x})\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Normal model - VB algorithm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Variational density for 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\sigma^{2}\sim Inv-\chi^{2}\left(\tilde{\nu}_{n},\tilde{\sigma}_{n}^{2}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{\nu}_{n}=\nu_{0}+n$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{\sigma}_{n}=\frac{\nu_{0}\sigma_{0}^{2}+\sum_{i=1}^{n}(x_{i}-\textcolor{orange}{\tilde{\mu}_{n}})^{2}+n\cdot\textcolor{orange}{\tilde{\tau}_{n}^{2}}}{\nu_{0}+n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Variational density for 
+\begin_inset Formula $\theta$
+\end_inset
+
+
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\theta\sim N\left(\tilde{\mu}_{n},\tilde{\tau}_{n}^{2}\right)
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+\tilde{\tau}_{n}^{2}=\frac{1}{\frac{n}{\textcolor{orange}{\tilde{\sigma}_{n}^{2}}}+\frac{1}{\tau_{0}^{2}}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tilde{\mu}_{n}=\tilde{w}\bar{x}+(1-\tilde{w})\mu_{0},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+\tilde{w}=\frac{\frac{n}{\textcolor{orange}{\tilde{\sigma}_{n}^{2}}}}{\frac{n}{\textcolor{orange}{\tilde{\sigma}_{n}^{2}}}+\frac{1}{\tau_{0}^{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Normal example from Murphy (
+\begin_inset Formula $\lambda=1/\sigma^{2}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Initial values
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+After updating 
+\begin_inset Formula $q_{\mu}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../BayesLearningLiU/Slides/Images/unigaussVbDemo1.pdf
+	lyxscale 20
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../BayesLearningLiU/Slides/Images/unigaussVbDemo2.pdf
+	lyxscale 20
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+After updating 
+\begin_inset Formula $q_{\sigma^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+At convergence
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../BayesLearningLiU/Slides/Images/unigaussVbDemo3.pdf
+	lyxscale 20
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../BayesLearningLiU/Slides/Images/unigaussVbDemo4.pdf
+	lyxscale 20
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Probit regression
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Model
+\series default
+\color inherit
+: 
+\begin_inset Formula 
+\[
+\mathrm{Pr}\left(y_{i}=1|\mathbf{x}_{i}\right)=\Phi(\mathbf{x}_{i}^{T}\beta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Prior
+\series default
+\color inherit
+: 
+\begin_inset Formula $\beta\sim N(0,\Sigma_{\beta})$
+\end_inset
+
+.
+ For example: 
+\begin_inset Formula $\Sigma_{\beta}=\tau^{2}I$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Latent variable formulation
+\series default
+\color inherit
+ with 
+\begin_inset Formula $u=(u_{1},...,u_{n})'$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathbf{u}|\beta\sim N(\mathbf{X}\beta,1)
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\begin{align*}
+y_{i} & =\begin{cases}
+0 & \text{if }u_{i}\leq0\\
+1 & \text{if }u_{i}>0
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Factorized 
+\series bold
+\color blue
+variational approximation
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+q(\mathbf{u},\beta)=q_{\mathbf{u}}(\mathbf{u})q_{\beta}(\beta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+VI for probit regression
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+VI posterior
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\beta\sim N\left(\tilde{\mu}_{\beta},\left(\mathbf{X}^{T}\mathbf{X}+\Sigma_{\beta}^{-1}\right)^{-1}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+\tilde{\mu}_{\beta}=\left(\mathbf{X}^{T}\mathbf{X}+\Sigma_{\beta}^{-1}\right)^{-1}\mathbf{X}^{T}\textcolor{orange}{\tilde{\mu}_{\mathbf{u}}}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\tilde{\mu}_{\mathbf{u}}=\mathbf{X}\textcolor{orange}{\tilde{\mu}_{\beta}}+\frac{\phi\left(\mathbf{X}\textcolor{orange}{\tilde{\mu}_{\beta}}\right)}{\Phi\left(\mathbf{X}\textcolor{orange}{\tilde{\mu}_{\beta}}\right)^{\mathbf{y}}\left[\Phi\left(\mathbf{X}\textcolor{orange}{\tilde{\mu}_{\beta}}\right)-\mathbf{1}_{n}\right]^{\mathbf{1}_{n}-\mathbf{y}}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Probit example (n=200 observations)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\series bold
+\begin_inset Graphics
+	filename ../../BayesLearningLiU/Slides/Images/Probit_MCMCvsVB.eps
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Probit example
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\series bold
+\begin_inset Graphics
+	filename ../../BayesLearningLiU/Slides/Images/Probit_LowerBound.eps
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+VI and exponential families
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Exponential family
+\series default
+\color inherit
+ for 
+\begin_inset Formula $x$
+\end_inset
+
+ with own sufficient statistics
+\size small
+
+\begin_inset Formula 
+\[
+p(x\vert\boldsymbol{\psi})=h(x)\exp\left\{ \eta(\boldsymbol{\psi})x-a(\boldsymbol{\psi})\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Suppose full conditional posterior is in the exponential family
+\size small
+
+\begin_inset Formula 
+\[
+p(\theta_{j}\vert\boldsymbol{\theta}_{-j},\boldsymbol{y})=h(\theta_{j})\exp\left\{ \eta_{j}(\boldsymbol{\theta}_{-j},\boldsymbol{y})\theta_{j}-a\left(\eta_{j}(\boldsymbol{\theta}_{-j},\boldsymbol{y})\right)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Mean-field VI update
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+q(\theta_{j}) & \propto\exp\left\{ \mathbb{E}_{-j}\log p(\theta_{j}\vert\boldsymbol{\theta}_{-j},\boldsymbol{y})\right\} \\
+ & =\exp\left\{ \log h(\theta_{j})+\mathbb{E}_{-j}\left[\eta_{j}(\boldsymbol{\theta}_{-j},\boldsymbol{y})\right]\theta_{j}-\mathbb{E}_{-j}\left[a\left(\eta_{j}(\boldsymbol{\theta}_{-j},\boldsymbol{y})\right)\right]\right\} \\
+ & \propto h(\theta_{j})\exp\left\{ \mathbb{E}_{-j}\left[\eta_{j}(\boldsymbol{\theta}_{-j},\boldsymbol{y})\right]\theta_{j}\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Each 
+\begin_inset Formula $q(\theta_{j})$
+\end_inset
+
+ has same exponential family as its full conditional but with parameter
+ 
+\begin_inset Formula $\mathbb{E}_{-j}\left[\eta_{j}(\boldsymbol{\theta}_{-j},\boldsymbol{y})\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Stochastic variational inference, Blei et al 2017
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Mixture
+\series default
+\color inherit
+: 
+\begin_inset Formula $\mathrm{Pr}(z_{i}=k)=\omega_{k}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{i}\vert(z_{i}=k)\sim N(x\vert\mu_{k},\sigma_{k}^{2})$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+p(\boldsymbol{x},\boldsymbol{z},\boldsymbol{\mu},\boldsymbol{\sigma},\boldsymbol{\omega})=p(\boldsymbol{\mu},\boldsymbol{\sigma},\boldsymbol{\omega})\prod_{i=1}^{n}p(x_{i}\vert z_{i},\boldsymbol{\mu},\boldsymbol{\sigma})p(z_{i}\vert\boldsymbol{\omega})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Global parameters
+\series default
+\color inherit
+: 
+\begin_inset Formula $\boldsymbol{\theta}=(\boldsymbol{\mu},\boldsymbol{\sigma},\boldsymbol{\omega})^{T}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Local
+\series default
+\color inherit
+ 
+\series bold
+\color blue
+parameters
+\series default
+\color inherit
+: 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ (
+\series bold
+\color blue
+latents
+\series default
+\color inherit
+).
+ 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ is local to 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Mean field VI
+\series default
+\color inherit
+ for 
+\series bold
+\color blue
+local parameter models
+\series default
+\color inherit
+ iterates:
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Update the variational factor 
+\begin_inset Formula $q(\boldsymbol{\theta}\vert\boldsymbol{\lambda})$
+\end_inset
+
+ for global parameters.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Update the variational factor 
+\begin_inset Formula $q(z_{i}\vert\varphi_{i})$
+\end_inset
+
+ for each local 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Stochastic VI
+\series default
+\color inherit
+ (Blei et al 2017) for large data with latents:
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Subsample a data point 
+\begin_inset Formula $s\in\{1,...,n\}$
+\end_inset
+
+ and update 
+\begin_inset Formula $q(z_{s}\vert\varphi_{s})$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Update the variational factor 
+\begin_inset Formula $q(\boldsymbol{\theta}\vert\boldsymbol{\lambda})$
+\end_inset
+
+ for global parameters.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
