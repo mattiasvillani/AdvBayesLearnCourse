@@ -1,0 +1,1275 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+% you can play with different themes and color themes to find your favorite combination.
+\mode<presentation> {
+  \usetheme{Luebeck}
+  \usecolortheme{beaver}
+  \beamertemplatenavigationsymbolsempty
+  \setbeamertemplate{headline}{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% include necessary packages here
+\usepackage{graphicx} % for including images
+\usepackage{pgf} % for logo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\date{} % Date, can be changed to a custom date
+
+\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}\hspace*{3.5cm}~%
+   \includegraphics[width=2cm]{LiU_secondary_1_black.png}
+}
+
+
+\definecolor{blue}{RGB}{38, 122, 181}
+\definecolor{orange}{RGB}{255, 128, 0}
+\definecolor{red}{RGB}{255, 128, 0}
+
+\setbeamertemplate{itemize item}{\color{orange}$\blacksquare$}
+\setbeamertemplate{itemize subitem}{\color{orange}$\blacktriangleright$}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{wasysym}
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+\newtheorem{algorithm2}{Algorithm}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\size largest
+\color orange
+Advanced Bayesian Learning
+\size default
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\color gray
+Variational inference
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+
+\color orange
+Lecture 6 - Beyond mean-field VI
+\end_layout
+
+\begin_layout Author
+Mattias Villani
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color gray
+Advanced Bayesian Learning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+
+\series bold
+Department of Statistics
+\begin_inset Newline newline
+\end_inset
+
+Stockholm University
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ Department of Computer and Information Science
+\begin_inset Newline newline
+\end_inset
+
+Linköping University 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Linköping and Stockholm University
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Fixed form VI
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The independence assumption in 
+\series bold
+\color blue
+mean field VI is restrictive
+\series default
+\color inherit
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Fixed form VI
+\series default
+\color inherit
+: 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Assume parametric form 
+\begin_inset Formula $q_{\boldsymbol{\lambda}}(\boldsymbol{\theta})$
+\end_inset
+
+ with hyperparameters 
+\begin_inset Formula $\boldsymbol{\lambda}$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Optimize 
+\begin_inset Formula $\mathrm{KL}\left[q_{\boldsymbol{\lambda}}(\boldsymbol{\theta})\left\Vert p(\boldsymbol{\theta}\vert\boldsymbol{y})\right.\right]$
+\end_inset
+
+ wrt 
+\begin_inset Formula $\boldsymbol{\lambda}$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+As before, we actually optimize lower bound 
+\begin_inset Formula $\mathrm{LB}(\boldsymbol{\lambda})$
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex 1: 
+\begin_inset Formula $q_{\boldsymbol{\lambda}}=N(\boldsymbol{\theta}\vert\boldsymbol{\mu},\Sigma)$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{\lambda}=(\boldsymbol{\mu},\boldsymbol{L})$
+\end_inset
+
+, with Cholesky 
+\begin_inset Formula $\Sigma=\boldsymbol{LL}^{T}$
+\end_inset
+
+.
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex 2: 
+\begin_inset Formula $q_{\boldsymbol{\lambda}}=N(\boldsymbol{\theta}\vert\boldsymbol{\mu},\boldsymbol{a}\boldsymbol{a}^{T}+\boldsymbol{D})$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{\lambda}=(\boldsymbol{\mu},\boldsymbol{a},\boldsymbol{d})$
+\end_inset
+
+, where 
+\begin_inset Formula $\boldsymbol{a}$
+\end_inset
+
+ is a vector, 
+\begin_inset Formula $\boldsymbol{D}=\mathrm{Diag}(\boldsymbol{d})$
+\end_inset
+
+.
+ 
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ex 3: 
+\begin_inset Formula $q_{\boldsymbol{\lambda}}$
+\end_inset
+
+ is a copula, mixture of normals etc etc
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+From now on: vectors will not be 
+\series bold
+bold
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Fixed form VI - Gradient based optimization
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Gradient ascent
+\series default
+\color inherit
+: optimize 
+\begin_inset Formula $\mathrm{LB}(\lambda)$
+\end_inset
+
+ wrt 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ using step size 
+\begin_inset Formula $a>0$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{for }t & =1,2,...\text{ until convergence do: }\\
+ & \lambda^{(t+1)}=\lambda^{(t)}+a\cdot\nabla_{\lambda}\mathrm{LB}(\lambda^{(t)})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stop when changes in 
+\begin_inset Formula $\mathrm{LB}(\lambda^{(t)})$
+\end_inset
+
+ 
+\begin_inset Formula $<\epsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size small
+\color blue
+Lower Bound
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\mathrm{LB}(\lambda)=\mathbb{E}_{q_{\lambda}}\left[\log\frac{p(y\vert\theta)p(\theta)}{q_{\lambda}(\theta)}\right]=\int q_{\lambda}(\theta)h_{\lambda}(\theta)d\theta
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+h_{\lambda}(\theta):=\log\frac{p(y\vert\theta)p(\theta)}{q_{\lambda}(\theta)}=\log p(y\vert\theta)p(\theta)-\log q_{\lambda}(\theta).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size small
+\color blue
+Gradient of LB is an expectation wrt 
+\begin_inset Formula $q_{\lambda}(\theta)$
+\end_inset
+
+
+\series default
+\color inherit
+
+\begin_inset Formula 
+\begin{align*}
+\nabla_{\lambda}\mathrm{LB}(\lambda) & =\int\nabla_{\lambda}q_{\lambda}(\theta)h_{\lambda}(\theta)d\theta+\int q_{\lambda}(\theta)\left(-\frac{\nabla_{\lambda}q_{\lambda}(\theta)}{q_{\lambda}(\theta)}\right)d\theta\\
+ & =\int q_{\lambda}(\theta)\nabla_{\lambda}\log q_{\lambda}(\theta)\times h_{\lambda}(\theta)d\theta-\nabla_{\lambda}\int q_{\lambda}(\theta)d\theta\\
+ & =\mathbb{E}_{q_{\lambda}}\left[\nabla_{\lambda}\log q_{\lambda}(\theta)\times h_{\lambda}(\theta)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+VI - Stochastic gradient ascent
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\size small
+\color blue
+Gradient of LB is an expectation wrt 
+\begin_inset Formula $q_{\lambda}(\theta)$
+\end_inset
+
+
+\series default
+\color inherit
+
+\begin_inset Formula 
+\begin{align*}
+\nabla_{\lambda}\mathrm{LB}(\lambda) & =\mathbb{E}_{q_{\lambda}}\left[\nabla_{\lambda}\log q_{\lambda}(\theta)\times h_{\lambda}(\theta)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size small
+\color blue
+Monte Carlo
+\series default
+\color inherit
+: simulate 
+\begin_inset Formula $\theta^{(1)},\ldots,\theta^{(S)}\sim q_{\lambda}(\theta)$
+\end_inset
+
+ and estimate
+\begin_inset Formula 
+\[
+\widehat{\nabla_{\lambda}\mathrm{LB}(\lambda)}=\frac{1}{S}\sum_{s=1}^{S}\nabla_{\lambda}\log q_{\lambda}(\theta_{s})\times h_{\lambda}(\theta_{s})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Figures/BasicFFVB.png
+	lyxscale 40
+	scale 11
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Monitoring convergence
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Sufficient conditions for convergence
+\series default
+\color inherit
+: 
+\begin_inset Formula 
+\[
+a_{t}>0,\;\;\sum_{t}a_{t}=\infty\text{ and }\sum_{t}a_{t}^{2}<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Example: 
+\begin_inset Formula 
+\[
+a_{t}=\begin{cases}
+\epsilon_{0} & \text{if }t\leq\tau\\
+\epsilon_{0}\frac{\tau}{t} & \text{if }t>\tau
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hard to monitor convergence on 
+\begin_inset Formula $\widehat{\mathrm{LB}(\lambda^{(t)})}$
+\end_inset
+
+ since it is noisy.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Check convergence 
+\series default
+\color inherit
+on local average: 
+\begin_inset Formula 
+\[
+\overline{\mathrm{LB}}(\lambda^{(t+1)})=t_{W}^{-1}\sum_{k=1}^{t_{W}}\widehat{\mathrm{LB}(\lambda^{(t-k+1)})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+MNT: 
+\begin_inset Formula $t_{W}=20$
+\end_inset
+
+ or 
+\begin_inset Formula $t_{W}=50$
+\end_inset
+
+ and tolerance 
+\begin_inset Formula $\epsilon=10^{-5}$
+\end_inset
+
+ common.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Adaptive learning rate
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Learning rate
+\series default
+\color inherit
+ 
+\begin_inset Formula $a_{t}$
+\end_inset
+
+ should be small when 
+\begin_inset Formula $\mathbb{V}\left(\widehat{\nabla_{\lambda}\mathrm{LB}(\lambda^{(t)})}\right)$
+\end_inset
+
+ is large, otherwise optimizer may backtrack.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Algorithm above used 
+\series bold
+\color blue
+same learning rate
+\series default
+\color inherit
+ 
+\begin_inset Formula $a_{t}$
+\end_inset
+
+ for all 
+\begin_inset Formula $\lambda_{k}$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+But 
+\begin_inset Formula $\mathbb{V}\left(\widehat{\nabla_{\lambda_{k}}\mathrm{LB}(\lambda^{(t)})}\right)$
+\end_inset
+
+ may vary with different 
+\begin_inset Formula $\lambda_{k}$
+\end_inset
+
+.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Scale gradients with moving average of 
+\begin_inset Formula $\mathbb{V}\left(\widehat{\nabla_{\lambda_{k}}\mathrm{LB}(\lambda^{(t)})}\right)$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $g_{t}=\widehat{\nabla_{\lambda}\mathrm{LB}(\lambda^{(t)})}$
+\end_inset
+
+ and 
+\begin_inset Formula $v_{t}=g_{t}^{2}$
+\end_inset
+
+ (elementwise, i.e.
+ 
+\begin_inset Formula $g_{t}\odot g_{t}$
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Stochastic gradient ascent with adaptive gradients
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Figures/AdaGrad.png
+	lyxscale 40
+	scale 15
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Natural gradient
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Same distance in 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-space can give very different changes in 
+\begin_inset Formula $\mathrm{KL}(q_{\lambda}\left\Vert p(\theta\vert y)\right.)$
+\end_inset
+
+ depending on the geometry of 
+\begin_inset Formula $q_{\lambda}(\theta)$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Example: changing the mean of 
+\begin_inset Formula $q_{\lambda}(\theta)$
+\end_inset
+
+ can have very different effect on 
+\begin_inset Formula $\mathrm{KL}(q_{\lambda}\left\Vert p(\theta\vert y)\right.)$
+\end_inset
+
+ depending on the variance of 
+\begin_inset Formula $q_{\lambda}(\theta)$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+\color blue
+natural gradient
+\series default
+\color inherit
+ solves this:
+\begin_inset Formula 
+\[
+\nabla_{\lambda}\mathrm{LB}(\lambda)^{\mathrm{nat}}=I_{F}^{-1}(\lambda)\nabla_{\lambda}\mathrm{LB}(\lambda)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $I_{F}(\lambda)=\mathbb{V}_{q_{\lambda}}\left(\nabla_{\lambda}\log q_{\lambda}(\theta)\right)$
+\end_inset
+
+ is the Fisher Information.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Compute inverse by iterative conjugate gradient:
+\begin_inset Newline newline
+\end_inset
+
+Solve approximately 
+\begin_inset Formula $I_{F}(\lambda)x=\nabla_{\lambda}\mathrm{LB}(\lambda)$
+\end_inset
+
+ for 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In exponential families, 
+\begin_inset Formula $\nabla_{\lambda}\mathrm{LB}(\lambda)^{\mathrm{nat}}$
+\end_inset
+
+ is simpler than 
+\begin_inset Formula $\nabla_{\lambda}\mathrm{LB}(\lambda)$
+\end_inset
+
+, see Blei et al (2017).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Variance reduction by control variates
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The 
+\series bold
+\color blue
+variance of gradient estimator
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\widehat{\nabla_{\lambda}\mathrm{LB}(\lambda)}=\frac{1}{S}\sum_{s=1}^{S}\nabla_{\lambda}\log q_{\lambda}(\theta_{s})\times h_{\lambda}(\theta_{s})
+\]
+
+\end_inset
+
+is often large.
+ Problematic for stochastic gradient ascent.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Estimator with
+\series bold
+\color blue
+ control variates 
+\begin_inset Formula $c_{k}$
+\end_inset
+
+
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\widehat{\nabla_{\lambda_{k}}\mathrm{LB}(\lambda)}=\frac{1}{S}\sum_{s=1}^{S}\nabla_{\lambda_{k}}\log q_{\lambda}(\theta_{s})\times\left(h_{\lambda}(\theta_{s})-c_{k}\right)
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Unbiased
+\series default
+\color inherit
+ since 
+\begin_inset Formula $\mathbb{E}\left(\nabla_{\lambda}\log q_{\lambda}(\theta)\right)=0$
+\end_inset
+
+.
+ 
+\series bold
+\color blue
+Lower variance
+\series default
+\color inherit
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Optimal 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+
+\series default
+\color inherit
+ that minimizes 
+\begin_inset Formula $\mathbb{V}\left(\widehat{\nabla_{\lambda_{k}}\mathrm{LB}(\lambda)}\right)$
+\end_inset
+
+ derived in MNT.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Optimal 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+
+\series default
+\color inherit
+ estimated in gradient ascent.
+ Algorithm 3, MNT.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+The reparametrization trick
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Suppose we can generate 
+\begin_inset Formula $\theta\sim q_{\lambda}(\cdot)$
+\end_inset
+
+ by generating 
+\begin_inset Formula $\varepsilon\sim p_{\varepsilon}(\cdot)$
+\end_inset
+
+ and the deterministic transformation 
+\begin_inset Formula $\theta=g(\lambda,\varepsilon)\sim q_{\lambda}(\cdot)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Ex: 
+\begin_inset Formula $q_{\lambda}(\cdot)=N(\mu,\Sigma)$
+\end_inset
+
+, then 
+\begin_inset Formula $g(\lambda,\varepsilon)=\mu+\Sigma^{1/2}\varepsilon,$
+\end_inset
+
+ 
+\begin_inset Formula $\varepsilon\sim N(0,I).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathrm{LB}(\lambda)$
+\end_inset
+
+ can be expressed as an expectation wrt 
+\begin_inset Formula $\varepsilon\sim p_{\varepsilon}(\cdot)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathrm{LB}(\lambda)=\mathbb{E}_{q_{\lambda}}\left(h_{\lambda}(\theta)\right)=\mathbb{E}_{p_{\epsilon}}\left(h_{\lambda}(g(\lambda,\varepsilon))\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The 
+\series bold
+\color blue
+gradient
+\series default
+\color inherit
+ is an expectation wrt 
+\begin_inset Formula $\varepsilon\sim p_{\varepsilon}(\cdot)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nabla\mathrm{LB}(\lambda)=\mathbb{E}_{p_{\varepsilon}}\left(\nabla_{\lambda}g(\lambda,\varepsilon)\nabla_{\theta}h_{\lambda}(\theta)\right)
+\]
+
+\end_inset
+
+since 
+\begin_inset Formula $\mathbb{E}_{p_{\varepsilon}}\left(\nabla_{\theta}h_{\lambda}(\theta)\right)=0$
+\end_inset
+
+ (MNT).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Unbiased estimator
+\series default
+\color inherit
+ by generating 
+\begin_inset Formula $\varepsilon_{1},\ldots,\varepsilon_{S}\overset{iid}{\sim}p_{\varepsilon}(\cdot)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\widehat{\nabla_{\lambda}\mathrm{LB}(\lambda)}=\frac{1}{S}\sum_{s=1}^{S}\nabla_{\lambda}g(\lambda,\varepsilon_{s})\nabla_{\theta}h_{\lambda}(g(\lambda,\varepsilon_{s}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lower variance since uses gradient information 
+\begin_inset Formula $\nabla_{\theta}h_{\lambda}(\theta)$
+\end_inset
+
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\size tiny
+Xu et al (2019).
+ Variance Reduction Properties of the Reparameterization Trick.
+ AIStats.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
