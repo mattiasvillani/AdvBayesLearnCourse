@@ -214,7 +214,7 @@ status open
 
 \series bold
 \color orange
-Overview
+Topic overview
 \end_layout
 
 \end_inset
@@ -391,7 +391,7 @@ Laplace approximation
  from optimization: 
 \begin_inset Formula 
 \[
-q(\boldsymbol{\theta})=N\left[\tilde{\boldsymbol{\theta}},\left(-\nabla\nabla\log p(\boldsymbol{\theta}\vert\boldsymbol{y})\vert_{\tilde{\boldsymbol{\theta}}}\right)^{-1}\right]
+q(\boldsymbol{\theta})=N\left[\tilde{\boldsymbol{\theta}},\left(-\nabla\nabla^{T}\log p(\boldsymbol{\theta}\vert\boldsymbol{y})\vert_{\tilde{\boldsymbol{\theta}}}\right)^{-1}\right]
 \]
 
 \end_inset
@@ -846,7 +846,7 @@ ELBO - evidence lower bound
 \begin_inset Formula 
 \begin{align*}
 \mathrm{KL}(q\left\Vert p\right.) & =\int q(\boldsymbol{\theta})\ln\frac{q(\boldsymbol{\theta})}{p(\boldsymbol{\theta}|\boldsymbol{y})}d\theta=\int q(\boldsymbol{\theta})\ln\frac{p(\boldsymbol{y})q(\boldsymbol{\theta})}{p(\boldsymbol{y}|\boldsymbol{\theta})p(\boldsymbol{\theta})}d\theta\\
- & =-\int q(\boldsymbol{\theta})\ln\frac{p(\boldsymbol{y}|\boldsymbol{\theta})p(\boldsymbol{\theta})}{q(\boldsymbol{\theta})}d\theta+\int p(\boldsymbol{y})q(\boldsymbol{\theta})d\theta
+ & =-\int q(\boldsymbol{\theta})\ln\frac{p(\boldsymbol{y}|\boldsymbol{\theta})p(\boldsymbol{\theta})}{q(\boldsymbol{\theta})}d\theta+\int\ln p(\boldsymbol{y})q(\boldsymbol{\theta})d\theta
 \end{align*}
 
 \end_inset
@@ -856,7 +856,7 @@ ELBO - evidence lower bound
 
 \begin_layout Itemize
 Hence 
-\begin_inset Formula $\mathrm{KL}(q\left\Vert p\right.)=-\mathrm{LB}(q)+p(\boldsymbol{y})$
+\begin_inset Formula $\mathrm{KL}(q\left\Vert p\right.)=-\mathrm{LB}(q)+\ln p(\boldsymbol{y})$
 \end_inset
 
  where 
@@ -870,7 +870,7 @@ Hence
 is a 
 \series bold
 \color blue
-lower bound for the marginal likelihood
+lower bound for the (log) marginal likelihood
 \series default
 \color inherit
  
@@ -880,7 +880,7 @@ lower bound for the marginal likelihood
  
 \begin_inset Formula 
 \[
-\mathrm{KL}(q\left\Vert p\right.)\geq0\Longrightarrow\mathrm{LB}(q)\leq p(\boldsymbol{y})
+\mathrm{KL}(q\left\Vert p\right.)\geq0\Longrightarrow\mathrm{LB}(q)\leq\ln p(\boldsymbol{y})
 \]
 
 \end_inset
@@ -1198,17 +1198,17 @@ Gibbs sampling
 
 \begin_inset Formula 
 \[
-q_{i}^{*}(\theta_{i})\propto\exp\left[E_{-\theta_{i}}\ln p(\theta_{i}|\theta_{-i},\boldsymbol{y})\right]
+q_{j}^{*}(\theta_{j})\propto\exp\left[E_{-\theta_{j}}\ln p(\theta_{j}|\theta_{-j},\boldsymbol{y})\right]
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $p(\theta_{i}|\theta_{-i},\boldsymbol{y})$
+\begin_inset Formula $p(\theta_{j}|\theta_{-j},\boldsymbol{y})$
 \end_inset
 
  is the full conditional posterior of 
-\begin_inset Formula $\theta_{i}$
+\begin_inset Formula $\theta_{j}$
 \end_inset
 
 .
