@@ -61,9 +61,9 @@ Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3
 Reading: [Blei et al JASA](https://amstat.tandfonline.com/doi/abs/10.1080/01621459.2017.1285773#.XraDPXUzaLI) | [Tran's VI Notes](/Material/VBnotesMNT.pdf)
 
 **Lecture 5 - May 15, hours 10-12**  
-[slides](TBA)  
+[slides](/Slides/ABL5.pdf)  
 **Lecture 6 - May 15, hours 13-15**  
-[slides](TBA)
+[slides](/Slides/ABL6.pdf)
 
 **Lab Topic 3**  
 [Problems](TBA)
