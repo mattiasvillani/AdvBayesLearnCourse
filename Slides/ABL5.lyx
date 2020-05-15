@@ -499,7 +499,7 @@ VI
 
 \begin_inset Formula 
 \[
-q^{\star}(\theta)=\underset{q(\theta)\in\mathcal{Q}}{\arg\min}\mathrm{KL}(q\left\Vert p\right.)=\int q(\boldsymbol{\theta})\ln\frac{q(\boldsymbol{\theta})}{p(\boldsymbol{\theta}|\boldsymbol{y})}d\theta
+q^{\star}(\theta)=\underset{q(\theta)\in\mathcal{Q}}{\arg\min}\mathrm{\:KL}(q\left\Vert p\right.)=\int q(\boldsymbol{\theta})\ln\frac{q(\boldsymbol{\theta})}{p(\boldsymbol{\theta}|\boldsymbol{y})}d\theta
 \]
 
 \end_inset
@@ -509,7 +509,7 @@ q^{\star}(\theta)=\underset{q(\theta)\in\mathcal{Q}}{\arg\min}\mathrm{KL}(q\left
 
 \begin_layout Itemize
 Turns an inference problem, 
-\begin_inset Formula $p(\boldsymbol{y}|\boldsymbol{\theta})$
+\begin_inset Formula $p(\boldsymbol{\theta}|\boldsymbol{y})$
 \end_inset
 
 , into 
@@ -651,6 +651,162 @@ VI
 \end_inset
 
  + better optimization algorithms + stochastic gradients.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+KL - forward or reverse
+\series default
+\color inherit
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+From Bishop's book 
+\emph on
+Pattern Recognition and Machine Learning
+\emph default
+, Springer.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\quad\mathrm{KL}(q\left\Vert p)\right.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\quad\mathrm{KL}(p\left\Vert q)\right.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Figures/Figure10.2a.png
+	lyxscale 30
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Figures/Figure10.2b.png
+	lyxscale 30
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Green contours = True Gaussian posterior
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Red contours = Circular Gaussian approximation
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -1117,6 +1273,18 @@ mean-field:
 \end_inset
 
 .
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+And of course 
+\begin_inset Formula $\mathbb{E}_{-\theta_{1}}f(\theta_{1})=f(\theta_{1})$
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -1350,11 +1518,30 @@ status open
 
 \series bold
 \color orange
-Normal example from Murphy (
+Normal example (
 \begin_inset Formula $\lambda=1/\sigma^{2}$
 \end_inset
 
 )
+\series default
+\color inherit
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\size tiny
+From Bishop's book 
+\emph on
+Pattern Recognition and Machine Learning
+\emph default
+, Springer.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1409,7 +1596,7 @@ After updating
 \begin_inset Graphics
 	filename ../../BayesLearningLiU/Slides/Images/unigaussVbDemo1.pdf
 	lyxscale 20
-	scale 25
+	scale 22
 
 \end_inset
 
@@ -1425,7 +1612,7 @@ After updating
 \begin_inset Graphics
 	filename ../../BayesLearningLiU/Slides/Images/unigaussVbDemo2.pdf
 	lyxscale 20
-	scale 25
+	scale 22
 
 \end_inset
 
@@ -1467,7 +1654,7 @@ At convergence
 \begin_inset Graphics
 	filename ../../BayesLearningLiU/Slides/Images/unigaussVbDemo3.pdf
 	lyxscale 20
-	scale 25
+	scale 22
 
 \end_inset
 
@@ -1480,10 +1667,11 @@ At convergence
 \begin_inset Text
 
 \begin_layout Plain Layout
+<
 \begin_inset Graphics
 	filename ../../BayesLearningLiU/Slides/Images/unigaussVbDemo4.pdf
 	lyxscale 20
-	scale 25
+	scale 22
 
 \end_inset
 
@@ -1517,6 +1705,24 @@ status open
 \series bold
 \color orange
 Probit regression
+\series default
+\color inherit
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\size tiny
+From Ormerod and Wand (2010).
+ 
+\emph on
+Explaining Variational Approximation, Amer Stat.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1800,16 +2006,19 @@ VI and exponential families
 Exponential family
 \series default
 \color inherit
- for 
-\begin_inset Formula $x$
+ with sufficient statistics 
+\series bold
+
+\begin_inset Formula $\boldsymbol{t}(\boldsymbol{x})$
 \end_inset
 
- with own sufficient statistics
+
+\series default
 \size small
 
 \begin_inset Formula 
 \[
-p(x\vert\boldsymbol{\psi})=h(x)\exp\left\{ \eta(\boldsymbol{\psi})x-a(\boldsymbol{\psi})\right\} 
+p(\boldsymbol{\boldsymbol{x}}\vert\boldsymbol{\theta})=h(\boldsymbol{x})\exp\left\{ \eta(\boldsymbol{\theta})^{T}\boldsymbol{t}(\boldsymbol{x})-a(\boldsymbol{\theta})\right\} 
 \]
 
 \end_inset
@@ -1858,6 +2067,311 @@ Each
 \end_inset
 
 .
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Digression - Conjugate prior for expon family
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Exponential family
+\series default
+\color inherit
+ in the canonical parametrization
+\begin_inset Formula 
+\[
+p(x\vert\theta)=h(x)\exp\left(\theta^{T}\mathbf{t}(x)-A(\theta)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Likelihood
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p(x_{1},...,x_{n}\vert\theta)=\left[\prod_{i=1}^{n}h(x_{i})\right]\exp\left(\theta^{T}\sum_{i=1}^{n}\mathbf{t}(x_{i})-nA(\theta)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Conjugate prior
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p(\theta)=H(\tau_{0},n_{0})\exp\left(\theta^{T}\tau_{0}-n_{0}A(\theta)\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tau_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+ are prior hyperparameters and 
+\begin_inset Formula $H(\tau_{0},n_{0})$
+\end_inset
+
+ is the normalizing constant which is known to exist if 
+\begin_inset Formula $n_{0}>0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Digression - Posterior in exponential family
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Conjugate prior
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p(\theta)=H(\tau_{0},n_{0})\exp\left(\theta^{T}\tau_{0}-n_{0}A(\theta)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Posterior
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+p(\theta\vert x_{1},...,x_{n})\propto\exp\left[\theta^{T}\left(\tau_{0}+\sum_{i=1}^{n}\mathbf{t}(x_{i})\right)-(n_{0}+n)A(\theta)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Prior-to-posterior updating
+\series default
+\color inherit
+
+\begin_inset Formula 
+\begin{align*}
+\tau_{0} & \Longrightarrow\tau_{n}=\tau_{0}+\sum_{i=1}^{n}\mathbf{t}(x_{i})\\
+n_{0} & \Longrightarrow n_{0}+n
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Digression - Bernoulli as exponential family
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Exponential family
+\series default
+\color inherit
+ in the non-canonical parametrization
+\size scriptsize
+
+\begin_inset Formula 
+\[
+p(x\vert\theta)=h(x)\exp\left(\phi(\theta)^{T}\mathbf{t}(x)-A(\theta)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Conjugate prior
+\series default
+\size scriptsize
+\color inherit
+
+\begin_inset Formula 
+\[
+p(\theta)=H(\tau_{0},n_{0})\exp\left(\phi(\theta)^{T}\tau_{0}-n_{0}A(\theta)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Bernoulli likelihood 
+\series default
+\size scriptsize
+\color inherit
+
+\begin_inset Formula 
+\begin{align*}
+p(x_{1},...,x_{n}\vert\theta) & =\prod_{i=1}^{n}\theta^{x_{i}}(1-\theta)^{1-x_{i}}\\
+ & =\exp\left(\log\left(\frac{\theta}{1-\theta}\right)\sum_{i=1}^{n}x_{i}-n\log\left(\frac{1}{1-\theta}\right)\right)\\
+ & =\exp\left(\phi(\theta)\sum_{i=1}^{n}x_{i}-nA(\theta)\right)
+\end{align*}
+
+\end_inset
+
+
+\size default
+where 
+\begin_inset Formula $\phi=\log\left(\frac{\theta}{1-\theta}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $A(\theta)=\log\left(\frac{1}{1-\theta}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Conjugate prior 
+\begin_inset Formula $p(\phi)$
+\end_inset
+
+
+\series default
+\size scriptsize
+\color inherit
+
+\begin_inset Formula 
+\[
+\exp\left(\phi(\theta)\tau_{0}-n_{0}A(\theta)\right)=\exp\left(\log\left(\frac{\theta}{1-\theta}\right)\tau_{0}-n_{0}\log\left(\frac{1}{1-\theta}\right)\right)=\theta^{\tau_{0}}(1-\theta)^{n_{0}-\tau_{0}}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
