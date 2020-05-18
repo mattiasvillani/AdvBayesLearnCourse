@@ -1,0 +1,612 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="right" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mattias Villani
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset space \hspace{}
+\length 1.7cm
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Advanced Bayesian Learning
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Department of Statistics
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stockholm University
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dept of Computer and Information Science
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Linköping University
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="1">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size large
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+Computer Lab 3 - Variational Inference
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+width "97.5col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The labs are the only examination, so you should do the labs 
+\series bold
+individually
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+You can use any programming language you prefer, but do 
+\series bold
+submit the code
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Submit a readable report in 
+\series bold
+PDF
+\series default
+ (no Word documents!) or a 
+\series bold
+JuPyteR notebook
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+width "97.5col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+AR process with steady state
+\series default
+ 
+\series bold
+parametrization
+\series default
+.
+ Consider the autoregressive process of first order
+\begin_inset Formula 
+\[
+y_{t}=\mu+\phi(y_{t-1}-\mu)+\varepsilon_{t},\;\text{ where }\varepsilon_{t}\overset{iid}{\sim}N(0,\sigma^{2})
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $t=1,\ldots,T$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is the unconditional mean of the process 
+\begin_inset Formula $\mathbb{E}(y_{t})=\mu$
+\end_inset
+
+.
+ Assume the priors 
+\begin_inset Formula $\mu\sim N(0,\sigma_{\mu}^{2})$
+\end_inset
+
+, 
+\begin_inset Formula $\phi\vert\sigma^{2}\sim N(0,\sigma^{2}/\kappa_{0})$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}\sim\mathrm{Inv-}\chi^{2}(\nu_{0},\sigma_{0}^{2})$
+\end_inset
+
+.
+ For simplicity we do not impose the stationarity restriction 
+\begin_inset Formula $-1<\phi<1$
+\end_inset
+
+, but instead set 
+\begin_inset Formula $\sigma_{0}^{2}=1$
+\end_inset
+
+, 
+\begin_inset Formula $\kappa_{0}=8$
+\end_inset
+
+ and 
+\begin_inset Formula $\nu_{0}=4$
+\end_inset
+
+, so the process is stationary with prior probability 
+\begin_inset Formula $\approx0.95$
+\end_inset
+
+ [Note that the marginal prior for 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is 
+\begin_inset Formula $t_{\nu_{0}}(0,\sigma_{0}^{2}/\kappa_{0})$
+\end_inset
+
+ so these values gives 
+\begin_inset Formula $\mathrm{Pr}(-1<\phi<1)\approx0.95$
+\end_inset
+
+].
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Derive the three full conditional posteriors 
+\begin_inset Formula $p(\phi\vert\mu,\sigma^{2},\boldsymbol{y})$
+\end_inset
+
+, 
+\begin_inset Formula $p(\sigma^{2}\vert\phi,\mu,\boldsymbol{y})$
+\end_inset
+
+ and 
+\begin_inset Formula $p(\mu\vert\phi,\sigma^{2},\boldsymbol{y})$
+\end_inset
+
+ where 
+\begin_inset Formula $\boldsymbol{y}$
+\end_inset
+
+ is a time series of length 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ Assume that 
+\begin_inset Formula $y_{0}=0$
+\end_inset
+
+ so that the likelihood can be set up conditional on this pre-sample value.
+ It is OK to refer to results from these slides 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/mattiasvillani/Talks/raw/master/GuestLectureKTH2020.pdf
+\end_layout
+
+\end_inset
+
+ instead of doing boring completions of squares.
+\begin_inset Newline newline
+\end_inset
+
+[Hint 1: when the pre-sample value 
+\begin_inset Formula $y_{0}$
+\end_inset
+
+ is known, AR processes are estimated just like linear regressions].
+\begin_inset Newline newline
+\end_inset
+
+[Hint 2: The joint posterior is anatytically intractable because of the
+ product of parameters, 
+\begin_inset Formula $\phi\mu$
+\end_inset
+
+, but the full conditional posteriors are tractable].
+\begin_inset Newline newline
+\end_inset
+
+[Hint 3: when deriving full conditional posteriors it is helpful to think
+ about the 
+\emph on
+model
+\emph default
+ when the conditioning parameters are known.
+ One can then often rewrite the model so that the full conditional posterior
+ is immediate from the results in 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/mattiasvillani/Talks/raw/master/GuestLectureKTH2020.pdf
+\end_layout
+
+\end_inset
+
+].
+\end_layout
+
+\begin_layout Enumerate
+Code up a Gibbs sampler using these full conditionals and simulate from
+ the posterior for the time series in file 
+\family typewriter
+timeseries.csv
+\family sans
+.
+ 
+\family default
+Set 
+\begin_inset Formula $\sigma_{\mu}=2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Derive a mean-field variational approximation for the posterior 
+\begin_inset Formula $p(\mu,\phi,\sigma^{2}\vert\boldsymbol{y})$
+\end_inset
+
+, code it up, and compare the VI approximation of the posterior to the results
+ in 1b).
+\end_layout
+
+\begin_layout Enumerate
+Code up the Fixed Form VI algorithm with control variate and adaptive learning
+ rate (Algorithm 3 in Tran's notes) to approximate the posterior distribution
+ 
+\begin_inset Formula $p(\mu,\phi,\sigma^{2}\vert\boldsymbol{y})$
+\end_inset
+
+ for the data in file 
+\family typewriter
+timeseries.csv.
+
+\family default
+ Use a multivariate normal as approximating density for 
+\begin_inset Formula $p(\mu,\phi,\psi\vert\boldsymbol{y})$
+\end_inset
+
+ where 
+\begin_inset Formula $\psi=\log\sigma^{2}$
+\end_inset
+
+.
+ Compare the accuracy of this approximation to 1b) and 1c).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+Good luck! Remember that sometimes an approximate answer is the correct
+ answer!
+\end_layout
+
+\end_body
+\end_document

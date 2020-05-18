@@ -835,7 +835,7 @@ ELBO - evidence lower bound
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\mathrm{KL}(q,p)$
+\begin_inset Formula $\mathrm{KL}(q\left\Vert p\right.)$
 \end_inset
 
  is intractable when 

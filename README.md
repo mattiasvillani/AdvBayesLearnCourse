@@ -68,7 +68,7 @@ Other material: [Natural gradient notes](https://wiseodd.github.io/techblog/2018
 [slides](/Slides/ABL6.pdf)
 
 **Lab Topic 3**  
-[Problems](TBA)
+[Problems](/Labs/Lab3.pdf) | [Time series data](/Labs/timeseries.csv)
 
 
 ---

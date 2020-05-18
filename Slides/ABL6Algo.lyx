@@ -1,0 +1,637 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+% you can play with different themes and color themes to find your favorite combination.
+\mode<presentation> {
+  \usetheme{Luebeck}
+  \usecolortheme{beaver}
+  \beamertemplatenavigationsymbolsempty
+  \setbeamertemplate{headline}{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% include necessary packages here
+\usepackage{graphicx} % for including images
+\usepackage{pgf} % for logo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\date{} % Date, can be changed to a custom date
+
+\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}\hspace*{3.5cm}~%
+   \includegraphics[width=2cm]{LiU_secondary_1_black.png}
+}
+
+
+\definecolor{blue}{RGB}{38, 122, 181}
+\definecolor{orange}{RGB}{255, 128, 0}
+\definecolor{red}{RGB}{255, 128, 0}
+
+\setbeamertemplate{itemize item}{\color{orange}$\blacksquare$}
+\setbeamertemplate{itemize subitem}{\color{orange}$\blacktriangleright$}
+
+\usepackage[ruled]{algorithm2e}
+\usepackage{wasysym}
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+\newtheorem{algorithm2}{Algorithm}
+\end_preamble
+\options xcolor=svgnames, handout
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithm}     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+caption{Basic FFVB algorithm}
+\backslash
+label{alg:basicFFVB} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwIn{Initial value $
+\backslash
+lambda^{(0)}$, tolerance $
+\backslash
+epsilon$, step sequence $
+\backslash
+{a_t
+\backslash
+}_{t=0}^
+\backslash
+infty $}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+For {$t = 0,1,
+\backslash
+dots$ 
+\backslash
+text{until convergence}}
+\end_layout
+
+\begin_layout Plain Layout
+
+{  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Generate $
+\backslash
+theta_s 
+\backslash
+sim q_{
+\backslash
+lambda^{(t)}}(
+\backslash
+theta),
+\backslash
+text{ for } s = 1,
+\backslash
+ldots,S$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Estimate the LB gradient unbiasedly 
+\end_layout
+
+\begin_layout Plain Layout
+
+$$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+widehat{
+\backslash
+nabla_{
+\backslash
+lambda}
+\backslash
+mathrm{LB}(
+\backslash
+lambda)}=
+\backslash
+frac{1}{S}
+\backslash
+sum_{s=1}^{S}
+\backslash
+nabla_{
+\backslash
+lambda}
+\backslash
+log q_{
+\backslash
+lambda}(
+\backslash
+theta_{s})
+\backslash
+times h_{
+\backslash
+lambda}(
+\backslash
+theta_{s})
+\backslash
+vert_{
+\backslash
+lambda=
+\backslash
+lambda^{(t)}}
+\end_layout
+
+\begin_layout Plain Layout
+
+$$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Update 
+\end_layout
+
+\begin_layout Plain Layout
+
+$$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lambda^{(t+1)}=
+\backslash
+lambda^{(t)}+a_{t}
+\backslash
+cdot
+\backslash
+widehat{
+\backslash
+nabla_{
+\backslash
+lambda}
+\backslash
+mathrm{LB}(
+\backslash
+lambda^{(t)})}
+\end_layout
+
+\begin_layout Plain Layout
+
+$$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwOut{Optimal $
+\backslash
+lambda$} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{algorithm}     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+caption{FFVB algorithm with adaptive gradients}
+\backslash
+label{alg:FFVBAdaptGrad} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwIn{Initial value $
+\backslash
+lambda^{(0)}$, tolerance $
+\backslash
+epsilon$, step sequence $
+\backslash
+{
+\backslash
+alpha_t
+\backslash
+}_{t=0}^
+\backslash
+infty $, unbiased gradient estimator $g$, $g_{0}$ and $v_{0}$, $
+\backslash
+beta_1$ and $
+\backslash
+beta_2$.$ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Set} $ 
+\backslash
+bar{g} 
+\backslash
+gets g_{0}$ and $ 
+\backslash
+bar{v} 
+\backslash
+gets v_{0}$
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+For {$t = 0,1,
+\backslash
+dots$ 
+\backslash
+text{until convergence}}
+\end_layout
+
+\begin_layout Plain Layout
+
+{  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item $
+\backslash
+bar{g}
+\backslash
+:
+\backslash
+leftarrow
+\backslash
+:
+\backslash
+beta_{1}
+\backslash
+bar{g}+(1-
+\backslash
+beta_{1})g_{t} $ 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item $
+\backslash
+bar{v}
+\backslash
+:
+\backslash
+leftarrow
+\backslash
+:
+\backslash
+beta_{2}
+\backslash
+bar{v}+(1-
+\backslash
+beta_{2})g_{t}^2
+\backslash
+hspace{1cm}$ [elementwise]
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item $
+\backslash
+lambda^{(t+1)}=
+\backslash
+lambda^{(t)}+
+\backslash
+alpha_{t}
+\backslash
+cdot 
+\backslash
+bar{g}/
+\backslash
+sqrt{
+\backslash
+bar v}
+\backslash
+hspace{0.55cm}$ [elementwise] 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwOut{Optimal $
+\backslash
+lambda$} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{algorithm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+\begin_inset Formula 
+\begin{align*}
+\text{for }t & =1,2,...\text{ until convergence do: }\\
+ & \bullet\;\text{simulate }\theta^{(1)},\ldots,\theta^{(S)}\sim q_{\lambda^{(t)}}(\theta)\\
+ & \text{\bullet\;\;estimate \widehat{\nabla_{\lambda}\mathrm{LB}(\lambda^{(t)})}=\frac{1}{S}\sum_{s=1}^{S}\nabla_{\lambda}\log q_{\lambda}(\theta_{s})\times\log h_{\lambda}(\theta_{s})\vert_{\lambda=\lambda^{(t)}}}\\
+ & \bullet\;\lambda^{(t+1)}=\lambda^{(t)}+a_{t}\cdot\widehat{\nabla_{\lambda}\mathrm{LB}(\lambda^{(t)})}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+\begin_inset Formula 
+\begin{align*}
+\text{initial} & \text{\lambda^{(0)},g_{0},v_{0} and set \ensuremath{\bar{g}=g_{0},}\ensuremath{\bar{v}=v_{0}}. }\\
+\text{for }t & =1,2,...\text{ until convergence do: }\\
+ & \bullet\;\text{set }\bar{g}\:\leftarrow\:\beta_{1}\bar{g}+(1-\beta_{1})g_{t}\\
+ & \text{\bullet\;set \bar{v}\:\leftarrow\:\beta_{2}\bar{v}+(1-\beta_{1})v_{t}}\\
+ & \bullet\;\lambda^{(t+1)}=\lambda^{(t)}+a_{t}\cdot\widehat{\nabla_{\lambda}\mathrm{LB}(\lambda^{(t)})}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
