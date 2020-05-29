@@ -8,7 +8,7 @@ default(legend = true)
 figFolder = "/home/mv/Dropbox/Teaching/AdvBayesLearnCourse/Slides/Figures/"
 
 
-##
+## Sum of cosines
 xGrid = -π:0.01:π
 plot()
 sumCos = zeros(size(xGrid))
@@ -23,7 +23,14 @@ plot!(xGrid, sumCos; ylabel = latexstring("x(t)"), xlabel = latexstring("t"),
     width = 2, label = "sum of cosines", color = basicColors[6])
 current()
 
-png(figFolder*"SumCosines")
+savefig(figFolder*"SumCosines.svg")
+
+## Simulate data from sum of cosines
+plot(xGrid, sumCos + 0.2*randn(length(sumCos)); ylabel = latexstring("x(t)"), xlabel = latexstring("t"),
+    width = 2, legend = nothing, color = basicColors[6])
+current()
+
+savefig(figFolder*"SumCosinesData.svg")
 
 ## Plotting ellipsoids
 μ = [1,2,0.5]
