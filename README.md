@@ -80,9 +80,9 @@ Reading (ordered by priority): [Bayesian Data Analysis](http://www.stat.columbia
 | [Bayesian predictive methods article](https://link.springer.com/article/10.1007/s11222-016-9649-y) | [LOO-CV and WAIC article](https://link.springer.com/article/10.1007/s11222-016-9696-4) | [Bayesian regularization and Horseshoe](https://onlinelibrary-wiley-com.ezp.sub.su.se/doi/full/10.1002/wics.1463) | [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf) - Chapters 5.1-5.4  
 
 **Lecture 7 - May 29, hours 10-12**  
-[slides](TBA)  
+[slides](/Slides/ABL7.pdf)  
 **Lecture 8 - May 29, hours 13-15**  
-[slides](TBA)
+[slides](/Slides/ABL8.pdf)
 
 **Lab Topic 4**  
 [Problems](TBA)
