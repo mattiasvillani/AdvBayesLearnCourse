@@ -85,4 +85,4 @@ Reading (ordered by priority): [Bayesian Data Analysis](http://www.stat.columbia
 [slides](/Slides/ABL8.pdf)
 
 **Lab Topic 4**  
-[Problems](TBA)
+[Problems](/Labs/Lab4.pdf) | [StudentTRegression.R](/Labs/StudentTRegression.R)
