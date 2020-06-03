@@ -68,7 +68,7 @@ function PredTReg(X, postDraws, ν)
 end
 
 # Read data from file
-data = readdlm("./Labs/regression.csv")
+data = readdlm(download("https://github.com/mattiasvillani/AdvBayesLearnCourse/raw/master/Labs/regression.csv"))
 X = [ones(size(data,1),1) data[:,1]]
 y = data[:,2]
 scatter(X[:,2],y)
