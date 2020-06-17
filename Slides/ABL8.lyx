@@ -1558,7 +1558,7 @@ Draw
 \end_deeper
 \begin_layout Itemize
 Note that: 
-\begin_inset Formula $Pr(I_{i}=0|\mathbf{\mathcal{I}}_{-i},\mathbf{y},\mathbf{X})\propto Pr(I_{i}=0,\mathbf{\mathcal{I}}_{-i}|\mathbf{y},\mathbf{X})$
+\begin_inset Formula $Pr(I_{j}=0|\mathbf{\mathcal{I}}_{-j},\mathbf{y},\mathbf{X})\propto Pr(I_{j}=0,\mathbf{\mathcal{I}}_{-j}|\mathbf{y},\mathbf{X})$
 \end_inset
 
 .
@@ -1574,11 +1574,11 @@ Compute
  
 \size default
 for 
-\begin_inset Formula $I_{i}=0$
+\begin_inset Formula $I_{j}=0$
 \end_inset
 
  and for 
-\begin_inset Formula $I_{i}=1$
+\begin_inset Formula $I_{j}=1$
 \end_inset
 
 .
