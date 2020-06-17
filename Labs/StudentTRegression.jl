@@ -5,6 +5,7 @@ using Plots
 using Distributions
 using LaTeXStrings
 using DelimitedFiles
+using LinearAlgebra
 import ColorSchemes: Paired_12; colors = Paired_12
 basicColors = Paired_12[[1,2,3,4,7,8]]
 
