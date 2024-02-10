@@ -1,5 +1,6 @@
 # Advanced Bayesian Learning - PhD course
 
+### Note: the schedule and material will change for the 2024 edition of the course. There will be an overlap in topics, but least 1-2 topics will be rotated into new ones.
 ---
 
 ### Course information
