@@ -1744,7 +1744,7 @@ status open
 
 \series bold
 \color orange
-Normal example
+Internet speed data
 \end_layout
 
 \end_inset
@@ -1757,11 +1757,63 @@ Normal example
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mathbf{x}=(15.77,20.5,8.26,14.37,21.09)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mu_{0}=20$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma^{2}=5^{2}$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename Figures/NormalMargLike.svg
-	scale 60
+	filename /home/mv/Dropbox/BayesBook/Figs/NormalMargLikeAllKappa0InternetSpeed.pdf
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Internet speed data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/NormalMargLikeInternetSpeed.pdf
+	scale 45
 
 \end_inset
 
@@ -1981,7 +2033,7 @@ Intermediate posterior
 \end_inset
 
 where 
-\begin_inset Formula $w_{i}(\kappa)=\frac{i}{i+\kappa_{0}}$
+\begin_inset Formula $w_{i}(\kappa_{0})=\frac{i}{i+\kappa_{0}}$
 \end_inset
 
 .

@@ -60,19 +60,63 @@ data = read.csv("https://github.com/mattiasvillani/AdvBayesLearnCourse/raw/maste
 names(data) <- c("x","y")
 X = cbind(1,data[,1])
 y = data[,2]
+n = length(y)
 plot(X[,2],y)
 
 # Simulating from the posterior of beta and sigma
 tau = 1
-nu = 30
+nu = 2
 nIter = 10000
 postDraws = GibbsTReg(y, X, nu, tau, nIter)
 colMeans(postDraws)
+apply(postDraws, 2, sd)
 par(mfrow = c(2,2))
 hist(postDraws[,1], 50, main = "beta0")
 hist(postDraws[,2], 50, main = "beta1")
 hist(postDraws[,3], 50, main = "sigma")
 hist(postDraws[,3]^2*(nu/(nu-2)), 50, main = "Var(y)")
+
+# Normal approx of posterior by optimization
+logLike <- function(theta, y, X, nu){
+  n = dim(X)[1]
+  p = dim(X)[2]
+  beta = theta[1:p]
+  sigma = exp(theta[p+1])
+  epsilon = (y-X%*%beta)/sigma
+  return(sum(log(1/sigma) + dt(epsilon, nu, log = TRUE)))
+}
+
+logPrior <- function(theta, tau){
+  p = length(theta) - 1
+  beta = theta[1:p]
+  sigma = exp(theta[p+1])
+  logPriorPDF = dmvnorm(beta, mean = rep(0, p), sigma = tau^2*diag(p), log = TRUE) + 
+    log(1/sigma)
+  return(logPriorPDF)
+}
+
+logPost <- function(theta, y, X, nu, tau){
+  return(logLike(theta, y, X, nu) + logPrior(theta, tau) )
+}
+
+beta_ml = solve(crossprod(X))%*%crossprod(X,y)
+sigma_ml = sqrt(crossprod(y-X%*%beta_ml)/n)
+theta_ml = c(beta_ml,log(sigma_ml))
+logPost(theta_ml, y, X, nu, tau)
+logLike(theta_ml, y, X, nu)
+logPrior(theta_ml, tau)
+
+initVal = theta_ml
+OptimResults <- optim(initVal, logPost, gr=NULL, y, X, nu, tau, method=c("BFGS"), 
+  control=list(fnscale=-1), hessian=TRUE)
+postMode = OptimResults$par
+approxPostStd <- sqrt(diag(-solve(OptimResults$hessian)))
+apply(postDraws, 2, sd)
+
+logPost(theta_ml, y, X, nu, tau)
+logPost(postMode, y, X, nu, tau)
+postMode
+
 
 # Making predictions and plotting predictive distribution
 xGrid = seq(-1,1,by =.1)
