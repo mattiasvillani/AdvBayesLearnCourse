@@ -36,7 +36,7 @@ Other material: [Visualize GP kernels](http://www.it.uu.se/edu/course/homepage/a
 [slides](/Slides/ABL2.pdf)
 
 **Lab Topic 1**  
-[Problems](/Labs/Lab1.pdf) | [Lidar data](/Labs/LidarData.dat)
+[Problems](/Labs/Lab1_v2024.pdf) | [Lidar data](/Labs/LidarData.dat)
 
 
 ---

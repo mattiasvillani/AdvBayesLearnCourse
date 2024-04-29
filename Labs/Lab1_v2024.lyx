@@ -1,0 +1,507 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2cm
+\rightmargin 2.5cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="right" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mattias Villani 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset space \hspace{}
+\length 5cm
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Advanced Bayesian Learning 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Department of Statistics
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stockholm University 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="1">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size large
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+Computer Lab 1 - GP Regression and Classification
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+width "97.5col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The labs are the only examination, so you should do the labs 
+\series bold
+individually
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+You can use any programming language you prefer, but do 
+\series bold
+submit the code
+\series default
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Submit a readable report in: 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+- 
+\series bold
+PDF
+\series default
+ (no Word documents!)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+- 
+\series bold
+JuPyteR/Quarto notebook compiled to PDF/HTML
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+width "97.5col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace 0.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Heteroscedastic GP regression
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Consider the following heteroscedastic GP regression
+\begin_inset Formula 
+\begin{align*}
+y_{i} & =f(\boldsymbol{x}_{i})+\varepsilon_{i},\quad\varepsilon_{i}\sim N\left(0,\sigma_{n,i}^{2}\right)\\
+f(\boldsymbol{x}) & \sim\mathrm{GP}\left(0,k(\boldsymbol{x},\boldsymbol{x}')\right)\\
+\log\sigma_{n,i}^{2} & =w_{0}+\boldsymbol{w}_{1}^{T}\boldsymbol{x}_{i}
+\end{align*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $\boldsymbol{X_{*}}$
+\end_inset
+
+ be a matrix of test inputs and 
+\begin_inset Formula $\boldsymbol{f_{*}}$
+\end_inset
+
+ the corresponding mean function values.
+ Implement an algorithm that samples from the joint posterior 
+\begin_inset Formula 
+\[
+p(\boldsymbol{f_{*}},w_{0},\boldsymbol{w}_{1}\vert\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})=p(\boldsymbol{f_{*}}\vert w_{0},\boldsymbol{w}_{1},\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})p(w_{0},\boldsymbol{w}_{1}\vert\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*}).
+\]
+
+\end_inset
+
+Use the prior 
+\begin_inset Formula $(w_{0},\boldsymbol{w}_{1})^{T}\sim N(0,\tau^{2}I)$
+\end_inset
+
+, independent of 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+[Hint: 
+\begin_inset Formula $p(\boldsymbol{f_{*}}\vert w_{0},\boldsymbol{w}_{1},\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})$
+\end_inset
+
+ is really close to the formulas (2.22) to (2.24) in the GPML book.
+ The distribution 
+\begin_inset Formula $p(w_{0},\boldsymbol{w}_{1}\vert\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})$
+\end_inset
+
+ is available in closed form and its expression is close to an expression
+ in the GPML book (if you think a little ...).
+ However, 
+\begin_inset Formula $p(w_{0},\boldsymbol{w}_{1}\vert\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})$
+\end_inset
+
+ is not a standard (known) distribution, and you need to use use MCMC or
+ HMC, or something else, to simulate from it.
+ It is OK to use a package for MCMC and HMC.]
+\end_layout
+
+\begin_layout Enumerate
+Use your code in 1a) to analyze the Lidar data (available on the course
+ web page) with the 
+\family sans
+Distance
+\family default
+ variable as the only covariate/feature in both the mean and variance.
+ Use a squared exponential kernel for 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Set the prior hyperparameters 
+\begin_inset Formula $\sigma_{f}$
+\end_inset
+
+, 
+\begin_inset Formula $\ell$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau^{2}$
+\end_inset
+
+ to reasonable values.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
+Poisson GP regression.
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Consider the following Poisson GP regression for count data:
+\begin_inset Formula 
+\begin{align*}
+y_{1},\ldots,y_{n}\vert f & \overset{iid}{\sim}\mathrm{Pois}\left(\exp(f(\boldsymbol{x}))\right)\\
+f(\boldsymbol{x}) & \sim\mathrm{GP}\left(0,k_{\theta}(\boldsymbol{x},\boldsymbol{x}')\right)
+\end{align*}
+
+\end_inset
+
+Derive the Laplace approximation of the posterior of 
+\begin_inset Formula $f$
+\end_inset
+
+ on the training data 
+\begin_inset Formula $\boldsymbol{f=f(X)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Derive the (saddlepoint) approximation of the log marginal likelihood for
+ this model.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\shape smallcaps
+Have fun!
+\end_layout
+
+\end_body
+\end_document
