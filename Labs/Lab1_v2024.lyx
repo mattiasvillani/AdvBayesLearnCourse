@@ -28,7 +28,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 12
+\paperfontsize 11
 \spacing single
 \use_hyperref false
 \papersize a4paper
@@ -105,7 +105,7 @@ Mattias Villani
 
 \begin_layout Plain Layout
 \begin_inset space \hspace{}
-\length 5cm
+\length 5.8cm
 \end_inset
 
 
@@ -350,6 +350,160 @@ height "1pt"
 \begin_layout Enumerate
 
 \emph on
+Homoscedastic GP regression
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Consider the following GP regression
+\begin_inset Formula 
+\begin{align*}
+y_{i} & =f(\boldsymbol{x}_{i})+\varepsilon_{i},\quad\varepsilon_{i}\sim N\left(0,\sigma_{\varepsilon}^{2}\right)\\
+f(\boldsymbol{x}) & \sim\mathrm{GP}\left(0,k(\boldsymbol{x},\boldsymbol{x}')\right)
+\end{align*}
+
+\end_inset
+
+with a squared exponential kernel
+\begin_inset Formula 
+\[
+k(x,x')=\sigma_{f}^{2}\cdot\exp\left(-\frac{(x-x')^{2}}{2\ell^{2}}\right).
+\]
+
+\end_inset
+
+Write your own code to compute the posterior distribution of 
+\begin_inset Formula $\boldsymbol{f_{*}}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+p(\boldsymbol{f_{*}}\vert\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{y}$
+\end_inset
+
+ (
+\begin_inset Formula $n\times1$
+\end_inset
+
+) is the training response data and 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ (
+\begin_inset Formula $n\times p$
+\end_inset
+
+) is the training covariate data for 
+\begin_inset Formula $p$
+\end_inset
+
+ covariates, 
+\begin_inset Formula $\boldsymbol{X_{*}}$
+\end_inset
+
+ (
+\begin_inset Formula $n_{*}\times p$
+\end_inset
+
+) is a matrix of test inputs and 
+\begin_inset Formula $\boldsymbol{f_{*}}$
+\end_inset
+
+ (
+\begin_inset Formula $n_{*}\times1$
+\end_inset
+
+) is the corresponding function values at the test points.
+ Let the kernel hyperparameters 
+\begin_inset Formula $\sigma_{f}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ell$
+\end_inset
+
+, and the noise standard deviation 
+\begin_inset Formula $\sigma_{\varepsilon}$
+\end_inset
+
+ be inputs to your posterior function.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Use your code to analyze the 
+\family typewriter
+Lidar
+\family default
+ data (available on the course web page) with the 
+\family typewriter
+Distance
+\family default
+ variable as the only covariate/feature in both the mean and variance.
+ Set 
+\begin_inset Formula $\ell=1$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{f}=0.5$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{\varepsilon}=0.05$
+\end_inset
+
+ (but also play around to learn!).
+ In particular, do a scatterplot of the data and overlay:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the posterior mean of 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+ (computed over a suitable grid)
+\end_layout
+
+\begin_layout Itemize
+95% credible bands for 
+\begin_inset Formula $f(\cdot)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+95% predictive bands for 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+
+\emph on
 Heteroscedastic GP regression
 \emph default
 
@@ -364,23 +518,14 @@ Heteroscedastic GP regression
 Consider the following heteroscedastic GP regression
 \begin_inset Formula 
 \begin{align*}
-y_{i} & =f(\boldsymbol{x}_{i})+\varepsilon_{i},\quad\varepsilon_{i}\sim N\left(0,\sigma_{n,i}^{2}\right)\\
+y_{i} & =f(\boldsymbol{x}_{i})+\varepsilon_{i},\quad\varepsilon_{i}\sim N\left(0,\sigma_{\varepsilon,i}^{2}\right)\\
 f(\boldsymbol{x}) & \sim\mathrm{GP}\left(0,k(\boldsymbol{x},\boldsymbol{x}')\right)\\
-\log\sigma_{n,i}^{2} & =w_{0}+\boldsymbol{w}_{1}^{T}\boldsymbol{x}_{i}
+\log\sigma_{\varepsilon,i}^{2} & =w_{0}+\boldsymbol{w}_{1}^{T}\boldsymbol{x}_{i}
 \end{align*}
 
 \end_inset
 
-Let 
-\begin_inset Formula $\boldsymbol{X_{*}}$
-\end_inset
-
- be a matrix of test inputs and 
-\begin_inset Formula $\boldsymbol{f_{*}}$
-\end_inset
-
- the corresponding mean function values.
- Implement an algorithm that samples from the joint posterior 
+Implement an algorithm that samples from the joint posterior 
 \begin_inset Formula 
 \[
 p(\boldsymbol{f_{*}},w_{0},\boldsymbol{w}_{1}\vert\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})=p(\boldsymbol{f_{*}}\vert w_{0},\boldsymbol{w}_{1},\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})p(w_{0},\boldsymbol{w}_{1}\vert\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*}).
@@ -401,16 +546,25 @@ Use the prior
 \begin_inset Newline newline
 \end_inset
 
-[Hint: 
+
+\series bold
+Hint
+\series default
+: 
 \begin_inset Formula $p(\boldsymbol{f_{*}}\vert w_{0},\boldsymbol{w}_{1},\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})$
 \end_inset
 
- is really close to the formulas (2.22) to (2.24) in the GPML book.
+ is really close to the formulas (2.22) to (2.24) in the GPML book, and to
+ what you coded in Problem 1 above.
  The distribution 
-\begin_inset Formula $p(w_{0},\boldsymbol{w}_{1}\vert\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})$
+\begin_inset Formula 
+\[
+p(w_{0},\boldsymbol{w}_{1}\vert\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})
+\]
+
 \end_inset
 
- is available in closed form and its expression is close to an expression
+is available in closed form and its expression is close to an expression
  in the GPML book (if you think a little ...).
  However, 
 \begin_inset Formula $p(w_{0},\boldsymbol{w}_{1}\vert\boldsymbol{y},\boldsymbol{X},\boldsymbol{X}_{*})$
@@ -418,78 +572,22 @@ Use the prior
 
  is not a standard (known) distribution, and you need to use use MCMC or
  HMC, or something else, to simulate from it.
- It is OK to use a package for MCMC and HMC.]
+ It is OK to use a package for MCMC/HMC.
 \end_layout
 
 \begin_layout Enumerate
-Use your code in 1a) to analyze the Lidar data (available on the course
- web page) with the 
-\family sans
-Distance
-\family default
- variable as the only covariate/feature in both the mean and variance.
- Use a squared exponential kernel for 
-\begin_inset Formula $f$
-\end_inset
-
-.
- Set the prior hyperparameters 
-\begin_inset Formula $\sigma_{f}$
-\end_inset
-
-, 
-\begin_inset Formula $\ell$
+Re-analyze the Lidar data using the heteroscedastic GP regression.
+ Plot the marginal posterior distributions for 
+\begin_inset Formula $w_{0}$
 \end_inset
 
  and 
-\begin_inset Formula $\tau^{2}$
-\end_inset
-
- to reasonable values.
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-
-\emph on
-Poisson GP regression.
-\emph default
-
-\begin_inset Newline newline
-\end_inset
-
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Consider the following Poisson GP regression for count data:
-\begin_inset Formula 
-\begin{align*}
-y_{1},\ldots,y_{n}\vert f & \overset{iid}{\sim}\mathrm{Pois}\left(\exp(f(\boldsymbol{x}))\right)\\
-f(\boldsymbol{x}) & \sim\mathrm{GP}\left(0,k_{\theta}(\boldsymbol{x},\boldsymbol{x}')\right)
-\end{align*}
-
-\end_inset
-
-Derive the Laplace approximation of the posterior of 
-\begin_inset Formula $f$
-\end_inset
-
- on the training data 
-\begin_inset Formula $\boldsymbol{f=f(X)}$
+\begin_inset Formula $w_{1}$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Enumerate
-Derive the (saddlepoint) approximation of the log marginal likelihood for
- this model.
+ Do a similar plot as the one in 1(b) using the heteroscedastic model.
+ 
 \begin_inset VSpace bigskip
 \end_inset
 

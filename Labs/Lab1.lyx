@@ -85,7 +85,7 @@
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
+<lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -105,7 +105,7 @@ Mattias Villani
 
 \begin_layout Plain Layout
 \begin_inset space \hspace{}
-\length 1.7cm
+\length 5cm
 \end_inset
 
 
@@ -181,64 +181,6 @@ Stockholm University
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dept of Computer and Information Science 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Linköping University
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
 </lyxtabular>
 
 \end_inset
@@ -257,7 +199,7 @@ Linköping University
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="1">
+<lyxtabular version="3" rows="8" columns="1">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <row>
@@ -337,13 +279,35 @@ submit the code
 \begin_inset Text
 
 \begin_layout Plain Layout
-Submit a readable report in 
+Submit a readable report in: 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+- 
 \series bold
 PDF
 \series default
- (no Word documents!) or a 
+ (no Word documents!)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+- 
 \series bold
-JuPyteR notebook
+JuPyteR/Quarto notebook compiled to PDF/HTML
 \end_layout
 
 \end_inset

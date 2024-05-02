@@ -85,7 +85,7 @@
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
+<lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -105,7 +105,7 @@ Mattias Villani
 
 \begin_layout Plain Layout
 \begin_inset space \hspace{}
-\length 1.7cm
+\length 5cm
 \end_inset
 
 
@@ -181,64 +181,6 @@ Stockholm University
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dept of Computer and Information Science 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Linköping University
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
 </lyxtabular>
 
 \end_inset
@@ -257,7 +199,7 @@ Linköping University
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="1">
+<lyxtabular version="3" rows="8" columns="1">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <row>
@@ -337,13 +279,35 @@ submit the code
 \begin_inset Text
 
 \begin_layout Plain Layout
-Submit a readable report in 
+Submit a readable report in: 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+- 
 \series bold
 PDF
 \series default
- (no Word documents!) or a 
+ (no Word documents!)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+- 
 \series bold
-JuPyteR notebook
+JuPyteR/Quarto notebook compiled to PDF/HTML
 \end_layout
 
 \end_inset
@@ -529,100 +493,6 @@ Derive the (saddlepoint) approximation of the log marginal likelihood for
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
-BONUS QUESTION, ONLY IF YOU HAVE THE TIME AND ENERGY.
- A more general heteroscedastic GP regression can be of the form
-\begin_inset Formula 
-\begin{align*}
-y_{i} & =f(\boldsymbol{x}_{i})+\varepsilon_{i},\quad\varepsilon_{i}\sim N\left(0,\exp(g(\boldsymbol{x}_{i}))\right)\\
-f(\boldsymbol{x}) & \sim\mathrm{GP}\left(0,k_{\theta_{f}}(\boldsymbol{x},\boldsymbol{x}')\right)\\
-g(\boldsymbol{x}) & \sim\mathrm{GP}\left(0,k_{\theta_{g}}(\boldsymbol{x},\boldsymbol{x}')\right)
-\end{align*}
-
-\end_inset
-
-where 
-\begin_inset Formula $\theta_{f}$
-\end_inset
-
- are kernel hyperparameter for the mean function 
-\begin_inset Formula $f(\boldsymbol{x})$
-\end_inset
-
- and 
-\begin_inset Formula $\theta_{g}$
-\end_inset
-
- are hyperparameters for the (log) variance function 
-\begin_inset Formula $g(\boldsymbol{x})$
-\end_inset
-
-.
- Note that noise is heteroscedastic and modelled nonparametrically using
- an additional GP.
- Let 
-\begin_inset Formula $\boldsymbol{X_{*}}$
-\end_inset
-
- be a matrix of test inputs and 
-\begin_inset Formula $\boldsymbol{f_{*}}$
-\end_inset
-
- the corresponding mean function values, just as in the GPML book.
- Moreover, let 
-\begin_inset Formula $\boldsymbol{g_{*}}$
-\end_inset
-
- be the corresponding (log) variances at the test inputs, and finally let
- 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
- be the vector of (log) variances at the training inputs.
- Derive the joint posterior distribution of 
-\begin_inset Formula $\boldsymbol{f_{*}}$
-\end_inset
-
-, 
-\begin_inset Formula $\boldsymbol{g_{*}}$
-\end_inset
-
- and 
-\begin_inset Formula $\boldsymbol{g}$
-\end_inset
-
- given some training data 
-\begin_inset Formula $\boldsymbol{y}$
-\end_inset
-
- and 
-\begin_inset Formula $\boldsymbol{X}$
-\end_inset
-
- in the form of the following decomposition
-\begin_inset Formula 
-\[
-p(\boldsymbol{f_{*}},\boldsymbol{g_{*}},\boldsymbol{g}\vert\boldsymbol{X},\boldsymbol{y},\boldsymbol{X_{*}})=p(\boldsymbol{f_{*}}\vert\boldsymbol{g_{*}},\boldsymbol{g},\boldsymbol{X},\boldsymbol{y},\boldsymbol{X_{*}})p(\boldsymbol{g_{*}}\vert\boldsymbol{g},\boldsymbol{X},\boldsymbol{y},\boldsymbol{X_{*}})p(\boldsymbol{g}\vert\boldsymbol{X},\boldsymbol{y},\boldsymbol{X_{*}}).
-\]
-
-\end_inset
-
-[Hint: 
-\begin_inset Formula $p(\boldsymbol{f_{*}}\vert\boldsymbol{g_{*}},\boldsymbol{g},\boldsymbol{X},\boldsymbol{y},\boldsymbol{X_{*}})$
-\end_inset
-
- is a standard distribution, and so is 
-\begin_inset Formula $p(\boldsymbol{g_{*}}\vert\boldsymbol{g},\boldsymbol{X},\boldsymbol{y},\boldsymbol{X_{*}})$
-\end_inset
-
-.
- The last factor, 
-\begin_inset Formula $p(\boldsymbol{g}\vert\boldsymbol{X},\boldsymbol{y},\boldsymbol{X_{*}}),$
-\end_inset
-
-can be derived in closed form, but will not be a standard distribution].
-\end_layout
-
 \begin_layout Standard
 
 \shape smallcaps
