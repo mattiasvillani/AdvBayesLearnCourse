@@ -277,13 +277,7 @@ Variational Inference
 
 \series bold
 \color blue
-Bayesian Model
-\series default
-\color inherit
- 
-\series bold
-\color blue
-Inference
+Bayesian Regularization
 \series default
 \color inherit
 
@@ -330,7 +324,7 @@ Deadline for submission: day before new topic starts.
 \end_layout
 
 \begin_layout Itemize
-Extra deadline for all four topics: Sept 15, 2020.
+Extra deadline for all four topics: Sept 15, 2024.
 \end_layout
 
 \end_deeper
@@ -2597,7 +2591,7 @@ p(\mathbf{y}|\mathbf{X},\theta)=\int p(\mathbf{y}|\mathbf{X},\mathbf{f},\theta)p
 For 
 \series bold
 \color orange
-Gaussian process regression
+GP regression
 \series default
 \color inherit
 : 
@@ -3204,7 +3198,7 @@ Solve
 \end_inset
 
  wrt 
-\begin_inset Formula $\boldsymbol{z}$
+\begin_inset Formula $\boldsymbol{x}$
 \end_inset
 
  by backward substitution: 
