@@ -85,7 +85,7 @@
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
+<lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -105,7 +105,7 @@ Mattias Villani
 
 \begin_layout Plain Layout
 \begin_inset space \hspace{}
-\length 1.7cm
+\length 5cm
 \end_inset
 
 
@@ -181,66 +181,15 @@ Stockholm University
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dept of Computer and Information Science
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Linköping University
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
 </lyxtabular>
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
 \end_inset
 
 
@@ -560,7 +509,7 @@ th observation
 \end_inset
 
 , 
-\begin_inset Formula $\sigma_{0}^{2}=3^{2}$
+\begin_inset Formula $\sigma_{0}^{2}=20^{2}$
 \end_inset
 
 , 
@@ -609,12 +558,12 @@ Analyze the Galaxy data using the Blocked Gibbs sampler in 2a) above.
 \end_layout
 
 \begin_layout Enumerate
-Now treat 
+[Bonus, if you have the energy.] Now treat 
 \begin_inset Formula $\alpha$
 \end_inset
 
  as unknown with prior 
-\begin_inset Formula $\alpha\sim Gamma(a_{\alpha},b_{\alpha})$
+\begin_inset Formula $\alpha\sim\mathrm{Gamma}(a_{\alpha},b_{\alpha})$
 \end_inset
 
 .
@@ -642,7 +591,7 @@ Now treat
 rate parametrization
 \emph default
  of the Gamma density where if 
-\begin_inset Formula $X\sim Gamma(a_{\alpha},b_{\alpha})$
+\begin_inset Formula $X\sim\Gamma(a_{\alpha},b_{\alpha})$
 \end_inset
 
  then the pdf is of the form

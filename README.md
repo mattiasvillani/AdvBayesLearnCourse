@@ -46,6 +46,7 @@ Other material: [Visualize GP kernels](http://www.it.uu.se/edu/course/homepage/a
 
 Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 23 | [The Neal (2000) article on MCMC for Dirichlet Process Mixtures](http://www.stat.columbia.edu/npbayes/papers/neal_sampling.pdf)  
 
+Widgets: [Dirichlet distribution](https://observablehq.com/@mattiasvillani/dirichlet-distribution) | [Bayes for multinomial data](https://observablehq.com/@mattiasvillani/multinomial-dirichlet) | [mixture of normals](https://observablehq.com/@mattiasvillani/normal-mixture) | [mixture of Poissons](https://observablehq.com/@mattiasvillani/mixture-of-poissons)
 
 **Lecture 3 - May 17, hours 10-12**  
 [slides](/Slides/ABL3.pdf)  
@@ -53,7 +54,7 @@ Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3
 [slides](/Slides/ABL4.pdf) | [derivation marginal Gibbs](/Notes/MarginalGibbsDerivation.pdf)
 
 **Lab Topic 2**  
-[Problems](/Labs/Lab2.pdf) | [Galaxy data](/Labs/GalaxyData.dat)
+[Problems](/Labs/Lab2_v2024.pdf) | [Galaxy data](/Labs/GalaxyData.dat)
 
 
 ---
