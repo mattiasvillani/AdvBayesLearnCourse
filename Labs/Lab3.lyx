@@ -85,7 +85,7 @@
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
+<lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -105,7 +105,7 @@ Mattias Villani
 
 \begin_layout Plain Layout
 \begin_inset space \hspace{}
-\length 1.7cm
+\length 5cm
 \end_inset
 
 
@@ -181,66 +181,15 @@ Stockholm University
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dept of Computer and Information Science
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Linköping University
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
 </lyxtabular>
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
 \end_inset
 
 
@@ -391,16 +340,7 @@ height "1pt"
 \end_layout
 
 \begin_layout Enumerate
-
-\series bold
-AR process with steady state
-\series default
- 
-\series bold
-parametrization
-\series default
-.
- Consider the autoregressive process of first order
+Consider the autoregressive process of first order
 \begin_inset Formula 
 \[
 y_{t}=\mu+\phi(y_{t-1}-\mu)+\varepsilon_{t},\;\text{ where }\varepsilon_{t}\overset{iid}{\sim}N(0,\sigma^{2})
@@ -471,88 +411,24 @@ for
 
 \begin_deeper
 \begin_layout Enumerate
-Derive the three full conditional posteriors 
-\begin_inset Formula $p(\phi\vert\mu,\sigma^{2},\boldsymbol{y})$
+Code up the Gibbs sampler in Section 9.4 in the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Bayesian Learning textbook"
+target "https://github.com/mattiasvillani/BayesianLearningBook/raw/main/pdf/BayesBook.pdf"
+literal "false"
+
 \end_inset
 
-, 
-\begin_inset Formula $p(\sigma^{2}\vert\phi,\mu,\boldsymbol{y})$
+ and simulate from the posterior 
+\begin_inset Formula $p(\mu,\phi,\sigma^{2}\vert\boldsymbol{y})$
 \end_inset
 
- and 
-\begin_inset Formula $p(\mu\vert\phi,\sigma^{2},\boldsymbol{y})$
-\end_inset
-
- where 
+, where 
 \begin_inset Formula $\boldsymbol{y}$
 \end_inset
 
- is a time series of length 
-\begin_inset Formula $T$
-\end_inset
-
-.
- Assume that 
-\begin_inset Formula $y_{0}=0$
-\end_inset
-
- so that the likelihood can be set up conditional on this pre-sample value.
- It is OK to refer to results from these slides 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/mattiasvillani/Talks/raw/master/GuestLectureKTH2020.pdf
-\end_layout
-
-\end_inset
-
- instead of doing boring completions of squares.
-\begin_inset Newline newline
-\end_inset
-
-[Hint 1: when the pre-sample value 
-\begin_inset Formula $y_{0}$
-\end_inset
-
- is known, AR processes are estimated just like linear regressions].
-\begin_inset Newline newline
-\end_inset
-
-[Hint 2: The joint posterior is anatytically intractable because of the
- product of parameters, 
-\begin_inset Formula $\phi\mu$
-\end_inset
-
-, but the full conditional posteriors are tractable].
-\begin_inset Newline newline
-\end_inset
-
-[Hint 3: when deriving full conditional posteriors it is helpful to think
- about the 
-\emph on
-model
-\emph default
- when the conditioning parameters are known.
- One can then often rewrite the model so that the full conditional posterior
- is immediate from the results in 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-https://github.com/mattiasvillani/Talks/raw/master/GuestLectureKTH2020.pdf
-\end_layout
-
-\end_inset
-
-].
-\end_layout
-
-\begin_layout Enumerate
-Code up a Gibbs sampler using these full conditionals and simulate from
- the posterior for the time series in file 
+ is a vector with the time series in the file 
 \family typewriter
 timeseries.csv
 \family sans
@@ -563,7 +439,16 @@ Set
 \begin_inset Formula $\sigma_{\mu}=2$
 \end_inset
 
+ and use 
+\begin_inset Formula $y_{0}=0$
+\end_inset
+
+ as initial value when constructing the lag 
+\begin_inset Formula $y_{t-1}$
+\end_inset
+
 .
+ 
 \end_layout
 
 \begin_layout Enumerate
@@ -571,32 +456,65 @@ Derive a mean-field variational approximation for the posterior
 \begin_inset Formula $p(\mu,\phi,\sigma^{2}\vert\boldsymbol{y})$
 \end_inset
 
-, code it up, and compare the VI approximation of the posterior to the results
- in 1b).
+, code it up, and compare the mean-field VI approximation to the results
+ in 1a).
 \end_layout
 
 \begin_layout Enumerate
-Code up the Fixed Form VI algorithm with control variate and adaptive learning
- rate (Algorithm 3 in Tran's notes) to approximate the posterior distribution
- 
+Use 
+\begin_inset CommandInset href
+LatexCommand href
+name "rstan"
+target "https://mc-stan.org/docs/reference-manual/variational.html"
+literal "false"
+
+\end_inset
+
+ i R/Python, 
+\begin_inset CommandInset href
+LatexCommand href
+name "Turing.jl"
+target "https://turing.ml/v0.21/tutorials/09-variational-inference/"
+literal "false"
+
+\end_inset
+
+ in Julia, or some other probabilistic programming language to find a variationa
+l approximation of 
 \begin_inset Formula $p(\mu,\phi,\sigma^{2}\vert\boldsymbol{y})$
 \end_inset
 
- for the data in file 
+ for the above AR process on the same data 
 \family typewriter
-timeseries.csv.
-
+timeseries.csv
 \family default
- Use a multivariate normal as approximating density for 
-\begin_inset Formula $p(\mu,\phi,\psi\vert\boldsymbol{y})$
+.
+ First find a mean-field variational approximation of 
+\begin_inset Formula $p(\mu,\phi,\sigma^{2}\vert\boldsymbol{y})$
 \end_inset
 
- where 
-\begin_inset Formula $\psi=\log\sigma^{2}$
+ and compare with your home-cooked version in 1b).
+ Then do a variational approximation using a multivariate normal approximation
+ 
+\begin_inset Formula $q(\mu,\phi,\sigma^{2})=N(\boldsymbol{\mu},\boldsymbol{\Sigma})$
+\end_inset
+
+ with a full positive definite covariance matrix 
+\begin_inset Formula $\boldsymbol{\Sigma}$
 \end_inset
 
 .
- Compare the accuracy of this approximation to 1b) and 1c).
+ Compare the accuracy of the two approximations and the computing times.
+ [Hint: here are the 
+\begin_inset CommandInset href
+LatexCommand href
+name "rstan documention for AR processes"
+target "https://mc-stan.org/docs/stan-users-guide/time-series.html#autoregressive.section"
+literal "false"
+
+\end_inset
+
+, which is easily transferred to Turing.jl if you prefer that language]
 \end_layout
 
 \end_deeper
@@ -604,6 +522,10 @@ timeseries.csv.
 \begin_inset VSpace bigskip
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 Good luck! Remember that sometimes an approximate answer is the correct
  answer!
 \end_layout

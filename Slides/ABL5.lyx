@@ -614,7 +614,7 @@ VI
 \end_inset
 
 - Location of 
-\begin_inset Formula $p(\boldsymbol{\theta}|\boldsymbol{y})$
+\begin_inset Formula $q(\boldsymbol{\theta})$
 \end_inset
 
  is fairly correct.
@@ -626,7 +626,7 @@ VI
 \begin_inset VSpace smallskip
 \end_inset
 
-- Underestimates the variance (badly).
+- Underestimates the variance (sometimes badly).
 \begin_inset VSpace medskip
 \end_inset
 

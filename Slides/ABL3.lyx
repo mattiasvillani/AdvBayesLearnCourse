@@ -303,6 +303,20 @@ Probit stick-breaking
 
 \series bold
 \color blue
+Finite mixture models
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
 Dirichlet process mixtures
 \series default
 \color inherit

@@ -465,24 +465,73 @@ h_{\lambda}(\theta):=\log\frac{p(y\vert\theta)p(\theta)}{q_{\lambda}(\theta)}=\l
 
 \end_layout
 
-\begin_layout Itemize
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 
 \series bold
-\size small
-\color blue
+\color orange
 Gradient of LB is an expectation wrt 
 \begin_inset Formula $q_{\lambda}(\theta)$
 \end_inset
 
 
-\series default
-\color inherit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula 
+\begin{align*}
+\nabla_{\lambda}\mathrm{LB}(\lambda) & =\int\nabla_{\lambda}\left(q_{\lambda}(\theta)h_{\lambda}(\theta)\right)d\theta\text{ [interchange }\int\text{ and }\nabla_{\lambda}]\\
+ & =\int\left(\left(\nabla_{\lambda}q_{\lambda}(\theta)\right)h_{\lambda}(\theta)+q_{\lambda}(\theta)\left(\nabla_{\lambda}h_{\lambda}(\theta)\right)\right)d\theta\text{ [product rule}]
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\nabla_{\lambda}\log q_{\lambda}(\theta)=\nabla_{\lambda}q_{\lambda}(\theta)/q_{\lambda}(\theta)$
+\end_inset
+
+ we have 
+\begin_inset Formula $\nabla_{\lambda}q_{\lambda}(\theta)=q_{\lambda}(\theta)\nabla_{\lambda}\log q_{\lambda}(\theta)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nabla_{\lambda}h_{\lambda}(\theta)=\nabla_{\lambda}\left(\log p(y\vert\theta)p(\theta)-\log q_{\lambda}(\theta)\right)=-\nabla_{\lambda}\log q_{\lambda}(\theta)=-\frac{\nabla_{\lambda}q_{\lambda}(\theta)}{q_{\lambda}(\theta)}
+\]
+
+\end_inset
+
+Using that 
+\begin_inset Formula $\int q_{\lambda}(\theta)\left(\frac{\nabla_{\lambda}q_{\lambda}(\theta)}{q_{\lambda}(\theta)}\right)d\theta=\int\nabla_{\lambda}q_{\lambda}(\theta)d\theta=\nabla_{\lambda}\int q_{\lambda}(\theta)d\theta=\nabla_{\lambda}1=0$
+\end_inset
+
 
 \begin_inset Formula 
 \begin{align*}
-\nabla_{\lambda}\mathrm{LB}(\lambda) & =\int\nabla_{\lambda}q_{\lambda}(\theta)h_{\lambda}(\theta)d\theta+\int q_{\lambda}(\theta)\left(-\frac{\nabla_{\lambda}q_{\lambda}(\theta)}{q_{\lambda}(\theta)}\right)d\theta\\
- & =\int q_{\lambda}(\theta)\nabla_{\lambda}\log q_{\lambda}(\theta)\times h_{\lambda}(\theta)d\theta-\nabla_{\lambda}\int q_{\lambda}(\theta)d\theta\\
- & =\mathbb{E}_{q_{\lambda}}\left[\nabla_{\lambda}\log q_{\lambda}(\theta)\times h_{\lambda}(\theta)\right]
+\nabla_{\lambda}\mathrm{LB}(\lambda) & =\int\left(\left(\nabla_{\lambda}q_{\lambda}(\theta)\right)h_{\lambda}(\theta)+q_{\lambda}(\theta)\left(\nabla_{\lambda}h_{\lambda}(\theta)\right)\right)d\theta\\
+ & =\int q_{\lambda}(\theta)\left(\nabla_{\lambda}\log q_{\lambda}(\theta)\right)h_{\lambda}(\theta)d\theta-\int q_{\lambda}(\theta)\left(\frac{\nabla_{\lambda}q_{\lambda}(\theta)}{q_{\lambda}(\theta)}\right)d\theta\\
+ & =\int q_{\lambda}(\theta)\left(\nabla_{\lambda}\log q_{\lambda}(\theta)\right)h_{\lambda}(\theta)d\theta\\
+ & =\textcolor{orange}{\mathbb{E}_{q_{\lambda}}}\left(h_{\lambda}(\theta)\nabla_{\lambda}\log q_{\lambda}(\theta)\right)
 \end{align*}
 
 \end_inset
@@ -495,6 +544,10 @@ Gradient of LB is an expectation wrt
 \begin_inset Separator parbreak
 \end_inset
 
+
+\end_layout
+
+\begin_layout Frame
 
 \end_layout
 

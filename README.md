@@ -1,7 +1,5 @@
 # Advanced Bayesian Learning - PhD course
 
-### NOTE: The topics, date and times have been updated for the 2024 edition of the course, **but** the material and exercises may/will change within the topics as we approach the course start.
-
 ---
 
 ### Course information
@@ -63,7 +61,7 @@ Widgets: [Dirichlet distribution](https://observablehq.com/@mattiasvillani/diric
 ### Topic 3 -  Variational inference
 
 Reading: [Blei et al JASA](https://amstat.tandfonline.com/doi/abs/10.1080/01621459.2017.1285773#.XraDPXUzaLI) | [Tran's VI Notes](/Material/VBnotesMNT.pdf) \
-Other material: [Natural gradient notes](https://wiseodd.github.io/techblog/2018/03/14/natural-gradient/) | [autograd in python](https://github.com/HIPS/autograd) | [ForwardDiff in Julia](https://github.com/JuliaDiff/ForwardDiff.jl)
+Other material: [Kullback-Leiber widget](https://observablehq.com/@mattiasvillani/kl-divergence-continuous) | [My recent talk with some VI](https://github.com/mattiasvillani/Talks/raw/master/VillaniStatSUMarch2024.pdf) | [Natural gradient notes](https://wiseodd.github.io/techblog/2018/03/14/natural-gradient/) | [autograd in python](https://github.com/HIPS/autograd) | [ForwardDiff in Julia](https://github.com/JuliaDiff/ForwardDiff.jl)
 
 **Lecture 5 - May 31, hours 10-12**  
 [slides](/Slides/ABL5.pdf)  
@@ -71,7 +69,7 @@ Other material: [Natural gradient notes](https://wiseodd.github.io/techblog/2018
 [slides](/Slides/ABL6.pdf)
 
 **Lab Topic 3**  
-[Problems](/Labs/Lab3.pdf) | [Time series data](/Labs/timeseries.csv)
+[Problems](/Labs/Lab3_v2024.pdf) | [Time series data](/Labs/timeseries.csv)
 
 
 ---
