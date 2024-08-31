@@ -1,6 +1,6 @@
-# Advanced Bayesian Learning - PhD course
+# Advanced Bayesian Learning - PhD course, 8 credits
 
----
+<img src="Misc/linocut_forest.png">
 
 ### Course information
 
@@ -77,7 +77,7 @@ Other material: [Kullback-Leibler widget](https://observablehq.com/@mattiasvilla
 
 ### Topic 4 - Bayesian regularization and variable selection
 
-Reading (ordered by priority): TBD  
+Reading: Sections 12.2-12.5 and 14.6 of [Bayesian Learning book](https://github.com/mattiasvillani/BayesianLearningBook/raw/main/pdf/BayesBook.pdf) | [Handbook chapter on variable selection](https://bpb-us-e1.wpmucdn.com/blogs.rice.edu/dist/0/5714/files/2022/06/book_chapter.pdf) | [Article on horseshoe regularization](https://projecteuclid.org/journalArticle/Download?urlId=10.1214%2F17-EJS1337SI)
 
 **Lecture 7 - June 14, hours 10-12**  
 [slides](/Slides/ABL7.pdf)  
@@ -86,3 +86,4 @@ Reading (ordered by priority): TBD
 
 **Lab Topic 4**  
 [Problems]() 
+
