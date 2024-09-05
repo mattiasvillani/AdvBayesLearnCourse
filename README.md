@@ -79,10 +79,10 @@ Other material: [Kullback-Leibler widget](https://observablehq.com/@mattiasvilla
 
 Reading: Sections 12.2-12.5 and 14.6 of [Bayesian Learning book](https://github.com/mattiasvillani/BayesianLearningBook/raw/main/pdf/BayesBook.pdf) | [Handbook chapter on variable selection](https://bpb-us-e1.wpmucdn.com/blogs.rice.edu/dist/0/5714/files/2022/06/book_chapter.pdf) | [Article on horseshoe regularization](https://projecteuclid.org/journalArticle/Download?urlId=10.1214%2F17-EJS1337SI)
 
-**Lecture 7 - June 14, hours 10-12**  
+**Lecture 7 - Sept 6, hours 10-12**  
 [slides](/Slides/ABL7.pdf)  
-**Lecture 8 - June 14, hours 13-15**  
-[slides](/Slides/ABL8.pdf)
+**Lecture 8 - Sept 6, hours 13-15**  
+[slides](/Slides/ABL8TBA.pdf)
 
 **Lab Topic 4**  
 [Problems]() 
