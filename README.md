@@ -82,7 +82,7 @@ Reading: Sections 12.2-12.5 and 14.6 of [Bayesian Learning book](https://github.
 **Lecture 7 - Sept 6, hours 10-12**  
 [slides](/Slides/ABL7.pdf)  
 **Lecture 8 - Sept 6, hours 13-15**  
-[slides](/Slides/ABL8TBA.pdf)
+[slides](/Slides/ABL8.pdf)
 
 **Lab Topic 4**  
 [Problems]() 
