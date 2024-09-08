@@ -77,7 +77,7 @@ Other material: [Kullback-Leibler widget](https://observablehq.com/@mattiasvilla
 
 ### Topic 4 - Bayesian regularization and variable selection
 
-Reading: Sections 12.2-12.5 and 14.6 of [Bayesian Learning book](https://github.com/mattiasvillani/BayesianLearningBook/raw/main/pdf/BayesBook.pdf) | [Handbook chapter on variable selection](https://bpb-us-e1.wpmucdn.com/blogs.rice.edu/dist/0/5714/files/2022/06/book_chapter.pdf) | [Article on horseshoe regularization](https://projecteuclid.org/journalArticle/Download?urlId=10.1214%2F17-EJS1337SI)
+Reading: Sections 12.2-12.5 and 14.6 of [Bayesian Learning book](https://github.com/mattiasvillani/BayesianLearningBook/raw/main/pdf/BayesBook.pdf) | [Handbook chapter on variable selection](https://bpb-us-e1.wpmucdn.com/blogs.rice.edu/dist/0/5714/files/2022/06/book_chapter.pdf) | [Article on Bayesian regularization](https://wires.onlinelibrary.wiley.com/doi/full/10.1002/wics.1463?casa_token=TRIRvJPG7fAAAAAA%3AErexRs49LFd9QFMR5ZlGJ9RyWs9r7Q_Fc5Hird767zNVPf2CRfKC5O91y2isnLAGJub1yArfEt-RfJhH)
 
 **Lecture 7 - Sept 6, hours 10-12**  
 [slides](/Slides/ABL7.pdf)  
