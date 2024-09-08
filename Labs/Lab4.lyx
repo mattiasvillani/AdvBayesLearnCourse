@@ -85,7 +85,7 @@
 \noindent
 \align left
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
+<lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -105,7 +105,7 @@ Mattias Villani
 
 \begin_layout Plain Layout
 \begin_inset space \hspace{}
-\length 1.7cm
+\length 5.3cm
 \end_inset
 
 
@@ -117,7 +117,7 @@ Mattias Villani
 \begin_inset Text
 
 \begin_layout Plain Layout
-Advanced Bayesian Learning
+Advanced Bayesian Learning, 2024
 \end_layout
 
 \end_inset
@@ -181,64 +181,6 @@ Stockholm University
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dept of Computer and Information Science
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Linköping University
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
 </lyxtabular>
 
 \end_inset
@@ -278,7 +220,7 @@ status collapsed
 
 \end_inset
 
-Computer Lab 4 - Bayesian Model Inference
+Computer Lab 4 - Regularization and Variable Selection
 \end_layout
 
 \end_inset
@@ -390,168 +332,276 @@ height "1pt"
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
+In this lab you will use the prostate cancer dataset from the book 
+\begin_inset CommandInset href
+LatexCommand href
+name "Elements of Statistical Learning"
+target "https://hastie.su.domains/ElemStatLearn/printings/ESLII_print12_toc.pdf"
+literal "false"
 
-\series bold
-Robust regression modeling
-\series default
-.
- Consider the student-
-\begin_inset Formula $t$
 \end_inset
 
- regression model: 
+ (ESLII, see Section 3.2.1 for a description of the dataset and the regression
+ model setup).
+ The dataset can be downloaded here: 
+\begin_inset CommandInset href
+LatexCommand href
+name "prostate cancer data"
+target "https://hastie.su.domains/ElemStatLearn/datasets/prostate.data"
+literal "false"
+
+\end_inset
+
+.
+ Use the same model as in ESLII:
 \begin_inset Formula 
 \[
-y_{i}=\boldsymbol{x}_{i}^{T}\beta+\varepsilon_{i},\qquad\varepsilon_{i}\overset{\mathrm{iid}}{\sim}t_{\nu}(0,\sigma^{2}),
+\texttt{lpsa}=\beta_{0}+\beta_{1}\texttt{lcavol}+\beta_{2}\texttt{lweight}+\beta_{3}\texttt{age}+\beta_{4}\texttt{lbph}+\beta_{5}\texttt{svi}+\beta_{6}\texttt{lcp}+\beta_{7}\texttt{gleason}+\beta_{8}\texttt{pgg45}
 \]
 
 \end_inset
 
-where 
-\begin_inset Formula $t_{\nu}(\mu,\sigma^{2})$
-\end_inset
-
- is the student-
-\begin_inset Formula $t$
-\end_inset
-
- distribution with 
-\begin_inset Formula $\nu$
-\end_inset
-
- degrees of freedom, location 
-\begin_inset Formula $\mu$
-\end_inset
-
- and scale parameter 
-\begin_inset Formula $\sigma^{2}$
-\end_inset
-
- such that the variance is 
-\begin_inset Formula $\sigma^{2}\nu/(\nu-2)$
-\end_inset
-
- whenever 
-\begin_inset Formula $\nu>2$
+with 
+\begin_inset Formula $\varepsilon\overset{\mathrm{iid}}{\sim}N(0,\sigma^{2})$
 \end_inset
 
 .
- Assume that 
-\begin_inset Formula $\nu$
+ Use all 97 observations in the dataset (note that the ESLII book uses a
+ random sample of 60 observations).
+ Standardize the covariates to have zero mean and unit variance.
+ 
+\size footnotesize
+
+\begin_inset VSpace 0.5cm
 \end_inset
 
- is known, and use the prior 
-\begin_inset Formula $\beta\sim N(0,\tau^{2}I_{q})$
-\end_inset
 
- and non-informative prior for the scale: 
-\begin_inset Formula $p(\sigma)\propto\mathrm{1/\sigma}$
-\end_inset
+\end_layout
 
+\begin_layout Enumerate
+
+\series bold
+Bayesian regularization
+\series default
 .
- The file 
-\family typewriter
-StudentTRegression.R
-\family default
- contains the function 
-\family typewriter
-GibbsTReg
-\family default
- that implements a regression extension of the Gibbs sampler on Page 294
- in the Bayesian Data Analysis book to simulate from the posterior 
-\begin_inset Formula $p(\beta,\sigma^{2}\vert\boldsymbol{y},\boldsymbol{X})$
+ The linear regression model with a iid Gaussian (L2-regularization) prior
+ is
+\begin_inset Formula 
+\begin{align*}
+y_{i} & =\beta_{0}+\boldsymbol{x}_{i}^{\top}\boldsymbol{\beta}+\varepsilon_{i},\qquad\varepsilon_{i}\overset{\mathrm{iid}}{\sim}N(0,\sigma^{2})\\
+\boldsymbol{\beta}\vert\sigma^{2},\lambda & \sim N\left(\boldsymbol{0},\frac{\sigma^{2}}{\lambda}I_{p}\right)\\
+\sigma^{2} & \sim\mathsf{Inv}-\chi^{2}\left(\nu_{0},\sigma_{0}^{2}\right)\\
+\lambda^{-1}=\psi^{2} & \sim\mathsf{Inv}-\chi^{2}\left(\omega_{0},\psi_{0}^{2}\right)
+\end{align*}
+
 \end_inset
 
- for a given 
-\begin_inset Formula $\nu$
+and we use a non-informative 
+\begin_inset Formula $\beta_{0}\sim N(0,100^{2})$
 \end_inset
 
-.
- The same file also contains the function 
-\family typewriter
-PredTReg
-\family default
- to simulate from the posterior predictive distribution.
+ prior for the intercept.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Consider the dataset 
-\family typewriter
-regression.csv
-\family default
- (loaded from the code 
-\family typewriter
-StudentTRegression.R
-\family default
-).
- Let 
-\begin_inset Formula $M_{\nu}$
+You can use 
+\begin_inset CommandInset href
+LatexCommand href
+name "my implementations of the Gibbs sampler"
+target "https://mattiasvillani.com/BayesianLearningBook/code.html"
+literal "false"
+
 \end_inset
 
- denote the above regression model with 
-\begin_inset Formula $\nu$
+ in Julia and R for sampling from the posterior 
+\begin_inset Formula $p(\beta_{0},\boldsymbol{\beta},\sigma^{2},\lambda\vert\boldsymbol{y},\boldsymbol{X})$
 \end_inset
 
- degrees of freedom, and let 
-\begin_inset Formula $\tau=1$
-\end_inset
-
-.
- Compare the models 
-\begin_inset Formula $M_{2}$
-\end_inset
-
-, 
-\begin_inset Formula $M_{5}$
-\end_inset
-
-, 
-\begin_inset Formula $M_{10}$
+ [If you are a Pythonista, ask chatGPT to translate the code and check for
+ correctness.].
+ Use the sampler to analyze the prostate cancer dataset.
+ Set the prior hyperparameters to 
+\begin_inset Formula $\nu_{0}=0.01$
 \end_inset
 
  and 
-\begin_inset Formula $M_{30}$
+\begin_inset Formula $\sigma_{0}^{2}=1$
 \end_inset
 
- using the following Bayesian model inference criteria:
-\end_layout
+, 
+\begin_inset Formula $\omega_{0}=0.01$
+\end_inset
 
-\begin_deeper
-\begin_layout Enumerate
-Posterior model probabilities using the BIC approximation of the marginal
- likelihood.
- Assume uniform prior over the set of models.
-\end_layout
+ and 
+\begin_inset Formula $\psi_{0}^{2}=1$
+\end_inset
 
-\begin_layout Enumerate
-Posterior model probabilities using the Laplace approximation of the marginal
- likelihood.
- Assume uniform prior over the set of models.
+.
+ Draw a posterior sample of 10000 draws (after a burn-in of 1000 draws)
+ and present summaries of the results.
 \end_layout
 
 \begin_layout Enumerate
-WAIC
+Explore if the posterior distribution of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and the elements of 
+\begin_inset Formula $\boldsymbol{\beta}$
+\end_inset
+
+ are sensitive to the prior on 
+\begin_inset Formula $\psi^{2}$
+\end_inset
+
+ by trying out at least two other values for 
+\begin_inset Formula $\omega_{0}$
+\end_inset
+
+.
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-Bayesian leave-one-out cross-validation (no need to do code up importance
- sampling or the Pareto smoothed version since the data set is relatively
- small).
+Now use the horseshoe prior
+\begin_inset Formula 
+\begin{align*}
+\beta_{j}\vert\sigma^{2},\lambda_{j}^{2},\tau^{2} & \sim N\left(0,\sigma^{2}\tau^{2}\lambda_{j}^{2}\right)\\
+\lambda_{j} & \overset{\mathrm{iid}}{\sim}C^{+}(0,1)\\
+\tau & \sim C^{+}(0,1)\\
+\sigma^{2} & \sim\mathsf{Inv}-\chi^{2}\left(\nu_{0},\sigma_{0}^{2}\right)
+\end{align*}
+
+\end_inset
+
+and the same non-informative 
+\begin_inset Formula $\beta_{0}\sim N(0,100^{2})$
+\end_inset
+
+ prior for the intercept.
+ Implement the Gibbs sampling algorithm for the horseshoe prior described
+ in the Section 
+\emph on
+Global-local regularization
+\emph default
+ 
+\emph on
+and Horseshoe
+\size footnotesize
+\emph default
+ 
+\size default
+in the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Bayesian Learning book"
+target "https://github.com/mattiasvillani/BayesianLearningBook/raw/main/pdf/BayesBook.pdf"
+literal "false"
+
+\end_inset
+
+.
+ Use this implementation to sample 10000 iterations (after a burn-in of
+ 1000 iterations) from the posterior 
+\begin_inset Formula $p(\beta_{0},\boldsymbol{\beta},\sigma^{2},\tau\vert\boldsymbol{y},\boldsymbol{X})$
+\end_inset
+
+ for the prostate cancer dataset.
+ Compare with the results from the L2-prior in 1a) and to the least squares
+ estimate.
+\end_layout
+
+\begin_layout Enumerate
+[
+\series bold
+Bonus question
+\series default
+ if you feel up to it, and know RStan or Turing.jl well (so that this is
+ a quick thing for you).
+ Sample the posterior for the regression with a horseshoe prior using RStan
+ or Turing.jl.
+ Compare the resulting posteriors from the Gibbs sampler and RStan/Turing.jl's
+ HMC sampler.
+ Compare effective sample size per second of computing time.
+ Since RStan is coded in C++, your Python/R code for the Gibbs sampler will
+ be slower.
+ Julia is closer to C++ speed and my Julia implementation makes 
+\begin_inset Formula $10000$
+\end_inset
+
+ draws in 0.3 seconds.
+ Note also that my prior for 
+\begin_inset Formula $\beta_{j}$
+\end_inset
+
+ has a variance scaled by 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+, which is not always how other people do it (e.g.
+ the original Horseshoe paper)].
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Repeat 1a) using 
+
+\series bold
+Bayesian variable selection
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Implement Bayesian variable selection using the spike-and-slab prior, 
+\series bold
+or
+\series default
+ find a package in your favorite language that does it for you (I leave
+ that choice up to you, depending on how much time you spent on Problem
+ 1 above and how useful variable selection is for your research).
+ Analyze the prostate cancer data with prior hyperparameters 
 \begin_inset Formula $\tau=10$
 \end_inset
 
  and 
-\begin_inset Formula $\tau=100$
+\begin_inset Formula $\omega=0.5$
 \end_inset
 
 .
+ Explore how the posterior inclusion probabilities for the variables depend
+ on the prior hyperparameter 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+ Try to explain the Bayesian logic behind these results.
+\end_layout
+
+\begin_layout Enumerate
+The standard spike-and-slab prior uses the following prior for the binary
+ selection indicators for the 
+\begin_inset Formula $p$
+\end_inset
+
+ covariates:
+\begin_inset Formula 
+\[
+z_{1},\ldots,z_{p}\vert\omega\sim\mathrm{Bernoulli}(\omega)
+\]
+
+\end_inset
+
+and it is common to set 
+\begin_inset Formula $\omega=0.5$
+\end_inset
+
+.
+ What is the distribution on the number of covariates with non-zero regression
+ coefficients? Would this always be a good prior?
 \end_layout
 
 \end_deeper
@@ -559,7 +609,7 @@ Repeat 1a) using
 \begin_inset VSpace bigskip
 \end_inset
 
-Good luck! May the Bayes be with you.
+Good luck! 
 \end_layout
 
 \end_body
