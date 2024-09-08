@@ -85,5 +85,4 @@ Reading: Sections 12.2-12.5 and 14.6 of [Bayesian Learning book](https://github.
 [slides](/Slides/ABL8.pdf)
 
 **Lab Topic 4**  
-[Problems]() 
-
+[Problems](/Labs/Lab4.pdf) 
