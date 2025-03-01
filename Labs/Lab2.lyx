@@ -105,7 +105,7 @@ Mattias Villani
 
 \begin_layout Plain Layout
 \begin_inset space \hspace{}
-\length 5cm
+\length 6.4cm
 \end_inset
 
 
@@ -509,11 +509,11 @@ th observation
 \end_inset
 
 , 
-\begin_inset Formula $\sigma_{0}^{2}=20^{2}$
+\begin_inset Formula $\sigma_{0}^{2}=1$
 \end_inset
 
 , 
-\begin_inset Formula $\kappa_{0}=5$
+\begin_inset Formula $\kappa_{0}=0.1$
 \end_inset
 
  and 

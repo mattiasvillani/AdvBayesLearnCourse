@@ -368,7 +368,7 @@ with
 
 .
  Use all 97 observations in the dataset (note that the ESLII book uses a
- random sample of 60 observations).
+ random sample of observations for training).
  Standardize the covariates to have zero mean and unit variance.
  
 \size footnotesize
@@ -398,7 +398,7 @@ y_{i} & =\beta_{0}+\boldsymbol{x}_{i}^{\top}\boldsymbol{\beta}+\varepsilon_{i},\
 \end_inset
 
 and we use a non-informative 
-\begin_inset Formula $\beta_{0}\sim N(0,100^{2})$
+\begin_inset Formula $\beta_{0}\vert\sigma^{2}\sim N(0,100^{2}\sigma^{2})$
 \end_inset
 
  prior for the intercept.
@@ -480,7 +480,7 @@ Now use the horseshoe prior
 \end_inset
 
 and the same non-informative 
-\begin_inset Formula $\beta_{0}\sim N(0,100^{2})$
+\begin_inset Formula $\beta_{0}\vert\sigma^{2}\sim N(0,100^{2}\sigma^{2})$
 \end_inset
 
  prior for the intercept.

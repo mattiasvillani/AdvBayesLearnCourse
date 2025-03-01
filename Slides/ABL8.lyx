@@ -29,17 +29,20 @@
    \includegraphics[width=2cm]{LiU_secondary_1_black.png}
 }
 
+\newcommand{\simiid}{\stackrel{\mathrm{iid}}{\sim}}
+\renewcommand{\v}[1]{\boldsymbol{#1}}
 
 \definecolor{blue}{RGB}{38, 122, 181}
 \definecolor{orange}{RGB}{255, 128, 0}
 \definecolor{red}{RGB}{255, 128, 0}
-
-
+\definecolor{verylightgray}{RGB}{249, 249, 249}
+\definecolor{darkred}{RGB}{89,10.2,11}
 \setbeamertemplate{itemize item}{\color{orange}$\blacksquare$}
 \setbeamertemplate{itemize subitem}{\color{orange}$\blacktriangleright$}
 
 \usepackage[ruled]{algorithm2e}
 \usepackage{wasysym}
+\usepackage{tcolorbox}
 \SetKwInput{KwInput}{Input}
 \SetKwInput{KwOutput}{Output}
 \end_preamble
@@ -129,7 +132,7 @@ status open
 \begin_layout Plain Layout
 
 \color gray
-Model Inference
+Regularization and Variable Selection
 \end_layout
 
 \end_inset
@@ -140,7 +143,7 @@ Model Inference
 \begin_layout Subtitle
 
 \color orange
-Lecture 8 - Bayesian Variable Selection and Shrinkage
+Regularization and Variable Selection - Lecture 2
 \end_layout
 
 \begin_layout Author
@@ -167,42 +170,6 @@ Department of Statistics
 \begin_inset Newline newline
 \end_inset
 
-Stockholm University
-\series default
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
-
-\end_inset
-
- Department of Computer and Information Science
-\begin_inset Newline newline
-\end_inset
-
-Linköping University 
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Linköping and Stockholm University
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
 
 \end_layout
 
@@ -214,13 +181,9 @@ status open
 
 \series bold
 \color orange
-Topic overview
+Lecture overview
 \end_layout
 
-\end_inset
-
-
-\begin_inset Separator latexpar
 \end_inset
 
 
@@ -228,13 +191,7 @@ Topic overview
 
 \begin_deeper
 \begin_layout Itemize
-
-\series bold
-\color blue
-Bayesian cross-validation
-\series default
-\color inherit
-
+Spike-and-slab variable selection regression
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -242,13 +199,7 @@ Bayesian cross-validation
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-\color blue
-Bayesian variable selection
-\series default
-\color inherit
-: Spike-and-slab priors.
+Polya-Gamma augmentation for logistic regression
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -256,776 +207,7 @@ Bayesian variable selection
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-\color blue
-Shrinkage
-\series default
-\color inherit
-: Ridge, Lasso, 
-\series bold
-\color blue
-Horseshoe
-\series default
-\color inherit
-.
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Stacking and other approaches
-\series default
-\color inherit
-
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Bayesian cross-validation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-\color blue
-\begin_inset Formula $\mathcal{M}$
-\end_inset
-
--open
-\series default
-\color inherit
-: 
-\begin_inset Formula $p_{u}(\tilde{\boldsymbol{y}}\vert\boldsymbol{y})$
-\end_inset
-
- is not available 
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- 
-\series bold
-\color blue
-Cross-validation
-\series default
-\color orange
- 
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-
-\color orange
-\begin_inset CommandInset href
-LatexCommand href
-name "Bernardo and Smith (1994). Bayesian Theory, Wiley."
-target "https://onlinelibrary.wiley.com/doi/book/10.1002/9780470316870"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Generalization performance on new data
-\series default
-\color inherit
- 
-\begin_inset Formula $\tilde{\boldsymbol{y}}\sim p_{\star}(\tilde{\boldsymbol{y}})$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Here: focus on conditionally iid data 
-\begin_inset Formula $\tilde{y}_{i}\vert\theta$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Expected log pointwise predictive density
-\series default
-\color inherit
- for a new dataset of same size as training data 
-\begin_inset Formula $\boldsymbol{y}=(y_{1},\ldots,y_{n})^{\top}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\mathrm{elpd}=\sum_{i=1}^{n}\int\log p(\tilde{y}_{i}\vert\boldsymbol{y})p_{\star}(\tilde{y}_{i})d\tilde{y}_{i}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Over-estimate of 
-\begin_inset Formula $\mathrm{elpd}$
-\end_inset
-
- from the 
-\series bold
-\color blue
-training data
-\series default
-\color inherit
-
-\begin_inset Formula 
-\[
-\mathrm{lpd}=\sum_{i=1}^{n}\log p(y_{i}\vert\boldsymbol{y})=\sum_{i=1}^{n}\log\int p(y_{i}\vert\theta)p(\theta\vert\boldsymbol{y})d\theta
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Computing 
-\begin_inset Formula $\mathrm{lpd}$
-\end_inset
-
- by posterior simulation
-\series default
-\color inherit
- 
-\begin_inset Formula $\theta^{(s)}\sim p(\theta\vert\boldsymbol{y})$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\widehat{\mathrm{lpd}}=\sum_{i=1}^{n}\log\left(\frac{1}{S}\sum_{s=1}^{S}p(y_{i}\vert\theta^{(s)})\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Leave-one-out (LOO) cross-validation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Bayesian LOO estimate of out-of-sample performance
-\begin_inset Formula 
-\[
-\mathrm{elpd}_{\mathrm{loo}}=\sum_{i=1}^{n}\log p(y_{i}\vert\boldsymbol{y}_{-i})
-\]
-
-\end_inset
-
-where
-\begin_inset Formula 
-\[
-p(y_{i}\vert\boldsymbol{y}_{-i})=\int p(y_{i}\vert\theta)p(\theta\vert\boldsymbol{y}_{-i})d\theta
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Computationally costly: 
-\series bold
-\color blue
-need simulate from 
-\begin_inset Formula $n$
-\end_inset
-
- posteriors
-\series default
-\color inherit
-.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Importance sampling
-\series default
-\color inherit
- with 
-\begin_inset Formula $p(\theta\vert\boldsymbol{y})$
-\end_inset
-
- as importance function.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Importance weights
-\series default
-\color inherit
-
-\begin_inset Formula 
-\[
-r_{i}^{(s)}=\frac{p(\theta^{(s)}\vert\boldsymbol{y}_{-i})}{p(\theta^{(s)}\vert\boldsymbol{y})}\propto\frac{1}{p(y_{i}\vert\theta^{(s)})}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-LOO predictive distributions
-\series default
-\color inherit
-
-\begin_inset Formula 
-\[
-p(\tilde{y}_{i}\vert\boldsymbol{y}_{-i})\approx\frac{\sum_{s=1}^{S}r_{i}^{(s)}p(\tilde{y}_{i}\vert\theta^{(s)})}{\sum_{s=1}^{S}r_{i}^{(s)}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Leave-one-out (LOO) cross-validation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-At actual test data 
-\begin_inset Formula $\tilde{y}_{i}=y_{i}$
-\end_inset
-
-.
- 
-\series bold
-\color blue
-Harmonic mean
-\series default
-\color inherit
- of 
-\begin_inset Formula $p(y_{i}\vert\theta^{(s)})$
-\end_inset
-
-:
-\begin_inset Formula 
-\[
-p(y_{i}\vert\boldsymbol{y}_{-i})\approx\frac{1}{S^{-1}\sum_{s=1}^{S}\frac{1}{p(y_{i}\vert\theta^{(s)})}}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Large weights important for the variance.
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-PSIS-LOO
-\series default
-\color inherit
-: Pareto Smoothed Importance Sampling.
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-\color blue
-Fit generalized Pareto
-\series default
-\color inherit
- to largest importance ratios.
- Get 
-\begin_inset Formula $\hat{k}$
-\end_inset
-
-.
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Replace largest weights
-\series default
-\color inherit
- with expected values of order statistics from generalized Pareto.
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-\color blue
-Pareto parameter 
-\begin_inset Formula $\hat{k}$
-\end_inset
-
-
-\series default
-\color inherit
- can be used to assess the estimate:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Formula $k<1/2$
-\end_inset
-
- OK!
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $1/2\leq k\leq1$
-\end_inset
-
- Warning!
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $k>1$
-\end_inset
-
-.
- Red alert!
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Compute 
-\begin_inset Formula $p(y_{i}\vert\boldsymbol{y}_{-i})$
-\end_inset
-
- by sampling from 
-\begin_inset Formula $p(\theta\vert\boldsymbol{y}_{-i})$
-\end_inset
-
- when 
-\begin_inset Formula $\hat{k}>0.7$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-WAIC
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Watanabe's Bayesian AIC (
-\series bold
-\color blue
-WAIC
-\series default
-\color inherit
-)
-\begin_inset Formula 
-\[
-\widehat{\mathrm{elpd}}_{\mathrm{waic}}=\widehat{\mathrm{lpd}}-\hat{p}_{waic}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $p_{waic}$
-\end_inset
-
- is the 
-\series bold
-\color blue
-effective number of parameters
-\series default
-\color inherit
-
-\begin_inset Formula 
-\[
-p_{waic}=\sum_{i=1}^{n}\mathbb{V}_{p(\theta\vert\boldsymbol{y})}\left[\log p(y_{i}\vert\theta)\right]
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\hat{p}_{waic}$
-\end_inset
-
- estimates 
-\begin_inset Formula $p_{waic}$
-\end_inset
-
- from simulation 
-\begin_inset Formula $\theta^{(s)}\sim p(\theta\vert\boldsymbol{y})$
-\end_inset
-
-.
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-WAIC
-\series bold
-\color blue
- removes some of the bias
-\series default
-\color inherit
- in 
-\begin_inset Formula $\widehat{\mathrm{lpd}}$
-\end_inset
-
- in estimating 
-\begin_inset Formula $\mathrm{elpd}$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Stacking - Optimal Prediction Pools
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-\color blue
-Model averaging
-\series default
-\color inherit
-
-\begin_inset Formula 
-\[
-p(\tilde{\boldsymbol{y}}\vert\boldsymbol{y})=\sum_{k=1}^{K}\mathrm{Pr}(M_{k}\vert\boldsymbol{y})p_{k}(\tilde{\boldsymbol{y}}\vert\boldsymbol{y})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Stacking
-\series default
-\color inherit
-: Optimize model selection loss wrt 
-\begin_inset Formula $\omega_{k}$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-g(\omega)=u\left(\sum_{k=1}^{K}\omega_{k}p_{k}(\tilde{\boldsymbol{y}}\vert\boldsymbol{y}),\tilde{\boldsymbol{y}}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Stacking uses 
-\series bold
-\color blue
-log score
-\series default
-\color inherit
- out-of-sample (LOO)
-\begin_inset Formula 
-\[
-g_{\mathrm{ls}}(\omega)=\sum_{i=1}^{n}\log\sum_{k=1}^{K}\omega_{k}p_{k}(y_{i}\vert\boldsymbol{y}_{-i})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Stacking weights converge
-\series default
-\color inherit
- as 
-\begin_inset Formula $n\rightarrow\infty$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Unlike 
-\begin_inset Formula $\mathrm{Pr}(M_{k}\vert\boldsymbol{y})$
-\end_inset
-
-, 
-\series bold
-\color blue
-does not give zeros-one solutions
-\series default
-\size tiny
-\color inherit
-.
-\color orange
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-
-\size tiny
-\color orange
-\begin_inset CommandInset href
-LatexCommand href
-name "Geweke and Amisano (2011). Optimal Prediction Pools. Journal of Econometrics."
-target "https://onlinelibrary.wiley.com/doi/book/10.1002/9780470316870"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Stacking - Optimal Prediction Pools
-\series default
-\size tiny
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-
-\size tiny
-\color orange
-\begin_inset CommandInset href
-LatexCommand href
-name "Geweke and Amisano (2011). Optimal Prediction Pools. Journal of Econometrics."
-target "https://onlinelibrary.wiley.com/doi/book/10.1002/9780470316870"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename Figures/gewekeamisano.png
-	scale 45
-
-\end_inset
-
-
+Extensions
 \end_layout
 
 \end_deeper
@@ -1058,13 +240,7 @@ Bayesian variable selection
 
 \begin_deeper
 \begin_layout Itemize
-
-\series bold
-\color blue
 Linear regression
-\series default
-\color inherit
-:
 \begin_inset Formula 
 \[
 y=\beta_{0}+\beta_{1}x_{1}+...+\beta_{p}x_{p}+\varepsilon.
@@ -1073,44 +249,29 @@ y=\beta_{0}+\beta_{1}x_{1}+...+\beta_{p}x_{p}+\varepsilon.
 \end_inset
 
 
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
+Which variables have non-zero coefficients?
+\end_layout
 
+\begin_layout Itemize
+Introduce 
 \series bold
 \color blue
-Binary variable selection indicators
+variable selection indicators
 \series default
 \color inherit
  
-\begin_inset Formula $\mathcal{I}=(I_{1},...,I_{p})$
+\begin_inset Formula $\boldsymbol{z}=(z_{1},...,z_{p}).$
 \end_inset
 
-
-\begin_inset Formula 
-\[
-I_{j}=\begin{cases}
-0 & \text{ if }\beta_{j}=0\\
-1 & \text{ if }\beta_{j}\neq0
-\end{cases}
-\]
-
-\end_inset
-
-
-\begin_inset VSpace bigskip
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Itemize
 Example: 
-\begin_inset Formula $\mathcal{I}=(1,1,0)$
+\begin_inset Formula $\boldsymbol{z}=(1,1,0)$
 \end_inset
 
  means that 
@@ -1130,14 +291,86 @@ Example:
 \end_inset
 
  drops out of the model.
-\begin_inset VSpace bigskip
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Spike-and-slab
+\series default
+\color inherit
+ prior
+\begin_inset Formula 
+\[
+z_{1},\ldots,z_{p}\sim\mathrm{Bernoulli}(\omega)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\beta_{j}\vert z_{j}\sim\begin{cases}
+N(0,\tau^{2}\sigma^{2}) & \text{ if }z_{j}=1\\
+=0 & \text{ if }z_{j}=0
+\end{cases}
+\]
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-Usually assume that the intercept is always in the model.
+
+\series bold
+\color blue
+Prior inclusion probability
+\series default
+\color inherit
+ 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Spike-and-slab prior
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/SpikeAndSlabPrior.pdf
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+'
 \end_layout
 
 \end_deeper
@@ -1170,16 +403,20 @@ Bayesian variable selection
 
 \begin_deeper
 \begin_layout Itemize
-Model inference, just crank the Bayesian machine:
+Posterior 
 \begin_inset Formula 
 \[
-p(\mathcal{I}|\mathbf{y},\mathbf{X})\propto p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})\cdot p(\mathcal{I})
+p(\boldsymbol{\beta},\sigma^{2},\boldsymbol{z}\vert\boldsymbol{y},\boldsymbol{X})=p(\boldsymbol{\beta},\sigma^{2}\vert\boldsymbol{z},\boldsymbol{y},\boldsymbol{X})\textcolor{orange}{p(\boldsymbol{z}\vert\boldsymbol{y},\boldsymbol{X})}
 \]
 
 \end_inset
 
 
-\begin_inset VSpace medskip
+\begin_inset Formula 
+\[
+p(\boldsymbol{z}\vert\boldsymbol{y},\boldsymbol{X})\propto p(\boldsymbol{y}|\boldsymbol{X},\boldsymbol{z})\cdot p(\boldsymbol{z})
+\]
+
 \end_inset
 
 
@@ -1187,62 +424,21 @@ p(\mathcal{I}|\mathbf{y},\mathbf{X})\propto p(\mathbf{y}|\mathbf{X},\mathbf{\mat
 
 \begin_layout Itemize
 The prior 
-\begin_inset Formula $p(\mathbf{\mathcal{I}})$
+\begin_inset Formula $p(\boldsymbol{z})$
 \end_inset
 
- is typically taken to be 
-\begin_inset Formula 
-\[
-I_{1},...,I_{p}|\theta\overset{iid}{\sim}\mathrm{Bernoulli}(\theta)
-\]
-
+ is 
+\begin_inset Formula $z_{1},\ldots,z_{p}\sim\mathrm{Bernoulli}(\omega)$
 \end_inset
 
-
-\begin_inset VSpace smallskip
-\end_inset
-
-
+ as before.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\theta$
-\end_inset
-
- is the 
+Need the
 \series bold
 \color blue
-prior inclusion probability
-\series default
-\color inherit
-.
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Hierarchical prior
-\begin_inset Formula 
-\[
-\theta\sim\mathrm{Beta}(a,b).
-\]
-
-\end_inset
-
-
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Marginal 
-\series bold
-\color blue
-marginal likelihood
+ marginal likelihood
 \family roman
 \series medium
 \shape up
@@ -1254,11 +450,15 @@ marginal likelihood
 \uwave off
 \noun off
 \color none
- for each model (
-\begin_inset Formula $\mathcal{I}$
+ 
+\begin_inset Formula $p(\mathbf{y}|\mathbf{X},\boldsymbol{z})$
 \end_inset
 
-)
+ for each model 
+\begin_inset Formula $\boldsymbol{z}$
+\end_inset
+
+.
 \family default
 \series default
 \shape default
@@ -1273,7 +473,7 @@ marginal likelihood
 
 \begin_inset Formula 
 \[
-p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})=\int p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}},\beta)p(\beta|\mathbf{X},\mathbf{\mathcal{I}})d\beta
+p(\boldsymbol{y}|\boldsymbol{X},\boldsymbol{z})=\int p(\boldsymbol{y}|\boldsymbol{\beta},\boldsymbol{X},\boldsymbol{z})p(\boldsymbol{\beta}|\boldsymbol{X},\boldsymbol{z})d\boldsymbol{\beta}
 \]
 
 \end_inset
@@ -1281,46 +481,35 @@ p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})=\int p(\mathbf{y}|\mathbf{X},\math
 
 \end_layout
 
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Bayesian variable selection
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
 \begin_layout Itemize
-Let 
-\begin_inset Formula $\beta_{\mathcal{I}}$
+For 
+\series bold
+\color blue
+linear Gaussian regression
+\series default
+\color inherit
+ the marginal likelihood is
+\begin_inset Formula 
+\[
+t_{\nu_{0,\boldsymbol{z}}}\Big(\boldsymbol{y}\vert\boldsymbol{0},\sigma_{0,\boldsymbol{z}}^{2}(\boldsymbol{I}_{n}+\boldsymbol{X}_{\boldsymbol{z}}\boldsymbol{\Omega}_{0,\boldsymbol{z}}^{-1}\boldsymbol{X}_{\boldsymbol{z}}^{\top})\Big)
+\]
+
 \end_inset
 
- denote the 
-\series bold
-non-zero
-\series default
- coefficients under 
-\begin_inset Formula $\mathcal{I}$
+where 
+\begin_inset Formula $t_{\nu_{0,\boldsymbol{z}}}$
+\end_inset
+
+ is the multivariate-
+\begin_inset Formula $t$
+\end_inset
+
+ density and 
+\begin_inset Formula $\boldsymbol{X}_{\boldsymbol{z}}$
+\end_inset
+
+ is the matrix of covariates selected by 
+\begin_inset Formula $\boldsymbol{z}$
 \end_inset
 
 .
@@ -1328,78 +517,23 @@ non-zero
 \end_layout
 
 \begin_layout Itemize
-Prior:
-\begin_inset Formula 
-\begin{align*}
-\beta_{\mathcal{I}}|\sigma^{2} & \sim N\left(0,\sigma^{2}\Omega_{\mathcal{I},0}^{-1}\right)\\
-\sigma^{2} & \sim Inv-\chi^{2}\left(\nu_{0},\sigma_{0}^{2}\right)
-\end{align*}
-
+Prior hyperparameters 
+\begin_inset Formula $\nu_{0}$
 \end_inset
 
-
-\begin_inset VSpace smallskip
+, 
+\begin_inset Formula $\sigma_{0}^{2}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Marginal likelihood 
-\series default
-\size small
-\color inherit
-
-\begin_inset Formula 
-\[
-p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})\propto\left|\mathbf{X}_{\mathcal{I}}'\mathbf{X}_{\mathcal{I}}+\Omega_{\mathcal{I},0}^{-1}\right|^{-1/2}\left|\Omega_{\mathcal{I},0}\right|^{1/2}\left(\nu_{0}\sigma_{0}^{2}+RSS_{\mathcal{I}}\right)^{-(\nu_{0}+n-1)/2}
-\]
-
+ and 
+\begin_inset Formula $\boldsymbol{\Omega}_{0}$
 \end_inset
 
-
-\size default
-where 
-\begin_inset Formula $\mathbf{X}_{\mathcal{I}}$
-\end_inset
-
- is the covariate matrix for the subset selected by 
-\begin_inset Formula $\mathcal{I}$
+ allowed to depend on 
+\begin_inset Formula $\boldsymbol{z}$
 \end_inset
 
 .
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $RSS_{\mathcal{I}}$
-\end_inset
-
- - 
-\series bold
-\color blue
-Bayesian residual sum of squares
-\series default
-\color inherit
- for model with 
-\begin_inset Formula $\mathbf{\mathcal{I}}$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-RSS_{\mathcal{I}}=\mathbf{y}'\mathbf{y}-\mathbf{y}'\mathbf{X}_{\mathcal{I}}\left(\mathbf{X}_{\mathcal{I}}'\mathbf{X}_{\mathcal{I}}+\Omega_{\mathcal{I},0}\right)^{-1}\mathbf{X}_{\mathcal{I}}'\mathbf{y}
-\]
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -1463,7 +597,7 @@ Simulate
  from the joint posterior distribution:
 \begin_inset Formula 
 \[
-p(\beta,\sigma^{2},\mathcal{I}|\mathbf{y\textnormal{,}X})=p(\beta,\sigma^{2}|\mathcal{I},\mathbf{y}\textnormal{,}\mathbf{X})p(\mathcal{I}|\mathbf{y},\mathbf{X}).
+p(\boldsymbol{\beta},\sigma^{2},\boldsymbol{z}\vert\boldsymbol{y},\boldsymbol{X})=p(\boldsymbol{\beta},\sigma^{2}\vert\boldsymbol{z},\boldsymbol{y},\boldsymbol{X})\textcolor{orange}{p(\boldsymbol{z}\vert\boldsymbol{y},\boldsymbol{X})}
 \]
 
 \end_inset
@@ -1485,7 +619,7 @@ Simulate from
 \noun off
 \color none
 
-\begin_inset Formula $p(\mathbf{\mathcal{I}}|\mathbf{y},\mathbf{X})$
+\begin_inset Formula $p(\boldsymbol{z}|\boldsymbol{y},\boldsymbol{X})$
 \end_inset
 
  using 
@@ -1529,7 +663,7 @@ Gibbs sampling
 \begin_deeper
 \begin_layout Itemize
 Draw 
-\begin_inset Formula $I_{1}|\mathcal{I}_{-1},\mathbf{y},\mathbf{X}$
+\begin_inset Formula $z_{1}|\boldsymbol{z}_{-1},\boldsymbol{y},\boldsymbol{X}$
 \end_inset
 
 
@@ -1537,7 +671,7 @@ Draw
 
 \begin_layout Itemize
 Draw 
-\begin_inset Formula $I_{2}|\mathbf{\mathcal{I}}_{-2}\textnormal{,}\mathbf{y},\mathbf{X}$
+\begin_inset Formula $z_{2}|\boldsymbol{z}_{-2}\textnormal{,}\boldsymbol{y},\boldsymbol{X}$
 \end_inset
 
 
@@ -1549,39 +683,43 @@ Draw
 
 \begin_layout Itemize
 Draw 
-\begin_inset Formula $I_{p}|\mathbf{\mathcal{I}}_{-p},\mathbf{y},\mathbf{X}$
+\begin_inset Formula $z_{p}|\boldsymbol{z}_{-p},\boldsymbol{y},\boldsymbol{X}$
 \end_inset
 
 
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-Note that: 
-\begin_inset Formula $Pr(I_{j}=0|\mathbf{\mathcal{I}}_{-j},\mathbf{y},\mathbf{X})\propto Pr(I_{j}=0,\mathbf{\mathcal{I}}_{-j}|\mathbf{y},\mathbf{X})$
+Draw 
+\begin_inset Formula $\boldsymbol{\beta},\sigma^{2}$
+\end_inset
+
+ from 
+\begin_inset Formula $p(\boldsymbol{\beta},\sigma^{2}|\boldsymbol{z},\boldsymbol{y},\boldsymbol{X})$
 \end_inset
 
 .
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 Compute 
 \size small
 
-\begin_inset Formula $p(\mathcal{I}|\mathbf{y},\mathbf{X})\propto p(\mathbf{y}|\mathbf{X},\mathbf{\mathcal{I}})\cdot p(\mathcal{I})$
+\begin_inset Formula $p(\boldsymbol{z}|\mathbf{y},\mathbf{X})\propto p(\mathbf{y}|\mathbf{X},\boldsymbol{z})\cdot p(\boldsymbol{z})$
 \end_inset
 
  
 \size default
 for 
-\begin_inset Formula $I_{j}=0$
+\begin_inset Formula $z_{j}=0$
 \end_inset
 
  and for 
-\begin_inset Formula $I_{j}=1$
+\begin_inset Formula $z_{j}=1$
 \end_inset
 
-.
+, and normalize.
 \end_layout
 
 \begin_layout Itemize
@@ -1594,16 +732,88 @@ Model averaging
  in a single simulation run.
 \end_layout
 
-\begin_layout Itemize
-If needed, simulate from 
-\begin_inset Formula $p(\beta,\sigma^{2}|\mathcal{I},\mathbf{y}\textnormal{,}\mathbf{X})$
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
 \end_inset
 
- for each draw of 
-\begin_inset Formula $\mathbf{\mathcal{I}}$
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Bayesian variable selection algorithm
+\end_layout
+
 \end_inset
 
-.
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\series bold
+\begin_inset Graphics
+	filename Figures/bayesianvariableselection.png
+	scale 22.3
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Bayesian variable selection algorithm
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\series bold
+\begin_inset Graphics
+	filename Figures/bayesianvariableselection_zoom.png
+	scale 30
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -1639,7 +849,7 @@ Simple general Bayesian variable selection
 The previous algorithm only works when we can compute
 \begin_inset Formula 
 \[
-p(\mathcal{I}|\mathbf{y},\mathbf{X})=\int p(\beta,\sigma^{2},\mathcal{I}|\mathbf{y},\mathbf{X})d\beta d\sigma
+p(\boldsymbol{z}|\boldsymbol{y},\boldsymbol{X})=\int p(\boldsymbol{\beta},\sigma^{2},\boldsymbol{z}|\boldsymbol{y},\boldsymbol{X})d\boldsymbol{\beta}d\sigma
 \]
 
 \end_inset
@@ -1659,17 +869,17 @@ MH
 propose
 \series default
  
-\begin_inset Formula $\beta$
+\begin_inset Formula $\boldsymbol{\beta}$
 \end_inset
 
  and 
-\begin_inset Formula $\mathcal{I}$
+\begin_inset Formula $\boldsymbol{z}$
 \end_inset
 
  jointly from the proposal distribution
 \begin_inset Formula 
 \[
-q(\beta_{p}|\beta_{c},\mathcal{I}_{p})q(\mathcal{I}_{p}|\mathcal{I}_{c})
+q(\boldsymbol{\beta}_{p}|\boldsymbol{\beta}_{c},\boldsymbol{z}_{p})q(\boldsymbol{z}_{p}|\boldsymbol{z}_{c})
 \]
 
 \end_inset
@@ -1679,7 +889,7 @@ q(\beta_{p}|\beta_{c},\mathcal{I}_{p})q(\mathcal{I}_{p}|\mathcal{I}_{c})
 
 \begin_layout Itemize
 Main difficulty: how to propose the non-zero elements in 
-\begin_inset Formula $\beta_{p}$
+\begin_inset Formula $\boldsymbol{\beta}_{p}$
 \end_inset
 
 ?
@@ -1704,7 +914,7 @@ all
  variables in the model: 
 \begin_inset Formula 
 \[
-\beta|\mathbf{y},\mathbf{X}\overset{approx}{\sim}N\left[\hat{\beta},J_{\mathbf{y}}^{-1}(\hat{\beta})\right]
+\boldsymbol{\beta}|\boldsymbol{y},\boldsymbol{X}\overset{approx}{\sim}N\left[\hat{\boldsymbol{\beta}},J_{\mathbf{y}}^{-1}(\hat{\boldsymbol{\beta}})\right]
 \]
 
 \end_inset
@@ -1714,7 +924,7 @@ all
 
 \begin_layout Itemize
 Propose 
-\begin_inset Formula $\beta_{p}$
+\begin_inset Formula $\boldsymbol{\beta}_{p}$
 \end_inset
 
  from 
@@ -1730,15 +940,15 @@ Propose
 \noun off
 \color none
 
-\begin_inset Formula $N\left[\hat{\beta},J_{\mathbf{y}}^{-1}(\hat{\beta})\right]$
+\begin_inset Formula $N\left[\hat{\boldsymbol{\beta}},J_{\mathbf{y}}^{-1}(\hat{\boldsymbol{\beta}})\right]$
 \end_inset
 
 , conditional on the zero restrictions implied by 
-\begin_inset Formula $\mathcal{I}_{p}$
+\begin_inset Formula $\boldsymbol{z}_{p}$
 \end_inset
 
 .
- (See GP topic for formulas).
+ Formulas are available.
 \end_layout
 
 \end_deeper
@@ -1758,7 +968,7 @@ status open
 
 \series bold
 \color orange
-Variable selection - eBay
+Variable selection in more complex models
 \end_layout
 
 \end_inset
@@ -1773,9 +983,11 @@ Variable selection - eBay
 \begin_deeper
 \begin_layout Standard
 \align center
+
+\series bold
 \begin_inset Graphics
-	filename Figures/eBayNbidderVariableSelection.png
-	scale 34
+	filename ../../../Seminars/BayesLund2015/VarSelectAsymT.pdf
+	scale 60
 
 \end_inset
 
@@ -1798,56 +1010,7 @@ status open
 
 \series bold
 \color orange
-Variable selection - electricity expenditure
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename Figures/VarSelectElectricitySplitT.png
-	lyxscale 50
-	scale 22
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename Figures/ElectricityResponseSkew.png
-	lyxscale 20
-	scale 15
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Finite step Newton variable selection
+Model averaging
 \end_layout
 
 \end_inset
@@ -1861,326 +1024,118 @@ Finite step Newton variable selection
 
 \begin_deeper
 \begin_layout Itemize
-
-\series bold
-\color blue
-General regression
-\series default
-\color inherit
- model
-\begin_inset Formula 
-\[
-p(y|\boldsymbol{X},\beta)=\prod_{i=1}^{n}p(y_{i}|\phi_{i}),
-\]
-
+Let 
+\begin_inset Formula $\gamma$
 \end_inset
 
-parameters 
-\begin_inset Formula $\phi_{i}$
+ be a quantity with the same interpretation in the two models.
+\end_layout
+
+\begin_layout Itemize
+Example: Prediction 
+\begin_inset Formula $\gamma=(y_{T+1},...,y_{T+h})$
 \end_inset
 
- depend on covariates through a 
-\series bold
-\color blue
-link function
-\series default
-\color inherit
+'.
+\begin_inset VSpace medskip
+\end_inset
 
+
+\end_layout
+
+\begin_layout Itemize
+The marginal posterior distribution of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ reads
 \begin_inset Formula 
 \[
-k(\phi_{i})=\boldsymbol{x}_{i}^{T}\beta.
+p(\gamma|\mathbf{y})=p(M_{1}|\mathbf{y})p_{1}(\gamma|\mathbf{y})+p(M_{2}|\mathbf{y})p_{2}(\gamma|\mathbf{y}),
 \]
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-GLM
-\series default
-\color inherit
- examples:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Linear regression.
- 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-
-\begin_inset Formula $\phi_{i}=\mu_{i}$
+\begin_inset Formula $p_{k}(\gamma|\mathbf{y})$
 \end_inset
 
-, 
-\begin_inset Formula $k(\cdot)$
-\end_inset
-
- is the identity link.
-\end_layout
-
-\begin_layout Itemize
-Poisson regression.
- 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-
-\begin_inset Formula $\phi_{i}=\mu_{i}$
-\end_inset
-
-, 
-\begin_inset Formula $k(\cdot)$
-\end_inset
-
- is the log link.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Metropolis-Hastings with 
-\series bold
-\color blue
-Newton proposal
-\series default
-\color inherit
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-get posterior mode of 
-\begin_inset Formula $\beta$
-\end_inset
-
- and the Hessian at the mode.
- 
-\end_layout
-
-\begin_layout Itemize
-Multivariate student-
-\begin_inset Formula $t$
-\end_inset
-
- distribution proposal.
- 
-\end_layout
-
-\begin_layout Itemize
-Only need first two derivatives of
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
- 
-\begin_inset Formula $\log p(y_{i}|\phi_{i})$
-\end_inset
-
- wrt 
-\begin_inset Formula $\phi_{i}$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Finite step Newton proposal for variable selection
-\series default
-\size tiny
- 
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\size tiny
-\color orange
-\begin_inset CommandInset href
-LatexCommand href
-name "Villani et al (2012). Generalized Smooth Finite Mixtures. Journal of Econometrics."
-target "https://onlinelibrary.wiley.com/doi/book/10.1002/9780470316870"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-More general regression
-\begin_inset Formula 
-\begin{align*}
-p(\boldsymbol{y}|\boldsymbol{X},\beta,\gamma) & =\prod_{i=1}^{n}p(y_{i}|\phi_{i},\psi_{i})\\
-k(\phi_{i})=\boldsymbol{x}_{i}^{T}\beta\;\text{\;\;} & \text{{\normalcolor and}}\;\;\;h(\psi_{i})=\boldsymbol{x}_{i}^{T}\gamma.
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Example: Regression with heteroscedastic errors: 
-\begin_inset Formula $\psi_{i}=\sigma_{i}^{2}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Sample from full conditionals 
-\begin_inset Formula $p(\beta|\gamma,\boldsymbol{y},\boldsymbol{X})$
-\end_inset
-
- and 
-\begin_inset Formula $p(\gamma|\beta,\boldsymbol{y},\boldsymbol{X})$
-\end_inset
-
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Newtons method in each updating step.
- Time-consuming.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Finite-step Newton
-\series default
-\color inherit
-.
- Take only 1-3 steps toward the mode.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Sample 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-
-\begin_inset Formula $\beta$
-\end_inset
-
- and selection indicators 
-\begin_inset Formula $\mathcal{I}$
-\end_inset
-
- jointly with MCMC.
-\end_layout
-
-\begin_layout Itemize
-How to propose 
-\begin_inset Formula $\beta$
+ is the marginal posterior of 
+\begin_inset Formula $\gamma$
 \end_inset
 
  conditional on 
-\begin_inset Formula $\mathcal{I}$
+\begin_inset Formula $M_{k}$
 \end_inset
 
-?
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Predictive distribution includes 
+\series bold
+\color blue
+three sources of uncertainty
+\series default
+\color inherit
+:
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Finite-step Newton with variable dimension.
- 
+
+\series bold
+\color blue
+Future errors
+\series default
+\color inherit
+/disturbances (e.g.
+ the 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+'s in a regression)
+\begin_inset VSpace smallskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\begin_inset Formula $k(\phi_{i})=\boldsymbol{x}_{i}^{T}\beta$
+\series bold
+\color blue
+Parameter uncertainty
+\series default
+\color inherit
+ (the predictive distribution has the parameters integrated out by their
+ posteriors)
+\begin_inset VSpace smallskip
 \end_inset
 
- has always the same dimension
+
 \end_layout
 
 \begin_layout Itemize
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\begin_inset Formula $k(\phi_{ic})=\boldsymbol{x}_{i}^{T}\beta_{c}$
-\end_inset
-
- and 
-\begin_inset Formula $k(\phi_{ip})=\boldsymbol{x}_{i}^{T}\beta_{p}$
-\end_inset
-
- are expected to be close.
+\series bold
+\color blue
+Model uncertainty
+\series default
+\color inherit
+ (by model averaging)
 \end_layout
 
 \end_deeper
@@ -2200,7 +1155,313 @@ status open
 
 \series bold
 \color orange
-Variable selection - electricity expenditure
+Pólya-Gamma augmentation for logistic regression
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Logistic regression
+\series default
+\color inherit
+
+\begin_inset Formula 
+\[
+\mathrm{Pr}(y=y_{i}|\boldsymbol{x}_{i},\boldsymbol{\beta})=\frac{\exp(\boldsymbol{x}_{i}^{\top}\beta)^{y_{i}}}{1+\exp(\boldsymbol{x}_{i}^{\top}\beta)}\quad\text{for }y_{i}\in\{0,1\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathrm{Pr}(y_{1},\ldots,y_{n}|\boldsymbol{X},\boldsymbol{\beta})=\prod_{i=1}^{n}\mathrm{Pr}(y=y_{i}|\boldsymbol{x}_{i},\boldsymbol{\beta})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The key identity
+\begin_inset Formula 
+\[
+\frac{(e^{\psi})^{a}}{(1+e^{\psi})^{b}}=2^{-b}e^{\kappa\psi}\int_{0}^{\infty}e^{\omega\psi^{2}/2}p(\omega)d\omega,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\kappa=a-b/2$
+\end_inset
+
+ and 
+\begin_inset Formula $p(\omega)$
+\end_inset
+
+ is the density of the Pólya-Gamma distribution
+\begin_inset Formula 
+\[
+\omega\sim\mathrm{PG}(b,0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Pólya-Gamma augmentation for logistic regression
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So for each term in the likelihood function:
+\begin_inset Formula 
+\[
+\frac{\exp(\boldsymbol{x}_{i}^{\top}\beta)^{y_{i}}}{1+\exp(\boldsymbol{x}_{i}^{\top}\beta)}=\frac{1}{2}e^{\kappa_{i}\boldsymbol{x}_{i}^{\top}\beta}\int_{0}^{\infty}e^{\omega_{i}(\boldsymbol{x}_{i}^{\top}\beta)^{2}/2}p(\omega_{i})d\omega_{i},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The likelihood conditional on 
+\begin_inset Formula $\boldsymbol{\omega}=(\omega_{1},\ldots,\omega_{n})$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{align*}
+\prod_{i=1}^{n}\frac{\exp(\boldsymbol{x}_{i}^{\top}\beta)^{y_{i}}}{1+\exp(\boldsymbol{x}_{i}^{\top}\beta)} & \propto\prod_{i=1}^{n}e^{\kappa_{i}\boldsymbol{x}_{i}^{\top}\beta}e^{\omega_{i}(\boldsymbol{x}_{i}^{\top}\beta)^{2}/2}\\
+ & =\exp\Big(\sum_{i=1}^{n}\kappa_{i}\boldsymbol{x}_{i}^{\top}\beta+\frac{\omega_{i}(\boldsymbol{x}_{i}^{\top}\beta)^{2}}{2}\Big)
+\end{align*}
+
+\end_inset
+
+which is an exponential of a quadratic form in 
+\begin_inset Formula $\boldsymbol{\beta}.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Hence
+\begin_inset Formula 
+\[
+\boldsymbol{\beta}\sim N(\mu_{0},\Sigma_{0})\qquad\Longrightarrow\qquad\boldsymbol{\beta}\vert\boldsymbol{\omega},\boldsymbol{y},\boldsymbol{X}\sim N(\mu_{n},\Sigma_{n})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Pólya-Gamma distribution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tcolorbox}[colback=verylightgray]     
+\backslash
+href{https://observablehq.com/@mattiasvillani/polya-gamma-distribution}{
+\backslash
+textbf{
+\backslash
+textcolor{darkred}{Pólya-Gamma distribution}}}
+\backslash
+
+\backslash
+ 
+\backslash
+medskip     $X 
+\backslash
+sim 
+\backslash
+mathrm{PG}(b,c)$ for $X>0$.
+\backslash
+
+\backslash
+ 
+\backslash
+medskip     A Pólya-Gamma is defined as a infinite weighted sum (convolution)
+ of iid Gamma distributed variables     
+\backslash
+begin{align*}       &X 
+\backslash
+overset{d}{=} 
+\backslash
+sum_{k=1}^
+\backslash
+infty v_k Y_k       
+\backslash
+end{align*}     where $
+\backslash
+overset{d}{=}$ mean equality in distribution, the weights are $$v_k = 
+\backslash
+frac{1}{2(k-1/2)^2
+\backslash
+pi^2 +c^2/2}$$ and     $Y_k 
+\backslash
+simiid 
+\backslash
+mathrm{Gamma}(b,1)$.
+    
+\backslash
+end{tcolorbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Pólya-Gamma distribution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "1pt"
+separation "1pt"
+shadowsize "4pt"
+framecolor "orange"
+backgroundcolor "white"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset href
+LatexCommand href
+name "\\includegraphics[width=0.7\\textwidth]{./Figures/polyagamma.png}"
+target "https://observablehq.com/@mattiasvillani/polya-gamma-distribution"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Pólya-Gamma augmentation for logistic regression
 \end_layout
 
 \end_inset
@@ -2215,18 +1476,11 @@ Variable selection - electricity expenditure
 \begin_deeper
 \begin_layout Standard
 \align center
+
+\series bold
 \begin_inset Graphics
-	filename Figures/VarSelectElectricitySplitT.png
-	lyxscale 50
-	scale 22
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename Figures/ElectricityResponseSkew.png
-	lyxscale 20
-	scale 15
+	filename Figures/PolyaGammaLogisticReg.png
+	scale 25
 
 \end_inset
 
@@ -2241,315 +1495,7 @@ Variable selection - electricity expenditure
 
 \end_layout
 
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Shrinkage priors
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Shrinkage regression priors:
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Formula $\beta\vert\sigma^{2}\sim N\left(0,\lambda^{-1}\sigma I_{p}\right)$
-\end_inset
-
- gives 
-\series bold
-\color blue
-Ridge regression
-\series default
-\color inherit
-.
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\beta\vert\sigma^{2}\sim\mathrm{Laplace}\left(0,\lambda^{-1}\sigma I_{p}\right)$
-\end_inset
-
- + Posterior mode = 
-\series bold
-\color blue
-Lasso
-\series default
-\color inherit
-.
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-\color blue
-Posterior mode Ridge
-\series default
-\color inherit
- (when 
-\begin_inset Formula $X^{T}X=I_{p})$
-\end_inset
-
- 
-\begin_inset Formula 
-\[
-\hat{\beta}_{\mathrm{RR}}=\kappa\hat{\beta}_{\mathrm{LS}},\quad\kappa=\frac{1}{1+\lambda}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Both Ridge and Lasso are applying 
-\series bold
-\color blue
-global
-\series default
-\color inherit
- shrinkage.
-\begin_inset VSpace smallskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Horseshoe
-\series default
-\color inherit
- 
-\series bold
-\color blue
-prior
-\series default
-\color inherit
-: Shrink globally, Act locally.
-\begin_inset Formula 
-\begin{align*}
-\boldsymbol{y}\sim & N\left(\boldsymbol{x}_{i}^{T}\beta,\sigma^{2}I_{n}\right)\\
-\beta_{j}\vert & \lambda_{j},\tau\overset{indep}{\sim}N(0,\lambda_{j}\tau)\\
-\lambda_{j} & \overset{iid}{\sim}\mathrm{\mathrm{Cauchy}}^{+}(0,1)\\
-\tau & \sim\mathrm{Cauchy}^{+}(0,1)
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
 \begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Horseshoe
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-\color blue
-Horseshoe
-\series default
-\color inherit
- prior 
-\size small
-
-\begin_inset Formula 
-\begin{align*}
-\beta_{j}\vert & \lambda_{j},\tau\overset{indep}{\sim}N(0,\lambda_{j}\tau)\quad\lambda_{j}\overset{iid}{\sim}\mathrm{\mathrm{Cauchy}}^{+}(0,1)\quad\tau\sim\mathrm{\mathrm{Cauchy}}^{+}(0,1)
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Marginal prior
-\series default
-\color inherit
- 
-\begin_inset Formula $p(\beta_{j}\vert\tau)$
-\end_inset
-
- not tractable.
- Tight lower bound.
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename Figures/horseshoe.png
-	scale 22
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Infinite spike at zero 
-\begin_inset Formula $\Longrightarrow$
-\end_inset
-
- 
-\series bold
-\color blue
-sparsity
-\series default
-\color inherit
-.
-\end_layout
-
-\begin_layout Itemize
-Heavy but integrable tails 
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- 
-\series bold
-\color blue
-signals untouched
-\series default
-\color inherit
-.
-\end_layout
-
-\begin_layout Itemize
-Horseshoe 
-\series bold
-\color blue
-posterior mean estimate
-\series default
-\color inherit
-: 
-\begin_inset Formula $\hat{\beta}_{\mathrm{HS},j}=\mathbb{E}_{\mathrm{post}}(\kappa_{j})\hat{\beta}_{\mathrm{LS},j}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\color blue
-Shrinkage factor
-\series default
-\color inherit
- 
-\series bold
-\color blue
-a priori
-\series default
-\color inherit
-: 
-\begin_inset Formula $\kappa_{j}\sim\mathrm{Beta}(1/2,1/2)$
-\end_inset
-
- (
-\series bold
-\color blue
-
-\begin_inset Formula $U$
-\end_inset
-
--shaped
-\series default
-\color inherit
-).
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Model projections
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-TBD ...
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
 
 \end_layout
 

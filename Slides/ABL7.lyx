@@ -316,7 +316,7 @@ Ridge regression (L2-regularized)
 
 \begin_deeper
 \begin_layout Itemize
-Minimizaion of L2-penalized sum of squares
+Minimization of L2-penalized sum of squares
 \series bold
 \color blue
 
@@ -582,7 +582,7 @@ Posterior
  
 \begin_inset Formula 
 \begin{align*}
-\mu_{n} & =\left(\mathbf{X}^{\top}\mathbf{X}+\Omega_{0}\right)^{-1}\left(\mathbf{X}^{\top}\mathbf{X}\hat{\beta}+\Omega_{0}\mu_{0}\right)\\
+\mu_{n} & =\left(\mathbf{X}^{\top}\mathbf{X}+\Omega_{0}\right)^{-1}\left(\mathbf{X}^{\top}\mathbf{X}{\color{orange}\hat{\boldsymbol{\beta}}}+\Omega_{0}\mu_{0}\right)\\
 \Omega_{n} & =\mathbf{X}^{\top}\mathbf{X}+\Omega_{0}\\
 \nu_{n} & =\nu_{0}+n\\
 \sigma_{n}^{2} & =\left(\nu_{0}\sigma_{0}^{2}+\mathbf{y}^{\top}\mathbf{y}+\mu_{0}^{\top}\Omega_{0}\mu_{0}-\mu_{n}^{\top}\Omega_{n}\mu_{n}\right)/\nu_{n}
@@ -847,7 +847,7 @@ status open
 \series bold
 \color orange
 Gibbs sampling L2-regularized regression 
-\begin_inset Formula $\psi^{2}=\frac{1}{\lambda}$
+\begin_inset Formula $\psi^{2}=\lambda^{-1}$
 \end_inset
 
 
@@ -979,7 +979,21 @@ Lasso
 \end_layout
 
 \begin_layout Itemize
-Laplace distribution have heavy tails.
+
+\bar under
+\color blue
+\begin_inset CommandInset href
+LatexCommand href
+name "Laplace distribution"
+target "https://observablehq.com/@mattiasvillani/laplace-distribution"
+literal "false"
+
+\end_inset
+
+
+\bar default
+\color inherit
+ has heavier tails than normal.
 \end_layout
 
 \begin_layout Itemize
@@ -2289,6 +2303,69 @@ status open
 
 \series bold
 \color orange
+Local level model with Gaussian innovations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "1pt"
+separation "1pt"
+shadowsize "4pt"
+framecolor "orange"
+backgroundcolor "white"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset href
+LatexCommand href
+name "\\includegraphics[width=0.7\\textwidth]{./Figures/normalprior_local_level.png}"
+target "https://observablehq.com/@mattiasvillani/kalman-filter-simulated-local-level"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
 Dynamic horseshoe process prior
 \end_layout
 
@@ -2480,6 +2557,69 @@ status open
 LatexCommand href
 name "\\includegraphics[width=0.6\\textwidth]{./Figures/zdist.png}"
 target "https://observablehq.com/@mattiasvillani/z-distribution"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Local level with dynamic shrinkage process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "1pt"
+separation "1pt"
+shadowsize "4pt"
+framecolor "orange"
+backgroundcolor "white"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset href
+LatexCommand href
+name "\\includegraphics[width=0.7\\textwidth]{./Figures/dsp_local_level.png}"
+target "https://observablehq.com/@mattiasvillani/local-level-model-dsp-prior"
 literal "true"
 
 \end_inset
