@@ -3725,7 +3725,7 @@ Choosing a model and an action
 \begin_deeper
 \begin_layout Itemize
 Models are used for taking an action 
-\begin_inset Formula $a\in\mathcal{A=}\{a_{1},\ldots,a_{J}\}$
+\begin_inset Formula $a\in\mathcal{A}=\{a_{1},\ldots,a_{J}\}$
 \end_inset
 
 .
