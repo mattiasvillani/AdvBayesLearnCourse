@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,8 +25,9 @@
 
 \date{} % Date, can be changed to a custom date
 
-\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}\hspace*{3.5cm}~%
-   \includegraphics[width=2cm]{LiU_secondary_1_black.png}
+\titlegraphic{
+\vspace{-0.6cm}
+\includegraphics[width=1.5cm]{../Misc/LogoBlueJustRing.jpg}\break
 }
 
 
@@ -42,14 +43,31 @@
 \usepackage{wasysym}
 \SetKwInput{KwInput}{Input}
 \SetKwInput{KwOutput}{Output}
+
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\setbeamertemplate{footline}
+{%
+  \hfill%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}\vskip2pt
+}
 \end_preamble
 \options xcolor=svgnames, handout
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "palatino" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -57,7 +75,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -67,6 +87,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -91,7 +113,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -107,11 +131,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -121,15 +150,41 @@
 \size largest
 \color orange
 Advanced Bayesian Learning
-\size default
+\begin_inset Newline newline
+\end_inset
 
+
+\size default
+Gaussian Process Regression and Classification
+\size largest
+
+\begin_inset Newline newline
+\end_inset
+
+
+\size large
+Lecture 1
+\size default
+ 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \color gray
-Gaussian Process Regression and Classification
+STM course
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.7cm}
+\backslash
+insertframenumber/
+\backslash
+inserttotalframenumber
 \end_layout
 
 \end_inset
@@ -137,10 +192,9 @@ Gaussian Process Regression and Classification
 
 \end_layout
 
-\begin_layout Subtitle
+\end_inset
 
-\color orange
-Gaussian Process Regression and Classification - Lecture 1
+
 \end_layout
 
 \begin_layout Author
@@ -152,7 +206,7 @@ status open
 
 \series bold
 \color gray
-Advanced Bayesian Learning
+Mattias Villani
 \end_layout
 
 \end_inset
@@ -169,31 +223,21 @@ Department of Statistics
 
 Stockholm University
 \series default
- 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
-
-\end_inset
-
- Department of Computer and Information Science
-\begin_inset Newline newline
-\end_inset
-
-Linköping University 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Linköping and Stockholm University
+Stockholm University
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -316,7 +360,8 @@ Individual Lab/Exercise for each topic
 \end_layout
 
 \begin_layout Itemize
-Deadline for submission: day before new topic starts.
+Deadline for submission:
+ day before new topic starts.
 \begin_inset VSpace smallskip
 \end_inset
 
@@ -324,7 +369,9 @@ Deadline for submission: day before new topic starts.
 \end_layout
 
 \begin_layout Itemize
-Extra deadline for all four topics: Sept 15, 2024.
+Extra deadline for all four topics:
+ Sept 15,
+ 2026.
 \end_layout
 
 \end_deeper
@@ -452,7 +499,8 @@ and
 Polynomial regression
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $\phi\mathbf{(x)}=(1,x,x^{2},x^{3},...,x^{k})$
 \end_inset
 
@@ -472,7 +520,8 @@ f(\mathbf{x})=\phi\mathbf{(x)}^{T}\boldsymbol{w}\cdot
 \end_layout
 
 \begin_layout Itemize
-More generally: 
+More generally:
+ 
 \series bold
 \color blue
 splines
@@ -493,6 +542,7 @@ basis functions
 
 \begin_layout Itemize
 Example:
+
 \series bold
  
 \color blue
@@ -535,7 +585,8 @@ status open
 
 \series bold
 \color orange
-Recap: Bayesian linear regression
+Recap:
+ Bayesian linear regression
 \end_layout
 
 \end_inset
@@ -720,7 +771,8 @@ Non-parametric regression
 Non-parametric
 \series default
 \color inherit
-: avoid a parametric form for 
+:
+ avoid a parametric form for 
 \begin_inset Formula $f(\cdot)$
 \end_inset
 
@@ -774,7 +826,8 @@ every
 \end_layout
 
 \begin_layout Itemize
-Instead of restricting to linear, impose 
+Instead of restricting to linear,
+ impose 
 \series bold
 \color orange
 
@@ -844,7 +897,8 @@ Restrict attention to a grid of
 \begin_inset Formula $x$
 \end_inset
 
--values: 
+-values:
+ 
 \begin_inset Formula $x_{1},..,x_{k}$
 \end_inset
 
@@ -909,7 +963,7 @@ Treat
 \end_layout
 
 \begin_layout Itemize
-Put a prior over a set of functions (thank you, Kolmogorov!)
+Put a prior over a set of functions
 \end_layout
 
 \end_deeper
@@ -1092,8 +1146,8 @@ Gaussian process
 GP
 \series default
 \color inherit
-) is a collection of random variables, any finite number of which have a
- multivariate Gaussian distribution.
+) is a collection of random variables,
+ any finite number of which have a multivariate Gaussian distribution.
 \end_layout
 
 \begin_layout Itemize
@@ -1236,7 +1290,8 @@ SE
 \begin_inset Formula $\ell>0$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\sigma_{f}>0$
 \end_inset
 
@@ -1262,11 +1317,13 @@ Matérn
 \begin_inset Formula $\ell>0$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\sigma_{f}>0$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\nu>0$
 \end_inset
 
@@ -1307,7 +1364,8 @@ form a grid
 \end_layout
 
 \begin_layout Itemize
-simulate function values from multivariate normal: 
+simulate function values from multivariate normal:
+ 
 \begin_inset Formula 
 \[
 f(\mathbf{x}_{*})\sim N\left(m(\mathbf{x}_{*}),K(\mathbf{x}_{*},\mathbf{x}_{*})\right)
@@ -1402,11 +1460,13 @@ The length scale
 \end_layout
 
 \begin_layout Itemize
-SE: expected number of zero-crossings on 
+SE:
+ expected number of zero-crossings on 
 \begin_inset Formula $[0,1]$
 \end_inset
 
-: 
+:
+ 
 \begin_inset Formula $(2\pi\ell)^{-1}$
 \end_inset
 
@@ -1535,7 +1595,8 @@ Sequential simulation of GPs
 
 \begin_deeper
 \begin_layout Itemize
-The joint way: Choose a grid 
+The joint way:
+ Choose a grid 
 \begin_inset Formula $x_{1},...,x_{k}$
 \end_inset
 
@@ -1873,7 +1934,8 @@ Let
 \uwave off
 \noun off
 \color none
-, then
+,
+ then
 \begin_inset Formula 
 \[
 \mathbf{y}\sim N(\mathbf{B}\mu+\mathbf{b},\mathbf{B}\Sigma\mathbf{B}')
@@ -1937,7 +1999,8 @@ Marginals are normal
 \begin_inset Formula $\mathbf{x}\sim N(\mu,\Sigma)$
 \end_inset
 
-, then
+,
+ then
 \begin_inset Formula 
 \[
 \mathbf{x}_{1}\sim N(\mu_{1},\Sigma_{11})
@@ -1960,7 +2023,8 @@ Conditionals are normal
 \begin_inset Formula $\mathbf{x}\sim N(\mu,\Sigma)$
 \end_inset
 
-, then
+,
+ then
 \begin_inset Formula 
 \[
 \mathbf{x}_{2}|\mathbf{x}_{1}=\mathbf{x}_{1}^{*}\sim N\left[\mu_{2}+\Sigma_{21}\Sigma_{11}^{-1}(x_{1}^{*}-\mu_{1}),\;\Sigma_{22}-\Sigma_{21}\Sigma_{11}^{-1}\Sigma_{12}\right]
@@ -2043,7 +2107,8 @@ f(x)\sim GP\left(0,k(x,x')\right)
 Observed
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $\mathbf{x}=(x_{1},...,x_{n})^{T}$
 \end_inset
 
@@ -2062,11 +2127,13 @@ Observed
 Goal
 \series default
 \color inherit
-: posterior of 
+:
+ posterior of 
 \begin_inset Formula $f(\cdot)$
 \end_inset
 
- over test data: 
+ over test data:
+ 
 \begin_inset Formula $\mathbf{f}_{*}=\mathbf{f}(\mathbf{x}_{*})$
 \end_inset
 
@@ -2141,7 +2208,8 @@ Sketch for proof of posterior
 
 \begin_deeper
 \begin_layout Itemize
-Idea: obtain joint 
+Idea:
+ obtain joint 
 \begin_inset Formula $p(\mathbf{y,\mathbf{f}_{*})}$
 \end_inset
 
@@ -2230,7 +2298,8 @@ K(\mathbf{x}_{*},\mathbf{x}) & K(\mathbf{x}_{*},\mathbf{x}_{*})
 \end_layout
 
 \begin_layout Itemize
-Complete proof by result: 
+Complete proof by result:
+ 
 \begin_inset Formula 
 \[
 \mathbf{x}_{2}|\mathbf{x}_{1}=\mathbf{x}_{1}^{*}\sim N\left[\mu_{2}+\Sigma_{21}\Sigma_{11}^{-1}(x_{1}^{*}-\mu_{1}),\;\Sigma_{22}-\Sigma_{21}\Sigma_{11}^{-1}\Sigma_{12}\right]
@@ -2503,7 +2572,8 @@ k(\mathbf{x},\mathbf{x}')=\sigma_{f}^{2}\exp\left(-\frac{1}{2}\frac{\left\Vert \
 \end_layout
 
 \begin_layout Itemize
-Common: maximize the 
+Common:
+ maximize the 
 \series bold
 \color orange
 marginal likelihood
@@ -2535,7 +2605,8 @@ For
 GP regression
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $\boldsymbol{y}|\mathbf{X},\theta\sim N(\boldsymbol{0},K+\sigma_{n}^{2}I)$
 \end_inset
 
@@ -2587,7 +2658,8 @@ Choice of kernel family by Bayesian model inference.
 \begin_inset Formula $K_{i}\in\mathcal{K}$
 \end_inset
 
-: 
+:
+ 
 \begin_inset Formula $p(K_{i}|\mathbf{y},\mathbf{X})\propto p(\mathbf{y}|\mathbf{X},K_{i})p(K_{i})$
 \end_inset
 
@@ -2930,7 +3002,8 @@ Covariance matrix
 \end_layout
 
 \begin_layout Itemize
-Noise helps: 
+Noise helps:
+ 
 \begin_inset Formula $K+\sigma_{n}^{2}I$
 \end_inset
 
@@ -2973,7 +3046,8 @@ Algorithm 2.1 and 3.1 in GPML for stable computations.
 \end_layout
 
 \begin_layout Itemize
-We need to compute: 
+We need to compute:
+ 
 \begin_inset VSpace smallskip
 \end_inset
 
@@ -3122,7 +3196,8 @@ Solve
 \begin_inset Formula $\boldsymbol{z}$
 \end_inset
 
- by forward substitution: 
+ by forward substitution:
+ 
 \begin_inset Formula $\boldsymbol{z}=\boldsymbol{L}\backslash\boldsymbol{b}$
 \end_inset
 
@@ -3142,7 +3217,8 @@ Solve
 \begin_inset Formula $\boldsymbol{x}$
 \end_inset
 
- by backward substitution: 
+ by backward substitution:
+ 
 \begin_inset Formula $\boldsymbol{x}=\boldsymbol{L}^{T}\backslash\boldsymbol{z}$
 \end_inset
 
@@ -3154,7 +3230,8 @@ Solve
 \end_layout
 
 \begin_layout Itemize
-So: 
+So:
+ 
 \begin_inset Formula $\boldsymbol{x}=\boldsymbol{L}^{T}\backslash(\boldsymbol{L}\backslash\boldsymbol{b})$
 \end_inset
 
