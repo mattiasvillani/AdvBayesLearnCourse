@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -45,11 +45,11 @@
 \end_preamble
 \options xcolor=svgnames, handout
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "palatino" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -57,7 +57,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -91,7 +93,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -107,11 +111,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -121,15 +130,41 @@
 \size largest
 \color orange
 Advanced Bayesian Learning
-\size default
+\begin_inset Newline newline
+\end_inset
 
+
+\size default
+Gaussian Process Regression and Classification
+\size largest
+
+\begin_inset Newline newline
+\end_inset
+
+
+\size large
+Lecture 2
+\size default
+ 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \color gray
-Gaussian Process Regression and Classification
+STM course
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.7cm}
+\backslash
+insertframenumber/
+\backslash
+inserttotalframenumber
 \end_layout
 
 \end_inset
@@ -137,10 +172,9 @@ Gaussian Process Regression and Classification
 
 \end_layout
 
-\begin_layout Subtitle
+\end_inset
 
-\color orange
-Gaussian Process Regression and Classification - Lecture 2
+
 \end_layout
 
 \begin_layout Author
@@ -152,7 +186,7 @@ status open
 
 \series bold
 \color gray
-Advanced Bayesian Learning
+Mattias Villani
 \end_layout
 
 \end_inset
@@ -169,31 +203,21 @@ Department of Statistics
 
 Stockholm University
 \series default
- 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
-
-\end_inset
-
- Department of Computer and Information Science
-\begin_inset Newline newline
-\end_inset
-
-Linköping University 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Linköping and Stockholm University
+Stockholm University
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -397,7 +421,8 @@ Fourier analysis and orthogonal functions
 Fourier series
 \series default
 \color inherit
- for functions: 
+ for functions:
+ 
 \begin_inset Formula 
 \[
 f(x)=\sum_{k}a_{k}\cos(2\pi s_{k}x)+\sum_{k}b_{k}\sin(2\pi s_{k}x)
@@ -442,7 +467,8 @@ orthogonal
 \begin_inset Formula $s_{l}$
 \end_inset
 
-: 
+:
+ 
 \begin_inset Formula 
 \[
 \int\sin(2\pi s_{k}x)\cos(2\pi s_{l}x)dx=\delta_{kl}
@@ -464,7 +490,8 @@ orthogonal
 Complex exponential
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $e^{it}\equiv\cos t+i\cdot\sin(t)$
 \end_inset
 
@@ -476,7 +503,8 @@ Complex exponential
 \end_layout
 
 \begin_layout Itemize
-Fourier: 
+Fourier:
+ 
 \begin_inset Formula $f(x)=\sum_{k}c_{k}e^{i2\pi s_{k}x}$
 \end_inset
 
@@ -530,7 +558,8 @@ Spectral density
 Bochner's theorem
 \series default
 \color inherit
-: A function 
+:
+ A function 
 \begin_inset Formula $k(\cdot)$
 \end_inset
 
@@ -622,7 +651,8 @@ spectral density
 Multivariate Bochner's
 \series default
 \color inherit
-: A function 
+:
+ A function 
 \begin_inset Formula $k(\cdot)$
 \end_inset
 
@@ -919,7 +949,8 @@ Matérn
 \begin_inset Formula $\ell>0$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\nu>0$
 \end_inset
 
@@ -938,7 +969,8 @@ K_{Matern}(r)=\frac{2^{1-\nu}}{\Gamma(\nu)}\left(\frac{\sqrt{2\nu r}}{\ell}\righ
 
 \begin_deeper
 \begin_layout Itemize
-Spectral density: student-
+Spectral density:
+ student-
 \begin_inset Formula $t$
 \end_inset
 
@@ -954,12 +986,14 @@ Spectral density: student-
 \begin_inset Formula $\nu=1/2$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $S(s)$
 \end_inset
 
  is Cauchy.
- Continuous in q.m., no derivatives.
+ Continuous in q.m.,
+ no derivatives.
 \end_layout
 
 \begin_layout Itemize
@@ -967,7 +1001,8 @@ As
 \begin_inset Formula $\nu\rightarrow\infty$
 \end_inset
 
-, Matérn approaches SE.
+,
+ Matérn approaches SE.
 \end_layout
 
 \end_deeper
@@ -997,7 +1032,8 @@ Spectral mixture kernels
 
 \begin_deeper
 \begin_layout Itemize
-Bochner's theorem for stationary processes: 
+Bochner's theorem for stationary processes:
+ 
 \begin_inset Formula 
 \[
 k(t)=\int e^{2\pi ist}S(s)ds.
@@ -1230,7 +1266,8 @@ Periodic kernels
 \end_inset
 
 .
- Example: 
+ Example:
+ 
 \begin_inset Formula 
 \[
 k(x,x^{\prime})=\sigma_{f}^{2}\exp\left(-\frac{2\sin^{2}\left(\pi\left|x-x^{\prime}\right|/d\right)}{\ell^{2}}\right).
@@ -1253,7 +1290,8 @@ Product
 \end_layout
 
 \begin_layout Itemize
-Example: Locally periodic.
+Example:
+ Locally periodic.
  Two nearby peaks are more dependent than two distant peaks.
 \begin_inset Formula 
 \[
@@ -1353,7 +1391,8 @@ Automatic Relevance Determination
 ARD
 \series default
 \color inherit
-): 
+):
+ 
 \begin_inset Formula $\mathbf{M}=Diag(\ell_{1}^{-2},...,\ell_{D}^{-2})$
 \end_inset
 
@@ -1390,7 +1429,8 @@ ARD is a product of
 \begin_inset Formula $D$
 \end_inset
 
- one-dimensional kernels, one for each input variable
+ one-dimensional kernels,
+ one for each input variable
 \begin_inset Formula 
 \[
 k_{ARD}(\mathbf{x},\mathbf{x}^{\prime})=\prod_{d=1}^{D}k_{SE,\ell_{d}}(x_{d},x_{d}^{\prime})
@@ -1408,11 +1448,13 @@ k_{ARD}(\mathbf{x},\mathbf{x}^{\prime})=\prod_{d=1}^{D}k_{SE,\ell_{d}}(x_{d},x_{
 Factor kernels
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $M=\Lambda\Lambda^{T}+\Psi$
 \end_inset
 
-, where 
+,
+ where 
 \begin_inset Formula $\Lambda$
 \end_inset
 
@@ -1457,7 +1499,8 @@ Discrete covariates
 
 \begin_deeper
 \begin_layout Itemize
-Suppose: 
+Suppose:
+ 
 \begin_inset Formula $x_{1}$
 \end_inset
 
@@ -1469,7 +1512,8 @@ Suppose:
 \end_layout
 
 \begin_layout Itemize
-Linear regression: just use 
+Linear regression:
+ just use 
 \begin_inset Formula $x_{2}$
 \end_inset
 
@@ -1477,7 +1521,8 @@ Linear regression: just use
 \begin_inset Formula $x_{2}=0$
 \end_inset
 
- if male, 
+ if male,
+ 
 \begin_inset Formula $x_{2}=1$
 \end_inset
 
@@ -1501,7 +1546,8 @@ y=\begin{cases}
 \end_layout
 
 \begin_layout Itemize
-GP: add the 0-1 coded covariate and use ARD kernel:
+GP:
+ add the 0-1 coded covariate and use ARD kernel:
 \begin_inset Formula 
 \[
 \exp\left(-\frac{1}{2}\left(\frac{x_{1}-x_{1}^{\prime}}{\ell_{1}}\right)^{2}\right)\exp\left(-\frac{1}{2}\left(\frac{x_{2}-x_{2}^{\prime}}{\ell_{2}}\right)^{2}\right)
@@ -1562,7 +1608,8 @@ Large
 \begin_inset Formula $\ell_{2}$
 \end_inset
 
-: men and female are believed to have similar profiles with respect to 
+:
+ men and female are believed to have similar profiles with respect to 
 \begin_inset Formula $x_{1}$
 \end_inset
 
@@ -1574,8 +1621,8 @@ Small
 \begin_inset Formula $\ell_{2}$
 \end_inset
 
-: men and female are believed to have potentially very different profiles
- with respect to 
+:
+ men and female are believed to have potentially very different profiles with respect to 
 \begin_inset Formula $x_{1}$
 \end_inset
 
@@ -1599,7 +1646,8 @@ Categorical covariates with
 \begin_inset Formula $K$
 \end_inset
 
- levels: create 
+ levels:
+ create 
 \begin_inset Formula $K$
 \end_inset
 
@@ -1652,11 +1700,13 @@ Eigenvalue decomposition
 covariance matrix
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $K=V\Lambda V^{T}$
 \end_inset
 
-, or
+,
+ or
 \begin_inset Formula 
 \[
 K=\sum_{j=1}^{n}\lambda_{j}\boldsymbol{v}_{j}\boldsymbol{v}_{j}^{T},
@@ -1668,11 +1718,13 @@ where
 \begin_inset Formula $\Lambda=\mathrm{Diag}(\lambda_{1},...,\lambda_{n})$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $Kv_{j}=\lambda_{j}v_{j}$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\boldsymbol{v}_{j}^{T}\boldsymbol{v}_{j}=\delta_{ij}$
 \end_inset
 
@@ -1684,11 +1736,13 @@ Simulation from
 \begin_inset Formula $y\sim N(\mu,K)$
 \end_inset
 
-: 
+:
+ 
 \begin_inset Formula $y=\mu+V\Lambda^{1/2}\boldsymbol{z}$
 \end_inset
 
-, and 
+,
+ and 
 \begin_inset Formula $\boldsymbol{z}\sim N(0,I).$
 \end_inset
 
@@ -1752,7 +1806,8 @@ smoothness
 \end_layout
 
 \begin_layout Itemize
-Bochner: 
+Bochner:
+ 
 \begin_inset Formula $e^{2\pi i\mathbf{s}\cdot\boldsymbol{x}}$
 \end_inset
 
@@ -1795,7 +1850,8 @@ Karhunen-Loève decomposition
 Karhunen–Loève theorem
 \series default
 \color inherit
-: a stochastic process 
+:
+ a stochastic process 
 \begin_inset Formula $X_{t}$
 \end_inset
 
@@ -1855,7 +1911,8 @@ If
 \begin_inset Formula $X_{t}$
 \end_inset
 
- is a GP: the 
+ is a GP:
+ the 
 \begin_inset Formula $Z_{k}$
 \end_inset
 
@@ -2100,7 +2157,8 @@ Computations are now
 \begin_inset Formula $O(m^{2}n)$
 \end_inset
 
-, and often 
+,
+ and often 
 \begin_inset Formula $m\ll n$
 \end_inset
 
@@ -2130,7 +2188,8 @@ PIC
 \begin_inset Formula $\mathbf{f}=(\mathbf{f}_{1},...,\mathbf{f}_{k})$
 \end_inset
 
-, where each 
+,
+ where each 
 \begin_inset Formula $\mathbf{f}_{i}$
 \end_inset
 
@@ -2148,7 +2207,8 @@ Assume indep.
 \begin_inset Formula $\mathbf{u}$
 \end_inset
 
-, but full dependence with blocks.
+,
+ but full dependence with blocks.
 \end_layout
 
 \begin_layout Itemize
@@ -2204,7 +2264,8 @@ Classification with logistic regression
 
 \series bold
 \color blue
-Classification: binary response
+Classification:
+ binary response
 \series default
 \color inherit
  
@@ -2219,7 +2280,8 @@ Classification: binary response
 \end_layout
 
 \begin_layout Itemize
-Example: linear logistic regression
+Example:
+ linear logistic regression
 \begin_inset Formula 
 \[
 Pr(y=1|\mathbf{x})=\lambda(\mathbf{x}^{T}\mathbf{w})
@@ -2318,7 +2380,8 @@ Obvious
 GP extension
 \series default
 \color inherit
- of logistic regression: replace 
+ of logistic regression:
+ replace 
 \begin_inset Formula $\mathbf{x}^{T}\mathbf{w}$
 \end_inset
 
@@ -2358,7 +2421,8 @@ Flexible decision boundaries
 (non-parametric
 \series default
 \color inherit
-, GP-style).
+,
+ GP-style).
 \end_layout
 
 \end_deeper
@@ -2458,7 +2522,8 @@ Pr(y_{*}=+1|\mathbf{X},\mathbf{y},\mathbf{x}_{*})=\int\sigma(f_{*})p(f_{*}|\math
 \begin_inset Formula $\sigma(f_{*})$
 \end_inset
 
- is some sigmoidal function (logistic, normal CDF...)
+ is some sigmoidal function (logistic,
+ normal CDF...)
 \end_layout
 
 \begin_layout Itemize
@@ -2583,7 +2648,8 @@ Approximates
 \begin_inset Formula $N(\hat{\mathbf{f}},\mathbf{A}^{-1})$
 \end_inset
 
-, where 
+,
+ where 
 \end_layout
 
 \begin_deeper
@@ -2860,7 +2926,8 @@ For each
 \begin_inset Formula $\mathbf{f}^{(i)}$
 \end_inset
 
-, 
+,
+ 
 \series bold
 \color blue
 sample the test posterior
@@ -2908,7 +2975,8 @@ For each
 \begin_inset Formula $\mathbf{f}_{*}^{(i)}$
 \end_inset
 
-, 
+,
+ 
 \series bold
 \color blue
 sample a prediction
@@ -2967,7 +3035,8 @@ Iris data - sepal - SE kernel with ARD
 
 \begin_layout Standard
 \align center
-Laplace: 
+Laplace:
+ 
 \begin_inset Formula $\hat{\ell}_{1}=1.7214,\hat{\ell}_{2}=185.5040,\sigma_{f}=1.4361$
 \end_inset
 
@@ -2976,7 +3045,8 @@ Laplace:
 
 \begin_layout Standard
 \align center
-EP: 
+EP:
+ 
 \begin_inset Formula $\hat{\ell}_{1}=1.7189,\hat{\ell}_{2}=55.5003,\sigma_{f}=1.4343$
 \end_inset
 
@@ -3043,7 +3113,8 @@ Iris data - petal - SE kernel with ARD
 
 \begin_layout Standard
 \align center
-Laplace: 
+Laplace:
+ 
 \begin_inset Formula $\hat{\ell}_{1}=1.7606,\hat{\ell}_{2}=0.8804,\sigma_{f}=4.9129$
 \end_inset
 
@@ -3052,7 +3123,8 @@ Laplace:
 
 \begin_layout Standard
 \align center
-EP: 
+EP:
+ 
 \begin_inset Formula $\hat{\ell}_{1}=2.1139,\hat{\ell}_{2}=1.0720,\sigma_{f}=5.3369$
 \end_inset
 
@@ -3283,7 +3355,8 @@ Toy data 1 - SE kernel with ARD
 
 \begin_layout Standard
 \align center
-EP: 
+EP:
+ 
 \begin_inset Formula $\hat{\ell}_{1}=2.4503,\hat{\ell}_{2}=721.7405,\sigma_{f}=4.7540$
 \end_inset
 
@@ -3350,7 +3423,8 @@ Toy data 2 - SE kernel with ARD
 
 \begin_layout Standard
 \align center
-EP: 
+EP:
+ 
 \begin_inset Formula $\hat{\ell}_{1}=8.3831,\hat{\ell}_{2}=1.9587,\sigma_{f}=4.5483$
 \end_inset
 
@@ -3417,7 +3491,8 @@ Toy data 3 - SE kernel with ARD
 
 \begin_layout Standard
 \align center
-Laplace: 
+Laplace:
+ 
 \begin_inset Formula $\hat{\ell}_{1}=0.7726,\hat{\ell}_{2}=0.6974,\sigma_{f}=11.7854$
 \end_inset
 
@@ -3768,7 +3843,8 @@ When precision of
 \begin_inset Formula $\hat{f}(\mathbf{x})$
 \end_inset
 
- is controlled by user: BOOP.
+ is controlled by user:
+ BOOP.
  
 \begin_inset Foot
 status open
@@ -3777,8 +3853,7 @@ status open
 
 \size tiny
 Gustafsson et al (2020).
- Bayesian Optimization of Hyperparameters when the Marginal Likelihood is
- Estimated by MCMC.
+ Bayesian Optimization of Hyperparameters when the Marginal Likelihood is Estimated by MCMC.
  On arXiv next week ...
 \end_layout
 
