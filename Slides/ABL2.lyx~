@@ -25,8 +25,9 @@
 
 \date{} % Date, can be changed to a custom date
 
-\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}\hspace*{3.5cm}~%
-   \includegraphics[width=2cm]{LiU_secondary_1_black.png}
+\titlegraphic{
+\vspace{-0.6cm}
+\includegraphics[width=1.5cm]{../Misc/LogoBlueJustRing.jpg}\break
 }
 
 
@@ -42,6 +43,23 @@
 \usepackage{wasysym}
 \SetKwInput{KwInput}{Input}
 \SetKwInput{KwOutput}{Output}
+
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\setbeamertemplate{footline}
+{%
+  \hfill%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}\vskip2pt
+}
 \end_preamble
 \options xcolor=svgnames, handout
 \use_default_options false
@@ -69,6 +87,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -271,13 +291,13 @@ weakly stationary
 \end_inset
 
  is a function of 
-\begin_inset Formula $\mathbf{t\textnormal{=}x}-\mathbf{x}'$
+\begin_inset Formula $\mathbf{\boldsymbol{t}=x}-\mathbf{x}'$
 \end_inset
 
  
 \begin_inset Formula 
 \[
-k(\mathbf{x},\mathbf{x}')=Cov\left[f(\mathbf{x}),f(\mathbf{x}')\right]=k(\mathbf{t}).
+k(\mathbf{x},\mathbf{x}')=Cov\left[f(\mathbf{x}),f(\mathbf{x}')\right]=k(\boldsymbol{t}).
 \]
 
 \end_inset
@@ -361,28 +381,6 @@ iff
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Itemize
-A little more is required to guarantee 
-\series bold
-\color blue
-continuous sample paths
-\series default
-\color inherit
- (continuous 
-\begin_inset Formula $f(\mathbf{x}+t,\omega)$
-\end_inset
-
- for any 
-\begin_inset Formula $\mathbf{x}\in\mathbb{R}^{D}$
-\end_inset
-
- and 
-\begin_inset Formula $\omega\in\Omega$
-\end_inset
-
-).
 \end_layout
 
 \end_deeper
@@ -1143,7 +1141,7 @@ This is a GP with kernel
 
 \begin_inset Formula 
 \[
-k(x_{p},x_{q})=\mathrm{cov}\left(\sum_{c=1}^{N}w_{c}\phi_{c}(x_{p}),\sum_{c=1}^{N}w_{c}\phi_{c}(x_{q})\right)=\frac{\sigma_{p}^{2}}{N}\sum_{c=1}^{N}\phi_{c}(x_{p})\phi_{c}(x_{p})\text{\ensuremath{\rightarrow}}\sigma_{p}^{2}\int_{c_{\min}}^{c_{\max}}\phi_{c}(x_{p})\phi_{c}(x_{p})dc
+k(x_{p},x_{q})=\mathrm{cov}\left(\sum_{c=1}^{N}w_{c}\phi_{c}(x_{p}),\sum_{c=1}^{N}w_{c}\phi_{c}(x_{q})\right)=\frac{\sigma_{p}^{2}}{N}\sum_{c=1}^{N}\phi_{c}(x_{p})\phi_{c}(x_{q})\text{\ensuremath{\rightarrow}}\sigma_{p}^{2}\int_{c_{\min}}^{c_{\max}}\phi_{c}(x_{p})\phi_{c}(x_{q})dc
 \]
 
 \end_inset
@@ -1175,7 +1173,7 @@ Letting
 
 \begin_inset Formula 
 \[
-k(x_{p},x_{q})=\sigma_{p}^{2}\int_{-\infty}^{\infty}\exp\left(-\frac{(x_{p}-c)^{2}}{2\ell^{2}}\right)\exp\left(-\frac{(x_{c}-c)^{2}}{2\ell^{2}}\right)dc=\sqrt{\pi}\ell\sigma_{p}^{2}\exp\left(-\frac{(x_{p}-x_{q})^{2}}{2(\sqrt{2}\ell)^{2}}\right)
+k(x_{p},x_{q})=\sigma_{p}^{2}\int_{-\infty}^{\infty}\exp\left(-\frac{(x_{p}-c)^{2}}{2\ell^{2}}\right)\exp\left(-\frac{(x_{q}-c)^{2}}{2\ell^{2}}\right)dc=\sqrt{\pi}\ell\sigma_{p}^{2}\exp\left(-\frac{(x_{p}-x_{q})^{2}}{2(\sqrt{2}\ell)^{2}}\right)
 \]
 
 \end_inset
@@ -1293,6 +1291,8 @@ Product
 Example:
  Locally periodic.
  Two nearby peaks are more dependent than two distant peaks.
+\size small
+
 \begin_inset Formula 
 \[
 k(x,x^{\prime})=\sigma_{f}^{2}\exp\left(-\frac{2\sin^{2}\left(\pi\left|x-x^{\prime}\right|^{2}/d\right)}{\ell^{2}}\right)\times\exp\left(-\frac{1}{2}\frac{\left|x-x^{\prime}\right|^{2}}{\ell^{2}}\right)
@@ -2457,9 +2457,9 @@ Squashing a GP function
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvML/GaussianProcess/Slides/Graphics/SquashingGP.png
+	filename /home/mv/Dropbox/BayesBook/Figs/GPLogisticSquash.pdf
 	lyxscale 30
-	scale 50
+	scale 45
 
 \end_inset
 

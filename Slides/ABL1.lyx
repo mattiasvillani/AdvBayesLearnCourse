@@ -726,9 +726,9 @@ A prior on
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/AdvML/GaussianProcess/Slides/Graphics/PolynomialPrior.png
+	filename /home/mv/Dropbox/BayesBook/Figs/PriorFunctions.pdf
 	lyxscale 30
-	scale 50
+	scale 37
 
 \end_inset
 
@@ -800,9 +800,9 @@ an unknown parameter for every
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/AdvML/GaussianProcess/Slides/Graphics/OneParameterAtEveryPoint.png
-	lyxscale 20
-	scale 30
+	filename /home/mv/Dropbox/BayesBook/Figs/GP_oneparam_every_point.pdf
+	lyxscale 50
+	scale 35
 
 \end_inset
 
@@ -1102,6 +1102,53 @@ any
 \end_inset
 
 .
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Correlation decays with input distance
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/CorrSqrExpKernel.pdf
+	scale 50
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -2342,7 +2389,7 @@ Example - LIDAR data
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/LIDARData.png
+	filename /home/mv/Dropbox/BayesBook/Figs/LidarData.pdf
 	scale 42
 
 \end_inset
@@ -2366,19 +2413,7 @@ status open
 
 \series bold
 \color orange
-Matern32 
-\begin_inset Formula $\ell=0.5,\sigma$
-\end_inset
-
-
-\begin_inset Formula $_{f}=0.$
-\end_inset
-
-5,
-\begin_inset Formula $\sigma_{n}=0.05$
-\end_inset
-
-
+Squared Exponential
 \end_layout
 
 \end_inset
@@ -2394,15 +2429,8 @@ Matern32
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/CorrLIDARl05.png
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/LIDARl05_sf05_sn005.png
-	scale 35
+	filename /home/mv/Dropbox/BayesBook/Figs/GPLidarSquaredExp.pdf
+	scale 38
 
 \end_inset
 
@@ -2425,19 +2453,7 @@ status open
 
 \series bold
 \color orange
-SquaredExp 
-\begin_inset Formula $\ell=0.2,\sigma$
-\end_inset
-
-
-\begin_inset Formula $_{f}=0.$
-\end_inset
-
-5,
-\begin_inset Formula $\sigma_{n}=0.05$
-\end_inset
-
-
+Matern32
 \end_layout
 
 \end_inset
@@ -2453,66 +2469,8 @@ SquaredExp
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/CorrLIDARl02.png
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/LIDARSquaredExpl02_sf05_sn005.png
-	scale 35
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Matern32 vs SquaredExp for 
-\begin_inset Formula $\ell=0.2$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/LIDARl02_sf05_sn005.png
-	scale 35
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/LIDARSquaredExpl02_sf05_sn005.png
-	scale 35
+	filename /home/mv/Dropbox/BayesBook/Figs/GPLidarMatern32.pdf
+	scale 38
 
 \end_inset
 
@@ -2683,15 +2641,16 @@ status open
 \series bold
 \color orange
 Matern32 
-\begin_inset Formula $\ell_{opt}=0.61,\sigma$
+\begin_inset Formula $\hat{\ell}=0.661,\hat{\sigma}$
 \end_inset
 
 
-\begin_inset Formula $_{f,opt}=0.44$
+\begin_inset Formula $_{f}=0.441$
 \end_inset
 
 ,
-\begin_inset Formula $\sigma_{n}=0.05$
+ 
+\begin_inset Formula $\hat{\sigma}_{n}=0.079$
 \end_inset
 
 
@@ -2710,52 +2669,7 @@ Matern32
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/LIDARopt.png
-	scale 45
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-log marginal likelihood surface 
-\begin_inset Formula $\sigma_{n}=0.05$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/GPhyper.png
-	lyxscale 40
+	filename /home/mv/Dropbox/BayesBook/Figs/GPLidarMatern32EB.pdf
 	scale 50
 
 \end_inset
@@ -2780,7 +2694,7 @@ status open
 \series bold
 \color orange
 log marginal likelihood surface 
-\begin_inset Formula $\sigma_{n}=0.05$
+\begin_inset Formula $\sigma_{n}=0.079$
 \end_inset
 
 
@@ -2799,8 +2713,7 @@ log marginal likelihood surface
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/GPhyper2.png
-	lyxscale 40
+	filename /home/mv/Dropbox/BayesBook/Figs/GPLidarMargLike.pdf
 	scale 50
 
 \end_inset
@@ -2824,19 +2737,7 @@ status open
 
 \series bold
 \color orange
-Matern32 
-\begin_inset Formula $\ell=0.9,\sigma$
-\end_inset
-
-
-\begin_inset Formula $_{f}=0.70,$
-\end_inset
-
-
-\begin_inset Formula $\sigma_{n}=0.05$
-\end_inset
-
-
+Posterior sampling with HMC
 \end_layout
 
 \end_inset
@@ -2852,107 +2753,8 @@ Matern32
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/LIDARell09sigmaf0.7.png
-	lyxscale 40
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-log marginal likelihood surface 
-\begin_inset Formula $\sigma_{n}=0.05$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/GPhyper3.png
-	lyxscale 40
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Matern32 
-\begin_inset Formula $\ell=0.3,\sigma$
-\end_inset
-
-
-\begin_inset Formula $_{f}=0.$
-\end_inset
-
-4,
-\begin_inset Formula $\sigma_{n}=0.05$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename /home/mv/Dropbox/Teaching/WinterConfHemavan2019/Slides/figs/LIDARell03sigmaf04.png
-	lyxscale 40
-	scale 50
+	filename /home/mv/Dropbox/BayesBook/Figs/GPLidarPosteriorHMC.pdf
+	scale 40
 
 \end_inset
 
