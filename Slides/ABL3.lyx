@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,8 +25,9 @@
 
 \date{} % Date, can be changed to a custom date
 
-\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}\hspace*{3.5cm}~%
-   \includegraphics[width=2cm]{LiU_secondary_1_black.png}
+\titlegraphic{
+\vspace{-0.6cm}
+\includegraphics[width=1.5cm]{../Misc/LogoBlueJustRing.jpg}\break
 }
 
 
@@ -42,18 +43,31 @@
 \usepackage{wasysym}
 \SetKwInput{KwInput}{Input}
 \SetKwInput{KwOutput}{Output}
-\usepackage{fontawesome}
-%\faSmileO (happy)
-%\faMehO (indifferent)
-%\faFrownO (sad)
+
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\setbeamertemplate{footline}
+{%
+  \hfill%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}\vskip2pt
+}
 \end_preamble
 \options xcolor=svgnames, handout
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "palatino" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -61,7 +75,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -71,6 +87,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -95,7 +113,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -111,11 +131,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -125,15 +150,41 @@
 \size largest
 \color orange
 Advanced Bayesian Learning
-\size default
+\begin_inset Newline newline
+\end_inset
 
+
+\size default
+Mixture models and Bayesian nonparametrics
+\size largest
+
+\begin_inset Newline newline
+\end_inset
+
+
+\size large
+Lecture 3
+\size default
+ 
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 \color gray
-Bayesian Nonparametrics
+STM course
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.7cm}
+\backslash
+insertframenumber/
+\backslash
+inserttotalframenumber
 \end_layout
 
 \end_inset
@@ -141,10 +192,9 @@ Bayesian Nonparametrics
 
 \end_layout
 
-\begin_layout Subtitle
+\end_inset
 
-\color orange
-Lecture 3 - Dirichlet Process Priors
+
 \end_layout
 
 \begin_layout Author
@@ -156,7 +206,7 @@ status open
 
 \series bold
 \color gray
-Advanced Bayesian Learning
+Mattias Villani
 \end_layout
 
 \end_inset
@@ -173,31 +223,21 @@ Department of Statistics
 
 Stockholm University
 \series default
- 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
-
-\end_inset
-
- Department of Computer and Information Science
-\begin_inset Newline newline
-\end_inset
-
-Linköping University 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Linköping and Stockholm University
+Stockholm University
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -232,7 +272,8 @@ Topic overview
 
 \begin_deeper
 \begin_layout Itemize
-Reminder: 
+Reminder:
+ 
 \series bold
 \color blue
 Multinomial data
@@ -280,7 +321,8 @@ Dirichlet process
 \end_layout
 
 \begin_layout Itemize
-Beyond DP: 
+Beyond DP:
+ 
 \series bold
 \color blue
 Pitman-Yor
@@ -341,16 +383,6 @@ MCMC
 
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-\color blue
-Dependent Dirichlet Process
-\series default
-\color inherit
- constructions
-\end_layout
-
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator parbreak
@@ -381,13 +413,21 @@ The Dirichlet distribution
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\theta\sim\mathrm{Dirichlet}(a_{1},...,a_{k})$
+\begin_inset Formula $\boldsymbol{\theta}\sim\mathrm{Dirichlet}(\boldsymbol{\alpha})$
 \end_inset
 
- with density
+ with density (
+\series bold
+
+\begin_inset Formula $\boldsymbol{\alpha}=(\alpha_{1},\ldots,\alpha_{K})$
+\end_inset
+
+
+\series default
+)
 \begin_inset Formula 
 \[
-p(\theta_{1},\theta_{2},...,\theta_{k})\propto\prod_{j=1}^{k}\theta_{j}^{a_{j}-1}.
+p(\theta_{1},\theta_{2},...,\theta_{k})\propto\prod_{j=1}^{K}\theta_{j}^{\alpha_{j}-1}.
 \]
 
 \end_inset
@@ -409,7 +449,7 @@ Define
 \noun off
 \color none
 
-\begin_inset Formula $\alpha=\sum_{j=1}^{k}a_{j}$
+\begin_inset Formula $\alpha_{0}=\sum_{j=1}^{K}\alpha_{j}$
 \end_inset
 
 
@@ -425,7 +465,7 @@ Define
 \noun default
 \color inherit
  and 
-\begin_inset Formula $\pi_{0}=a/\alpha$
+\begin_inset Formula $\bar{\boldsymbol{\alpha}}=\boldsymbol{\alpha}/\alpha_{0}$
 \end_inset
 
 .
@@ -449,13 +489,13 @@ variance
 \series default
 \color inherit
  of 
-\begin_inset Formula $\mathrm{Dirichlet}(a_{1},...,a_{k})$
+\begin_inset Formula $\mathrm{Dirichlet}(\alpha_{1},...,\alpha_{K})$
 \end_inset
 
 
 \begin_inset Formula 
 \begin{align*}
-\mathrm{E}(\theta_{j}) & =\frac{a_{j}}{\alpha}=\pi_{0j}\qquad\quad\mathrm{V}(\theta_{j})=\frac{\mathrm{E}(\theta_{j})\left[1-\mathrm{E}(\theta_{j})\right]}{1+\alpha}
+\mathbb{E}(\theta_{j}) & =\frac{\alpha_{j}}{\alpha_{0}}=\bar{\alpha}_{j}\qquad\quad\mathrm{\mathbb{V}}(\theta_{j})=\frac{\mathbb{E}(\theta_{j})\left[1-\mathbb{E}(\theta_{j})\right]}{1+\alpha_{0}}
 \end{align*}
 
 \end_inset
@@ -477,7 +517,7 @@ Note that
 \noun off
 \color none
 
-\begin_inset Formula $\alpha$
+\begin_inset Formula $\alpha_{0}$
 \end_inset
 
 
@@ -499,10 +539,86 @@ precision
 \series default
 \color inherit
  parameter (large 
-\begin_inset Formula $\alpha$
+\begin_inset Formula $\alpha_{0}$
 \end_inset
 
-, low variance).
+,
+ low variance).
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can also write 
+\begin_inset Formula $\boldsymbol{\theta}\sim\mathrm{Dirichlet}(\alpha_{0}\bar{\boldsymbol{\alpha}})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Interactive - Dirichlet distribution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "1pt"
+separation "1pt"
+shadowsize "4pt"
+framecolor "orange"
+backgroundcolor "white"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset href
+LatexCommand href
+name "\\includegraphics[width=0.7\\textwidth]{Figures/dirichlet_widget.png}"
+target "https://observablehq.com/@mattiasvillani/dirichlet-distribution"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -541,16 +657,18 @@ Conjugate analysis for multinomial data
 Data
 \series default
 \color inherit
-: 
-\begin_inset Formula $y=(n_{1},...,n_{k})$
+:
+ 
+\begin_inset Formula $\boldsymbol{n}=(n_{1},...,n_{K})$
 \end_inset
 
-, where 
-\begin_inset Formula $n_{j}=$
+,
+ where 
+\begin_inset Formula $n_{k}=$
 \end_inset
 
  # items in category 
-\begin_inset Formula $j$
+\begin_inset Formula $k$
 \end_inset
 
 .
@@ -566,7 +684,7 @@ Prior
  
 \begin_inset Formula 
 \[
-\theta\sim\mathrm{Dirichlet}(a_{1},...,a_{k})
+\boldsymbol{\theta}\sim\mathrm{Dirichlet}(\boldsymbol{\alpha})
 \]
 
 \end_inset
@@ -584,7 +702,7 @@ Likelihood
 
 \begin_inset Formula 
 \[
-p(n_{1},n_{2},...,n_{k}|\theta_{1},\theta_{2},...,\theta_{k})\propto\prod_{j=1}^{k}\theta_{j}^{n_{j}}
+p(n_{1},n_{2},...,n_{K}|\theta_{1},\theta_{2},...,\theta_{K})\propto\prod_{k=1}^{K}\theta_{k}^{n_{k}}
 \]
 
 \end_inset
@@ -614,7 +732,7 @@ Posterior
 
 \begin_inset Formula 
 \[
-\theta|n_{1},...,n_{k}\sim\mathrm{Dirichlet}(n_{1}+a_{1},...,n_{k}+a_{k})
+\boldsymbol{\theta}|\boldsymbol{n}\sim\mathrm{Dirichlet}(n_{1}+\alpha_{1},...,n_{K}+\alpha_{K})=\mathrm{Dirichlet}(\boldsymbol{n}+\boldsymbol{\alpha})
 \]
 
 \end_inset
@@ -632,8 +750,83 @@ Posterior mean
 
 \begin_inset Formula 
 \[
-E(\theta_{j}|n_{1},...,n_{k})=\frac{n_{j}+a_{j}}{n+\alpha}
+\mathbb{E}(\boldsymbol{\theta}|\boldsymbol{n})=\frac{\boldsymbol{n}+\boldsymbol{\alpha}}{n+\alpha_{0}}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alternatively
+\begin_inset Formula 
+\[
+\boldsymbol{\theta}|\boldsymbol{n}\sim\mathrm{Dirichlet}\left((n+\alpha_{0})\frac{\boldsymbol{n}+\boldsymbol{\alpha}}{n+\alpha_{0}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Interactive - Multinomial model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "1pt"
+separation "1pt"
+shadowsize "4pt"
+framecolor "orange"
+backgroundcolor "white"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset href
+LatexCommand href
+name "\\includegraphics[width=0.7\\textwidth]{Figures/multinomial_widget.png}"
+target "https://observablehq.com/@mattiasvillani/multinomial-dirichlet"
+literal "true"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -676,37 +869,32 @@ Bayesian histograms
 Partition
 \series default
 \color inherit
- the data space 
-\begin_inset Formula $\xi_{0}<\xi_{1}<...<\xi_{k}$
-\end_inset
-
- in 
-\begin_inset Formula $k$
-\end_inset
-
- 
+ the data space into disjoint intervals (
 \series bold
-\color blue
 bins
 \series default
-\color inherit
+):
  
-\begin_inset Formula $B_{h}$
+\begin_inset Formula $B_{1},B_{2}\ldots,B_{K}$
+\end_inset
+
+.
+ Width of 
+\begin_inset Formula $B_{k}$
+\end_inset
+
+ is 
+\begin_inset Formula $\Delta_{k}$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Itemize
-Probability model for 
-\series bold
-\color blue
-histograms
-\color inherit
- 
+The usual histogram estimate
 \begin_inset Formula 
 \[
-f(y)=\sum_{h=1}^{k}1_{\xi_{h-1}<y\leq\xi_{h}}\frac{\pi_{h}}{(\xi_{h}-\xi_{h-1})}
+\hat{p}(x)=\frac{n_{k}/n}{\Delta_{k}}
 \]
 
 \end_inset
@@ -715,19 +903,38 @@ f(y)=\sum_{h=1}^{k}1_{\xi_{h-1}<y\leq\xi_{h}}\frac{\pi_{h}}{(\xi_{h}-\xi_{h-1})}
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $n_{h}=$
+
+\series bold
+\color blue
+Probability model
+\series default
+\color inherit
+ for 
+\series bold
+\color blue
+histograms
+\color inherit
+ 
+\begin_inset Formula 
+\[
+p(x)=\sum_{k=1}^{K}\frac{\omega_{k}}{\Delta_{k}}1(x\in B_{k})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $n_{k}=$
 \end_inset
 
  number of obs in 
-\begin_inset Formula $B_{h}$
-\end_inset
-
-: 
-\begin_inset Formula $\xi_{h-1}<y\leq\xi_{h}$
+\begin_inset Formula $B_{k}$
 \end_inset
 
 .
- Multinomial.
+ Multinomial data.
 \begin_inset VSpace medskip
 \end_inset
 
@@ -742,13 +949,13 @@ Prior
 \series default
 \color inherit
  on 
-\begin_inset Formula $\pi=(\pi_{1},...,\pi_{k})$
+\begin_inset Formula $\boldsymbol{\omega}=(\omega_{1},...,\omega_{K})$
 \end_inset
 
 
 \begin_inset Formula 
 \[
-\pi\sim Dirichlet(a_{1},...,a_{k})
+\boldsymbol{\theta}\sim\mathrm{Dirichlet}(\boldsymbol{\alpha})=\mathrm{Dirichlet}(\alpha_{0}\bar{\boldsymbol{\alpha}})
 \]
 
 \end_inset
@@ -778,7 +985,7 @@ Posterior
 
 \begin_inset Formula 
 \[
-\pi|n_{1},...,n_{k}\sim\mathrm{Dirichlet}(n_{1}+a_{1},...,n_{k}+a_{k})
+\boldsymbol{\omega}|\boldsymbol{n}\sim\mathrm{Dirichlet}\Big((n+\alpha_{0})\frac{\boldsymbol{n}+\boldsymbol{\alpha}}{n+\alpha_{0}}\Big)
 \]
 
 \end_inset
@@ -786,44 +993,8 @@ Posterior
 
 \end_layout
 
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Illustration of Bayesian histograms
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/bayesianhist.eps
-	scale 50
-
-\end_inset
-
-
+\begin_layout Itemize
+total counts = data counts + prior counts.
 \end_layout
 
 \end_deeper
@@ -859,7 +1030,7 @@ Bayesian histograms
 
 \series bold
 \color blue
-Posterior
+Prior
 \series default
 \color inherit
  
@@ -877,39 +1048,11 @@ Posterior
 
 \begin_inset Formula 
 \[
-\pi|n_{1},...,n_{k}\sim\mathrm{Dirichlet}(n_{1}+a_{1},...,n_{k}+a_{k})
+\mathrm{Dirichlet}(\alpha_{0}\bar{\boldsymbol{\alpha}})
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-Specify 
-\begin_inset Formula $a_{1},..,a_{k}$
-\end_inset
-
- through 
-\begin_inset Formula $\pi_{0}=(\pi_{01},...,\pi_{0k})$
-\end_inset
-
- and 
-\begin_inset Formula $\alpha=\sum_{j=1}^{k}a_{j}$
-\end_inset
-
-.
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
 
 \begin_inset VSpace medskip
 \end_inset
@@ -918,8 +1061,8 @@ Specify
 \end_layout
 
 \begin_layout Itemize
-Specify 
-\begin_inset Formula $\pi_{0}$
+Specify prior mean 
+\begin_inset Formula $\bar{\boldsymbol{\alpha}}$
 \end_inset
 
  from a 
@@ -932,20 +1075,23 @@ base distribution
 \begin_inset Formula $P_{0}$
 \end_inset
 
-.
- For the 
-\begin_inset Formula $h$
-\end_inset
-
-th bin:
+:
 \begin_inset Formula 
 \[
-\pi_{0h}=P_{0}(B_{h})=\mathrm{Pr}(\xi_{h-1}<y\leq\xi_{h}).
+\bar{\boldsymbol{\alpha}}_{k}=P_{0}(B_{k})=\mathrm{Pr}(x\in B_{k}).
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+Specify the strength of prior beliefs by 
+\begin_inset Formula $\alpha_{0}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -974,22 +1120,6 @@ Properties of Dirichlet prior:
 \series bold
 \color blue
 easy computations 
-\series default
-\color inherit
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-faSmileO
-\end_layout
-
-\end_inset
-
-
 \family roman
 \series medium
 \shape up
@@ -1016,28 +1146,19 @@ easy to specify hyperparameter
 \series default
 \color inherit
 
-\begin_inset Formula $\pi_{0}$
+\begin_inset Formula $\bar{\boldsymbol{\alpha}}$
 \end_inset
 
  and 
 \begin_inset Formula $\alpha$
 \end_inset
 
-.
- 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-faSmileO
-\end_layout
-
+\begin_inset Formula $_{0}$
 \end_inset
 
-
+.
+ 
 \family roman
 \series medium
 \shape up
@@ -1063,21 +1184,9 @@ faSmileO
 no smoothness
 \series default
 \color inherit
-: adjacent bin are negatively correlated.
+:
+ adjacent bin are negatively correlated.
  
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-faFrownO
-\end_layout
-
-\end_inset
-
-
 \family roman
 \series medium
 \shape up
@@ -1111,19 +1220,6 @@ bins
 \color inherit
 .
  
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-faFrownO
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -1143,7 +1239,7 @@ status open
 
 \series bold
 \color orange
-Bayesian histogram example
+Simulation from histogram prior
 \end_layout
 
 \end_inset
@@ -1159,26 +1255,8 @@ Bayesian histogram example
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/Data.eps
-	scale 25
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/Prior.eps
-	scale 25
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha10.eps
-	scale 25
+	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramsDrawsDelta1_SamePlot.pdf
+	scale 35
 
 \end_inset
 
@@ -1201,11 +1279,7 @@ status open
 
 \series bold
 \color orange
-Larger 
-\begin_inset Formula $\alpha$
-\end_inset
-
- give higher weight to prior
+Simulation from histogram prior - bin size
 \end_layout
 
 \end_inset
@@ -1219,37 +1293,153 @@ Larger
 
 \begin_deeper
 \begin_layout Standard
-\noindent
-\align center
-\begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha1.eps
-	scale 25
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha10.eps
-	scale 25
-
+\begin_inset Separator latexpar
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\noindent
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha100.eps
-	scale 25
+	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramsDrawsFineGrids.pdf
+	scale 37
 
 \end_inset
 
 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Example with 
+\begin_inset Formula $n=50$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{0}=10$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha1000.eps
-	scale 25
+	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramBimodalDataAlpha10.pdf
+	scale 26
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Example with 
+\begin_inset Formula $n=50$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{0}=50$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramBimodalDataAlpha50.pdf
+	scale 26
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Example with 
+\begin_inset Formula $n=50$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{0}=200$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramBimodalDataAlpha200.pdf
+	scale 26
 
 \end_inset
 
@@ -1288,14 +1478,7 @@ Histograms are sensitive to the choice of bins
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha1.eps
-	scale 25
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha1NewBins.eps
+	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramBimodalDataAlpha10.pdf
 	scale 25
 
 \end_inset
@@ -1306,14 +1489,7 @@ Histograms are sensitive to the choice of bins
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha10.eps
-	scale 25
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/PosteriorAlpha10NewBins.eps
+	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramBimodalDataAlpha10Delta1.pdf
 	scale 25
 
 \end_inset
@@ -1379,7 +1555,7 @@ distribution over distributions
 :
 \begin_inset Formula 
 \[
-(P(B_{1}),...,P(B_{k}))\sim\mathrm{Dirichlet}(\alpha P_{0}(B_{1}),...,\alpha P_{0}(B_{k}))
+(P(B_{1}),...,P(B_{k}))\sim\mathrm{Dirichlet}(\alpha_{0}P_{0}(B_{1}),...,\alpha_{0}P_{0}(B_{k}))
 \]
 
 \end_inset
@@ -1443,7 +1619,7 @@ Dirichlet process
 \series default
 \color inherit
  
-\begin_inset Formula $P\sim\mathrm{DP}(\alpha\cdot P_{0})$
+\begin_inset Formula $P\sim\mathrm{DP}(\alpha_{0}\cdot P_{0})$
 \end_inset
 
  with 
@@ -1459,7 +1635,7 @@ base measure
  iff 
 \begin_inset Formula 
 \[
-(P(B_{1}),...,P(B_{k}))\sim\mathrm{Dirichlet}(\alpha P_{0}(B_{1}),...,\alpha P_{0}(B_{k}))
+(P(B_{1}),...,P(B_{k}))\sim\mathrm{Dirichlet}(\alpha_{0}P_{0}(B_{1}),...,\alpha_{0}P_{0}(B_{k}))
 \]
 
 \end_inset
@@ -1502,13 +1678,13 @@ The Dirichlet process - properties
 \begin_deeper
 \begin_layout Itemize
 If 
-\begin_inset Formula $P\sim\mathrm{DP}(\alpha P_{0})$
+\begin_inset Formula $P\sim\mathrm{DP}(\alpha_{0}P_{0})$
 \end_inset
 
  then
 \begin_inset Formula 
 \[
-P(B)\sim\mathrm{Beta}\left[\alpha P_{0}(B),\alpha\left(1-P_{0}(B)\right)\right],\;\text{for any }B\in\mathcal{B}
+P(B)\sim\mathrm{Beta}\left[\alpha_{0}P_{0}(B),\alpha_{0}\left(1-P_{0}(B)\right)\right],\;\text{for any }B\in\mathcal{B}
 \]
 
 \end_inset
@@ -1516,7 +1692,7 @@ P(B)\sim\mathrm{Beta}\left[\alpha P_{0}(B),\alpha\left(1-P_{0}(B)\right)\right],
 
 \begin_inset Formula 
 \[
-E\left[P(B)\right]=P_{0}(B)
+\mathbb{E}\left[P(B)\right]=P_{0}(B)
 \]
 
 \end_inset
@@ -1524,7 +1700,7 @@ E\left[P(B)\right]=P_{0}(B)
 
 \begin_inset Formula 
 \[
-\mathrm{Var}\left[P(B)\right]=P_{0}(B)\left[1-P_{0}(B)\right]/(1+\alpha)
+\mathrm{\mathbb{V}}\left[P(B)\right]=P_{0}(B)\left[1-P_{0}(B)\right]/(1+\alpha_{0})
 \]
 
 \end_inset
@@ -1542,7 +1718,7 @@ Model
 
 \begin_inset Formula 
 \[
-y_{i}|P\overset{iid}{\sim}P\;,\;\text{for }i=1,...,n
+y_{i}|P\overset{\mathrm{iid}}{\sim}P\;,\;\text{for }i=1,...,n
 \]
 
 \end_inset
@@ -1560,7 +1736,7 @@ Prior
 
 \begin_inset Formula 
 \[
-P\sim\mathrm{DP}(\alpha P_{0})
+P\sim\mathrm{DP}(\alpha_{0}P_{0})
 \]
 
 \end_inset
@@ -1581,15 +1757,56 @@ Posterior
 finite partition
 \series default
 \color inherit
-, 
+,
+ 
 \begin_inset Formula $P(B_{1}),...,P(B_{k})|\mathbf{y}$
 \end_inset
 
  is 
 \begin_inset Formula 
 \[
-\mathrm{Dirichlet}\left(\alpha P_{0}(B_{1})+\sum_{i=1}^{n}1_{y_{i}\in B_{1}},...,\alpha P_{0}(B_{k})+\sum_{i=1}^{n}1_{y_{i}\in B_{k}}\right)
+\mathrm{Dirichlet}\left(\alpha_{0}P_{0}(B_{1})+\sum_{i=1}^{n}1_{y_{i}\in B_{1}},...,\alpha_{0}P_{0}(B_{k})+\sum_{i=1}^{n}1_{y_{i}\in B_{k}}\right)
 \]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Dirichlet process realizations
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/DirichletProcessDistr.pdf
+	scale 26
 
 \end_inset
 
@@ -1639,7 +1856,7 @@ Posterior
 
 \begin_inset Formula 
 \[
-P|y_{1},...,y_{n}\sim\mathrm{DP}\left(\alpha P_{0}+\sum_{i=1}^{n}\delta_{y_{i}}\right)
+P|y_{1},...,y_{n}\sim\mathrm{DP}\left(\alpha_{0}P_{0}+\sum_{i=1}^{n}\delta_{y_{i}}\right)
 \]
 
 \end_inset
@@ -1651,7 +1868,7 @@ P|y_{1},...,y_{n}\sim\mathrm{DP}\left(\alpha P_{0}+\sum_{i=1}^{n}\delta_{y_{i}}\
 Since 
 \begin_inset Formula 
 \[
-P(B)\sim\mathrm{Beta}\left(\alpha P_{0}(B)+\sum_{i=1}^{n}1_{y_{i}\in B},\alpha(1-P_{0}(B))+\sum_{i=1}^{n}1_{y_{i}\in B^{c}}\right)
+P(B)\sim\mathrm{Beta}\left(\alpha_{0}P_{0}(B)+\sum_{i=1}^{n}1_{y_{i}\in B},\alpha_{0}(1-P_{0}(B))+\sum_{i=1}^{n}1_{y_{i}\in B^{c}}\right)
 \]
 
 \end_inset
@@ -1659,7 +1876,7 @@ P(B)\sim\mathrm{Beta}\left(\alpha P_{0}(B)+\sum_{i=1}^{n}1_{y_{i}\in B},\alpha(1
 so
 \begin_inset Formula 
 \[
-E\left(P(B)|y_{1},...,y_{n}\right)=\left(\frac{\alpha}{\alpha+n}\right)P_{0}(B)+\left(\frac{n}{\alpha+n}\right)\sum_{i=1}^{n}\frac{1}{n}\delta_{y_{i}}(B)
+\mathbb{E}\left(P(B)|y_{1},...,y_{n}\right)=\left(\frac{\alpha_{0}}{\alpha_{0}+n}\right)P_{0}(B)+\left(\frac{n}{\alpha_{0}+n}\right)\sum_{i=1}^{n}\frac{1}{n}\delta_{y_{i}}(B)
 \]
 
 \end_inset
@@ -1704,7 +1921,7 @@ If
  then
 \begin_inset Formula 
 \[
-E\left(F(y)|y_{1},...,y_{n}\right)=\left(\frac{\alpha}{\alpha+n}\right)F_{0}(y)+\left(\frac{n}{\alpha+n}\right)F_{n}(y)
+E\left(F(y)|y_{1},...,y_{n}\right)=\left(\frac{\alpha_{0}}{\alpha_{0}+n}\right)F_{0}(y)+\left(\frac{n}{\alpha_{0}+n}\right)F_{n}(y)
 \]
 
 \end_inset
@@ -1810,7 +2027,11 @@ status open
 
 \series bold
 \color orange
-Estimating a distribution function with a DP prior
+Fish length data 
+\begin_inset Formula $\alpha_{0}=10$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1826,7 +2047,95 @@ Estimating a distribution function with a DP prior
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/Dirichlet4CDF.eps
+	filename /home/mv/Dropbox/BayesBook/Figs/FishDataDP_PriorPost_alpha_10.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Fish length data 
+\begin_inset Formula $\alpha_{0}=100$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/FishDataDP_PriorPost_alpha_100.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Fish length data 
+\begin_inset Formula $\alpha_{0}=500$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/FishDataDP_PriorPost_alpha_500.pdf
 	scale 50
 
 \end_inset
@@ -1864,7 +2173,7 @@ Stick-breaking characterization of the DP
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $P\sim DP(\alpha P_{0})$
+\begin_inset Formula $P\sim DP(\alpha_{0}P_{0})$
 \end_inset
 
  
@@ -1896,7 +2205,7 @@ P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{i}}
 
 \begin_inset Formula 
 \[
-V_{h}\overset{iid}{\sim}Beta(1,\alpha)
+V_{h}\overset{\mathrm{iid}}{\sim}\mathrm{Beta}(1,\alpha_{0})
 \]
 
 \end_inset
@@ -1904,7 +2213,7 @@ V_{h}\overset{iid}{\sim}Beta(1,\alpha)
 
 \begin_inset Formula 
 \[
-\theta_{h}\overset{iid}{\sim}P_{0}
+\theta_{h}\overset{\mathrm{iid}}{\sim}P_{0}
 \]
 
 \end_inset
@@ -1918,13 +2227,14 @@ V_{h}\overset{iid}{\sim}Beta(1,\alpha)
 
 \begin_layout Itemize
 Alternative notation for 
-\begin_inset Formula $P\sim DP(\alpha P_{0})$
+\begin_inset Formula $P\sim DP(\alpha_{0}P_{0})$
 \end_inset
 
-: 
+:
+ 
 \begin_inset Formula 
 \[
-\pi=(\pi_{1},\pi_{2},...)\sim\mathrm{Stick}(\alpha)\mbox{\text{ and }}\theta_{h}\sim P_{0}
+\pi=(\pi_{1},\pi_{2},...)\sim\mathrm{Stick}(\alpha_{0})\mbox{\text{ and }}\theta_{h}\sim P_{0}
 \]
 
 \end_inset
@@ -1949,7 +2259,7 @@ status open
 \series bold
 \color orange
 Simulating stick-breaking 
-\begin_inset Formula $\alpha=10,$
+\begin_inset Formula $\alpha_{0}=10,$
 \end_inset
 
 
@@ -1972,7 +2282,7 @@ Simulating stick-breaking
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/CompareSticksAlpha10.png
+	filename Figures/CompareSticksAlpha10.png
 	scale 50
 
 \end_inset
@@ -1997,7 +2307,7 @@ status open
 \series bold
 \color orange
 Simulating stick-breaking 
-\begin_inset Formula $\alpha=100,$
+\begin_inset Formula $\alpha_{0}=100,$
 \end_inset
 
  
@@ -2020,7 +2330,7 @@ Simulating stick-breaking
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/CompareSticksAlpha100.png
+	filename Figures/CompareSticksAlpha100.png
 	scale 50
 
 \end_inset
@@ -2045,7 +2355,7 @@ status open
 \series bold
 \color orange
 Simulating stick-breaking 
-\begin_inset Formula $\alpha=1,$
+\begin_inset Formula $\alpha_{0}=1,$
 \end_inset
 
 
@@ -2068,7 +2378,7 @@ Simulating stick-breaking
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/CompareSticksAlpha1.png
+	filename Figures/CompareSticksAlpha1.png
 	scale 50
 
 \end_inset
@@ -2093,7 +2403,7 @@ status open
 \series bold
 \color orange
 Simulating stick-breaking 
-\begin_inset Formula $\alpha=1000,$
+\begin_inset Formula $\alpha_{0}=1000,$
 \end_inset
 
  
@@ -2116,7 +2426,7 @@ Simulating stick-breaking
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/CompareSticksAlpha1000.png
+	filename Figures/CompareSticksAlpha1000.png
 	scale 50
 
 \end_inset
@@ -2165,7 +2475,8 @@ with parameters
 \begin_inset Formula $P_{0}$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $0\leq a<1$
 \end_inset
 
@@ -2216,7 +2527,8 @@ with parameters
 \begin_inset Formula $\sigma$
 \end_inset
 
-: 
+:
+ 
 \begin_inset Formula 
 \[
 P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{i}}\quad\theta_{h}\overset{iid}{\sim}P_{0}

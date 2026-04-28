@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,8 +25,9 @@
 
 \date{} % Date, can be changed to a custom date
 
-\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}\hspace*{3.5cm}~%
-   \includegraphics[width=2cm]{LiU_secondary_1_black.png}
+\titlegraphic{
+\vspace{-0.6cm}
+\includegraphics[width=1.5cm]{../Misc/LogoBlueJustRing.jpg}\break
 }
 
 
@@ -42,14 +43,31 @@
 \usepackage{wasysym}
 \SetKwInput{KwInput}{Input}
 \SetKwInput{KwOutput}{Output}
+
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\setbeamertemplate{footline}
+{%
+  \hfill%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}\vskip2pt
+}
 \end_preamble
 \options xcolor=svgnames, handout
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "palatino" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -57,7 +75,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -67,6 +87,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -91,7 +113,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -107,11 +131,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -121,15 +150,41 @@
 \size largest
 \color orange
 Advanced Bayesian Learning
-\size default
+\begin_inset Newline newline
+\end_inset
 
+
+\size default
+Mixture models and Bayesian nonparametrics
+\size largest
+
+\begin_inset Newline newline
+\end_inset
+
+
+\size large
+Lecture 4
+\size default
+ 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \color gray
-Bayesian Nonparametrics
+STM course
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.7cm}
+\backslash
+insertframenumber/
+\backslash
+inserttotalframenumber
 \end_layout
 
 \end_inset
@@ -137,10 +192,9 @@ Bayesian Nonparametrics
 
 \end_layout
 
-\begin_layout Subtitle
+\end_inset
 
-\color orange
-Lecture 4 - Dirichlet Process Mixtures
+
 \end_layout
 
 \begin_layout Author
@@ -152,7 +206,7 @@ status open
 
 \series bold
 \color gray
-Advanced Bayesian Learning
+Mattias Villani
 \end_layout
 
 \end_inset
@@ -169,29 +223,12 @@ Department of Statistics
 
 Stockholm University
 \series default
- 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
-
-\end_inset
-
- Department of Computer and Information Science
-\begin_inset Newline newline
-\end_inset
-
-Linköping University 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Linköping and Stockholm University
+Stockholm University
 \end_layout
 
 \end_inset
@@ -199,6 +236,87 @@ Linköping and Stockholm University
 
 \end_layout
 
+\begin_layout Date
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Lecture overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\color blue
+Finite mixture models
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+Dirichlet process mixtures
+\series default
+\color inherit
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\color blue
+MCMC
+\series default
+\color inherit
+ for Dirichlet process mixtures
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator parbreak
 \end_inset
@@ -252,7 +370,8 @@ p(y)=\sum_{j=1}^{k}\pi_{j}\cdot\phi(y;\mu_{j},\sigma_{j}^{2})
 Allocation variables
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $I_{i}=j$
 \end_inset
 
@@ -368,7 +487,8 @@ Gibbs sampling
 \begin_inset Formula $\pi,\mu,\sigma^{2},y\sim\mathrm{Categorical}(\omega_{i1},...,\omega_{ik})$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $i=1,...,n,$
 \end_inset
 
@@ -384,6 +504,263 @@ Gibbs sampling
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Interactive - Mixture of Normals
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "1pt"
+separation "1pt"
+shadowsize "4pt"
+framecolor "orange"
+backgroundcolor "white"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset href
+LatexCommand href
+name "\\includegraphics[width=0.7\\textwidth]{Figures/mixturenormals_widget.png}"
+target "https://observablehq.com/@mattiasvillani/normal-mixture"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Fish length data with known yearly cohorts
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/PikeLength.pdf
+	lyxscale 50
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/PikeLengthByAge.pdf
+	lyxscale 50
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Fish length data - fit with known yearly cohorts
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/PikeLengthByAgeDensity.pdf
+	lyxscale 50
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Fish length data - mixture of normals fit
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/PikeLengthMoNFit.pdf
+	lyxscale 50
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Interactive - Mixture of Poissons
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "1pt"
+separation "1pt"
+shadowsize "4pt"
+framecolor "orange"
+backgroundcolor "white"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset href
+LatexCommand href
+name "\\includegraphics[width=0.7\\textwidth]{Figures/mixturepoissons_widget.png}"
+target "https://observablehq.com/@mattiasvillani/mixture-of-poissons"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator parbreak
@@ -467,7 +844,8 @@ Student-
 
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $y\sim t_{\nu}(\mu,\sigma^{2})$
 \end_inset
 
@@ -484,7 +862,8 @@ Student-
 \begin_inset Formula $\mu$
 \end_inset
 
- is fixed, 
+ is fixed,
+ 
 \begin_inset Formula $\theta=\lambda$
 \end_inset
 
@@ -514,7 +893,8 @@ Student-
 Finite mixture of normals
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $p(y)=\sum_{j=1}^{k}\pi_{j}\cdot\phi(y;\mu_{j},\sigma_{j}^{2})$
 \end_inset
 
@@ -526,7 +906,8 @@ Finite mixture of normals
 \begin_inset Formula $\mathcal{K}(y|\theta)=\phi(y|\mu,\sigma^{2})$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\theta=(\mu,\sigma^{2})$
 \end_inset
 
@@ -542,7 +923,8 @@ Finite mixture of normals
 \begin_inset Formula $\mathrm{Pr}\{\theta=(\mu_{j},\sigma_{j}^{2})\}=\pi_{j}$
 \end_inset
 
-, for 
+,
+ for 
 \begin_inset Formula $j=1,...,k.$
 \end_inset
 
@@ -555,11 +937,13 @@ Finite mixture of normals
 
 \end_deeper
 \begin_layout Itemize
-Dirichlet Process Mixture: 
+Dirichlet Process Mixture:
+ 
 \begin_inset Formula $P\sim DP(\alpha P_{0})$
 \end_inset
 
 ,
+
 \series bold
 \color blue
  infinite mixture
@@ -568,7 +952,7 @@ Dirichlet Process Mixture:
 
 \begin_inset Formula 
 \[
-f(y)=\sum_{h=1}^{\infty}\pi_{h}\mathcal{K}(y|\theta_{h}^{*}),\qquad\pi\sim\mathrm{Stick}(\alpha)\text{ and }\theta_{h}\overset{iid}{\sim}P_{0}
+f(y)=\sum_{h=1}^{\infty}\pi_{h}\mathcal{K}(y|\theta_{h}^{*}),\qquad\pi\sim\mathrm{Stick}(\alpha_{0})\text{ and }\theta_{h}\overset{iid}{\sim}P_{0}
 \]
 
 \end_inset
@@ -610,7 +994,8 @@ DP mixture is like a finite mixture with large
 
 \begin_deeper
 \begin_layout Itemize
-Infinite mixture: 
+Infinite mixture:
+ 
 \series bold
 \color blue
 every observation has its own parameter
@@ -643,7 +1028,8 @@ DP is a.s.
 ties
 \series default
 \color inherit
-: some 
+:
+ some 
 \begin_inset Formula $\theta_{i}$
 \end_inset
 
@@ -684,7 +1070,8 @@ potentially
 \begin_inset Formula $\theta_{i}$
 \end_inset
 
-, but that 
+,
+ but that 
 \series bold
 \color blue
 parameter may be shared by other observations
@@ -704,7 +1091,8 @@ parameter may be shared by other observations
 Finite mixtures
 \series default
 \color inherit
-: observations share 
+:
+ observations share 
 \begin_inset Formula $k$
 \end_inset
 
@@ -736,7 +1124,7 @@ I_{i}|\pi\sim\mathrm{Categorical}(\pi_{1},...,\pi_{k})
 
 \begin_inset Formula 
 \[
-\pi\sim\mathrm{Dirichlet}(\alpha/k,....,\alpha/k)
+\pi\sim\mathrm{Dirichlet}(\alpha_{0}/k,....,\alpha_{0}/k)
 \]
 
 \end_inset
@@ -750,6 +1138,46 @@ Finite mixture approaches DP mixture as
 \end_inset
 
  [Neal2000].
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Dirichlet Process Mixture for fish length data
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/Fish_DPM_PostPDF.pdf
+	scale 50
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -803,7 +1231,7 @@ DP mixtures
 
 \begin_inset Formula 
 \[
-y_{i}\sim\mathcal{K}(\theta_{i}),\qquad\theta_{i}\sim P\qquad P\sim DP(\alpha P_{0})
+y_{i}\sim\mathcal{K}(\theta_{i}),\qquad\theta_{i}\sim P\qquad P\sim DP(\alpha_{0}P_{0})
 \]
 
 \end_inset
@@ -832,7 +1260,7 @@ Polya scheme
 
 \begin_inset Formula 
 \[
-p(\theta_{i}|\theta_{1},...,\theta_{i-1})\sim\left(\frac{\alpha}{\alpha+i-1}\right)P_{0}(\theta_{i})+\left(\frac{1}{\alpha+i-1}\right)\sum_{j=1}^{i-1}\delta_{\theta_{j}}
+p(\theta_{i}|\theta_{1},...,\theta_{i-1})\sim\left(\frac{\alpha_{0}}{\alpha_{0}+i-1}\right)P_{0}(\theta_{i})+\left(\frac{1}{\alpha_{0}+i-1}\right)\sum_{j=1}^{i-1}\delta_{\theta_{j}}
 \]
 
 \end_inset
@@ -873,7 +1301,8 @@ drawn
 \begin_inset Formula $P$
 \end_inset
 
-': integrate out 
+':
+ integrate out 
 \begin_inset Formula $\pi$
 \end_inset
 
@@ -923,7 +1352,7 @@ Polya scheme
 :
 \begin_inset Formula 
 \[
-p(\theta_{i}|\theta_{1},...,\theta_{i-1})\sim\left(\frac{\alpha}{\alpha+i-1}\right)P_{0}(\theta_{i})+\left(\frac{1}{\alpha+i-1}\right)\sum_{j=1}^{i-1}\delta_{\theta_{j}}
+p(\theta_{i}|\theta_{1},...,\theta_{i-1})\sim\left(\frac{\alpha_{0}}{\alpha_{0}+i-1}\right)P_{0}(\theta_{i})+\left(\frac{1}{\alpha_{0}+i-1}\right)\sum_{j=1}^{i-1}\delta_{\theta_{j}}
 \]
 
 \end_inset
@@ -938,7 +1367,8 @@ p(\theta_{i}|\theta_{1},...,\theta_{i-1})\sim\left(\frac{\alpha}{\alpha+i-1}\rig
 Chinese restaurant process
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Separator latexpar
 \end_inset
 
@@ -959,7 +1389,8 @@ first customer sits at empty table and gets the dish
 \end_layout
 
 \begin_layout Itemize
-second customer has options: 
+second customer has options:
+ 
 \begin_inset Separator latexpar
 \end_inset
 
@@ -969,7 +1400,7 @@ second customer has options:
 \begin_deeper
 \begin_layout Itemize
 sit at first customer's table with probability 
-\begin_inset Formula $\frac{1}{1+\alpha}$
+\begin_inset Formula $\frac{1}{1+\alpha_{0}}$
 \end_inset
 
  and eat 
@@ -981,7 +1412,7 @@ sit at first customer's table with probability
 
 \begin_layout Itemize
 sit at a new table with probability 
-\begin_inset Formula $\frac{\alpha}{1+\alpha}$
+\begin_inset Formula $\frac{\alpha_{0}}{1+\alpha_{0}}$
 \end_inset
 
  and eat 
@@ -1005,7 +1436,8 @@ the
 \begin_inset Formula $i$
 \end_inset
 
-th customer has options: 
+th customer has options:
+ 
 \begin_inset Separator latexpar
 \end_inset
 
@@ -1022,7 +1454,8 @@ sit at table with dish
 \begin_inset Formula $n_{j}$
 \end_inset
 
-, the number of customers sitting at table 
+,
+ the number of customers sitting at table 
 \begin_inset Formula $j$
 \end_inset
 
@@ -1031,7 +1464,7 @@ sit at table with dish
 
 \begin_layout Itemize
 sit at a new table with probability proportional to 
-\begin_inset Formula $\alpha$
+\begin_inset Formula $\alpha_{0}$
 \end_inset
 
 .
@@ -1141,7 +1574,9 @@ p(\theta_{j}^{*}|\cdot)\propto P_{0}(\theta_{c}^{*})\prod_{i:I_{i}=j}\mathcal{K}
 \end_layout
 
 \begin_layout Itemize
-Note that, unlike finite mixtures, the 
+Note that,
+ unlike finite mixtures,
+ the 
 \series bold
 
 \begin_inset Formula $I_{i}$
@@ -1255,7 +1690,7 @@ Update the stick-breaking weights [
 ]
 \begin_inset Formula 
 \[
-V_{j}|\cdot\sim Beta\left(1+n_{j},\alpha+\sum_{q=j+1}^{N}n_{q}\right)\qquad\text{for }j=1,...,N-1.
+V_{j}|\cdot\sim Beta\left(1+n_{j},\alpha_{0}+\sum_{q=j+1}^{N}n_{q}\right)\qquad\text{for }j=1,...,N-1.
 \]
 
 \end_inset
@@ -1283,6 +1718,90 @@ Sample
 
  for empty clusters.
  
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+DPM for fish length data - number of comp
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/Fish_DPM_PostnComp.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+DPM for fish length data - posterior of 
+\begin_inset Formula $\alpha_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/Fish_DPM_Alpha0Post.pdf
+	scale 50
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -1344,7 +1863,7 @@ A customer chooses table based on
 \begin_deeper
 \begin_layout Itemize
 the number of existing customers at the tables (with imaginary 
-\begin_inset Formula $\alpha$
+\begin_inset Formula $\alpha_{0}$
 \end_inset
 
  customers at a new table)
@@ -1390,7 +1909,8 @@ A
 \begin_inset Formula $\alpha$
 \end_inset
 
- matters for the number of clusters (tables), but so does 
+ matters for the number of clusters (tables),
+ but so does 
 \begin_inset Formula $P_{0}$
 \end_inset
 
@@ -1398,7 +1918,7 @@ A
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\alpha$
+\begin_inset Formula $\alpha_{0}$
 \end_inset
 
  can be learned from data.
@@ -1485,8 +2005,7 @@ p(\mathbf{y}|\mathbf{x})=\sum_{j=1}^{\infty}\pi_{j}\cdot N(\mathbf{y}_{i}|\mathb
 \end_layout
 
 \begin_layout Itemize
-Each mixture component is a Gaussian multivariate regression with its own
- regression coefficient and covariance matrix:
+Each mixture component is a Gaussian multivariate regression with its own regression coefficient and covariance matrix:
 \begin_inset Formula 
 \[
 \underset{p\times1}{\mathbf{y}_{i}}=\underset{p\times q}{\mathbf{B}_{j}}\underset{q\times1}{\mathbf{x}_{i}}+\underset{p\times1}{\varepsilon_{i}},\;\varepsilon_{i}\overset{iid}{\sim}N\left(0,\Sigma_{j}\right)
@@ -1499,7 +2018,7 @@ Each mixture component is a Gaussian multivariate regression with its own
 
 \begin_layout Itemize
 The mixture weights follow a DP stick prior 
-\begin_inset Formula $\pi\sim Stick(\alpha)$
+\begin_inset Formula $\pi\sim Stick(\alpha_{0})$
 \end_inset
 
 .
@@ -1537,7 +2056,7 @@ Mixture of multivariate regressions - Data
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/MultiRegSimulatedData.eps
+	filename Figures/MultiRegSimulatedData.eps
 	scale 55
 
 \end_inset
@@ -1577,7 +2096,7 @@ Mixture of multivariate regressions - DPM
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/MultiRegDPMalpha2.eps
+	filename Figures/MultiRegDPMalpha2.eps
 	scale 55
 
 \end_inset
@@ -1617,7 +2136,7 @@ Mixture of multivariate regressions - DPM
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../../AdvBayesLearn/VT2014/BayesianNP/MultiRegPosterior.eps
+	filename Figures/MultiRegPosterior.eps
 	scale 55
 
 \end_inset
