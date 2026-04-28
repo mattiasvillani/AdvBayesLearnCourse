@@ -250,13 +250,6 @@ Stockholm University
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
 \begin_layout Frame
 \begin_inset Argument 4
 status open
@@ -355,7 +348,7 @@ Mixture of normals
 
 \begin_inset Formula 
 \[
-p(y)=\sum_{j=1}^{k}\pi_{j}\cdot\phi(y;\mu_{j},\sigma_{j}^{2})
+p(y)=\sum_{j=1}^{k}\pi_{j}\cdot\phi(y\mid\mu_{j},\sigma_{j}^{2})
 \]
 
 \end_inset
@@ -380,7 +373,7 @@ Allocation variables
 \end_inset
 
  comes from 
-\begin_inset Formula $\phi(y;\mu_{j},\sigma_{j}^{2})$
+\begin_inset Formula $\phi(y\mid\mu_{j},\sigma_{j}^{2})$
 \end_inset
 
 .
@@ -434,7 +427,7 @@ Gibbs sampling
 \end_inset
 
  
-\begin_inset Formula $I,y\sim\mathrm{Dirichlet}(a_{1}+n_{1},a_{2}+n_{2},...,a_{k}+n_{k})$
+\begin_inset Formula $I,y\sim\mathrm{Dirichlet}(\alpha_{1}+n_{1},\alpha_{2}+n_{2},...,\alpha_{k}+n_{k})$
 \end_inset
 
 
@@ -495,7 +488,7 @@ Gibbs sampling
 
 \begin_inset Formula 
 \[
-\omega_{ij}=\frac{\pi_{j}\cdot\phi(y_{i};\mu_{j},\sigma_{j}^{2})}{\sum_{q=1}^{k}\pi_{q}\cdot\phi(y_{i};\mu_{q},\sigma_{q}^{2})}.
+\omega_{ij}=\frac{\pi_{j}\cdot\phi(y_{i}\mid\mu_{j},\sigma_{j}^{2})}{\sum_{q=1}^{k}\pi_{q}\cdot\phi(y_{i}\mid\mu_{q},\sigma_{q}^{2})}.
 \]
 
 \end_inset
@@ -895,7 +888,7 @@ Finite mixture of normals
 \color inherit
 :
  
-\begin_inset Formula $p(y)=\sum_{j=1}^{k}\pi_{j}\cdot\phi(y;\mu_{j},\sigma_{j}^{2})$
+\begin_inset Formula $p(y)=\sum_{j=1}^{k}\pi_{j}\cdot\phi(y\mid\mu_{j},\sigma_{j}^{2})$
 \end_inset
 
 .
@@ -939,7 +932,7 @@ Finite mixture of normals
 \begin_layout Itemize
 Dirichlet Process Mixture:
  
-\begin_inset Formula $P\sim DP(\alpha P_{0})$
+\begin_inset Formula $P\sim DP(\alpha_{0}P_{0})$
 \end_inset
 
 ,
@@ -952,7 +945,7 @@ Dirichlet Process Mixture:
 
 \begin_inset Formula 
 \[
-f(y)=\sum_{h=1}^{\infty}\pi_{h}\mathcal{K}(y|\theta_{h}^{*}),\qquad\pi\sim\mathrm{Stick}(\alpha_{0})\text{ and }\theta_{h}\overset{iid}{\sim}P_{0}
+f(y)=\sum_{h=1}^{\infty}\pi_{h}\mathcal{K}(y|\theta_{h}),\qquad\pi\sim\mathrm{Stick}(\alpha_{0})\text{ and }\theta_{h}\overset{iid}{\sim}P_{0}
 \]
 
 \end_inset
@@ -1004,7 +997,7 @@ every observation has its own parameter
 
 \begin_inset Formula 
 \[
-y_{i}\sim\mathcal{K}(\theta_{i})
+y_{i}\sim\mathcal{K}(y\vert\theta_{i})
 \]
 
 \end_inset
@@ -1100,7 +1093,7 @@ Finite mixtures
  
 \begin_inset Formula 
 \[
-y_{i}|I_{i}\sim\mathcal{K}(\theta_{I_{i}})
+y_{i}|I_{i}\sim\mathcal{K}(y\vert\theta_{I_{i}})
 \]
 
 \end_inset
@@ -1173,7 +1166,7 @@ Dirichlet Process Mixture for fish length data
 \align center
 \begin_inset Graphics
 	filename /home/mv/Dropbox/BayesBook/Figs/Fish_DPM_PostPDF.pdf
-	scale 50
+	scale 30
 
 \end_inset
 
@@ -1231,7 +1224,7 @@ DP mixtures
 
 \begin_inset Formula 
 \[
-y_{i}\sim\mathcal{K}(\theta_{i}),\qquad\theta_{i}\sim P\qquad P\sim DP(\alpha_{0}P_{0})
+y_{i}\sim\mathcal{K}(y\vert\theta_{i}),\qquad\theta_{i}\sim P\qquad P\sim DP(\alpha_{0}P_{0})
 \]
 
 \end_inset
@@ -1535,7 +1528,7 @@ th observation
 \[
 \mathrm{Pr}(I_{i}=j|\cdot)\propto\begin{cases}
 n_{j}^{(-i)}\mathcal{K}(y_{i}|\theta_{j}^{*}) & \text{ for }j=1,...,k^{(-i)}\\
-\alpha\int\mathcal{K}(y_{i}|\theta)dP_{0}(\theta) & \text{ for }j=k^{(-i)}+1
+\alpha_{0}\int\mathcal{K}(y_{i}|\theta)dP_{0}(\theta) & \text{ for }j=k^{(-i)}+1
 \end{cases}.
 \]
 
@@ -1736,90 +1729,6 @@ status open
 
 \series bold
 \color orange
-DPM for fish length data - number of comp
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename /home/mv/Dropbox/BayesBook/Figs/Fish_DPM_PostnComp.pdf
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-DPM for fish length data - posterior of 
-\begin_inset Formula $\alpha_{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename /home/mv/Dropbox/BayesBook/Figs/Fish_DPM_Alpha0Post.pdf
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
 MCMC for DP mixtures
 \end_layout
 
@@ -1936,6 +1845,90 @@ A
 
 ).
  Just add updating steps for those.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+DPM for fish length data - number of comp
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/Fish_DPM_PostnComp.pdf
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+DPM for fish length data - posterior of 
+\begin_inset Formula $\alpha_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/mv/Dropbox/BayesBook/Figs/Fish_DPM_Alpha0Post.pdf
+	scale 50
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper

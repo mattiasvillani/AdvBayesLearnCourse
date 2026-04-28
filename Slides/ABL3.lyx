@@ -955,7 +955,7 @@ Prior
 
 \begin_inset Formula 
 \[
-\boldsymbol{\theta}\sim\mathrm{Dirichlet}(\boldsymbol{\alpha})=\mathrm{Dirichlet}(\alpha_{0}\bar{\boldsymbol{\alpha}})
+\boldsymbol{\boldsymbol{\omega}}\sim\mathrm{Dirichlet}(\boldsymbol{\alpha})=\mathrm{Dirichlet}(\alpha_{0}\bar{\boldsymbol{\alpha}})
 \]
 
 \end_inset
@@ -1934,7 +1934,7 @@ E\left(F(y)|y_{1},...,y_{n}\right)=\left(\frac{\alpha_{0}}{\alpha_{0}+n}\right)F
 \begin_inset Formula $F(y)$
 \end_inset
 
- is the unknown d.f.
+ is the unknown cdf
 \begin_inset VSpace smallskip
 \end_inset
 
@@ -1945,8 +1945,7 @@ E\left(F(y)|y_{1},...,y_{n}\right)=\left(\frac{\alpha_{0}}{\alpha_{0}+n}\right)F
 \begin_inset Formula $F_{0}(y)$
 \end_inset
 
- is the d.f.
- from 
+ is the cdf from 
 \begin_inset Formula $P_{0}$
 \end_inset
 
@@ -1961,7 +1960,7 @@ E\left(F(y)|y_{1},...,y_{n}\right)=\left(\frac{\alpha_{0}}{\alpha_{0}+n}\right)F
 \begin_inset Formula $F_{n}(y)=\frac{1}{n}\sum1_{y_{i}\leq y}$
 \end_inset
 
- is the empirical d.f.
+ is the empirical cdf
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -2189,7 +2188,7 @@ infinite mixture of point masses
 
 \begin_inset Formula 
 \[
-P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{i}}
+P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{h}}
 \]
 
 \end_inset
@@ -2487,7 +2486,7 @@ with parameters
 :
 \begin_inset Formula 
 \[
-P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{i}}\quad\theta_{h}\overset{iid}{\sim}P_{0}
+P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{h}}\quad\theta_{h}\overset{iid}{\sim}P_{0}
 \]
 
 \end_inset
@@ -2531,7 +2530,7 @@ with parameters
  
 \begin_inset Formula 
 \[
-P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{i}}\quad\theta_{h}\overset{iid}{\sim}P_{0}
+P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{h}}\quad\theta_{h}\overset{iid}{\sim}P_{0}
 \]
 
 \end_inset
