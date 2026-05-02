@@ -1326,12 +1326,8 @@ status open
 
 \series bold
 \color orange
-Example with 
-\begin_inset Formula $n=50$
-\end_inset
-
- and 
-\begin_inset Formula $\alpha_{0}=10$
+Pike length data - Bayesian histogram with 
+\begin_inset Formula $\Delta=1$
 \end_inset
 
 
@@ -1350,7 +1346,7 @@ Example with
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramBimodalDataAlpha10.pdf
+	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramFishDelta1.pdf
 	scale 26
 
 \end_inset
@@ -1374,95 +1370,11 @@ status open
 
 \series bold
 \color orange
-Example with 
-\begin_inset Formula $n=50$
-\end_inset
-
- and 
-\begin_inset Formula $\alpha_{0}=50$
+Pike length data - Bayesian histogram with 
+\begin_inset Formula $\Delta=2$
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramBimodalDataAlpha50.pdf
-	scale 26
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Example with 
-\begin_inset Formula $n=50$
-\end_inset
-
- and 
-\begin_inset Formula $\alpha_{0}=200$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramBimodalDataAlpha200.pdf
-	scale 26
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color orange
-Histograms are sensitive to the choice of bins
 \end_layout
 
 \end_inset
@@ -1478,19 +1390,52 @@ Histograms are sensitive to the choice of bins
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramBimodalDataAlpha10.pdf
-	scale 25
+	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramFishDelta2.pdf
+	scale 26
 
 \end_inset
 
 
 \end_layout
 
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+Pike length data - Bayesian histogram with 
+\begin_inset Formula $\Delta=3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramBimodalDataAlpha10Delta1.pdf
-	scale 25
+	filename /home/mv/Dropbox/BayesBook/Figs/BayesianHistogramFishDelta3.pdf
+	scale 26
 
 \end_inset
 
@@ -2502,7 +2447,7 @@ P(\cdot)=\sum_{h=1}^{\infty}\pi_{h}\delta_{\theta_{h}}\quad\theta_{h}\overset{ii
 
 \begin_inset Formula 
 \[
-V_{h}\overset{iid}{\sim}Beta(1-a,b+ha)
+V_{h}\overset{iid}{\sim}\mathrm{Beta}(1-a,b+ha)
 \]
 
 \end_inset

@@ -27,7 +27,7 @@ Reading:  [Gaussian Processes for Machine Learning](http://www.gaussianprocess.o
 
 Code: [GPML for Matlab](http://mlg.eng.cam.ac.uk/carl/gpml/) | [GPy for Python](https://sheffieldml.github.io/GPy/) | [Gausspr in R](https://rdrr.io/cran/kernlab/man/gausspr.html) | [Gaussianprocesses.jl in Julia](https://github.com/STOR-i/GaussianProcesses.jl) | [GPyTorch - GPs in PyTorch](https://gpytorch.ai/) \
 
-Other material: [Visualize GP kernels](http://www.it.uu.se/edu/course/homepage/apml/GP/)
+Other material: [Visualize GP kernels](https://smlbook.org/GP/)
 
 **Lecture 1 - April 16, hours 10-12** in [Lärosal 13](https://www.su.se/download/18.7b9fb02419936f8648810abc/1758613821031/Undervisningssalar,%20Albano.pdf)\
 [slides](/Slides/ABL1.pdf)  
@@ -43,7 +43,7 @@ Other material: [Visualize GP kernels](http://www.it.uu.se/edu/course/homepage/a
 
 ### Topic 2 - Mixture models and Bayesian nonparametrics
 
-Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 23 | [The Neal (2000) article on MCMC for Dirichlet Process Mixtures](http://www.stat.columbia.edu/npbayes/papers/neal_sampling.pdf)  
+Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 23 | [The Neal (2000) article on MCMC for Dirichlet Process Mixtures](https://www.cs.princeton.edu/courses/archive/fall11/cos597C/reading/Neal2000a.pdf)  
 
 Widgets: [Dirichlet distribution](https://observablehq.com/@mattiasvillani/dirichlet-distribution) | [Bayes for multinomial data](https://observablehq.com/@mattiasvillani/multinomial-dirichlet) | [mixture of normals](https://observablehq.com/@mattiasvillani/normal-mixture) | [mixture of Poissons](https://observablehq.com/@mattiasvillani/mixture-of-poissons)
 
