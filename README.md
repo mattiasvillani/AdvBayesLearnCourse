@@ -23,9 +23,9 @@ Professor of Statistics, Stockholm University
 
 ### Topic 1 - Gaussian processes regression and classification
 
-Reading:  [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf) - Chapters 1, 2.1-2.5, 3.1-3.4, 3.7, 4.1-4.3. Alt: [Bayesian Learning](https://github.com/mattiasvillani/BayesianLearningBook/raw/main/pdf/BayesBook.pdf) Chapter 15 \
+Reading:  [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/chapters/RW.pdf) - Chapters 1, 2.1-2.5, 3.1-3.4, 3.7, 4.1-4.3. Alt: [Bayesian Learning](https://github.com/mattiasvillani/BayesianLearningBook/raw/main/pdf/BayesBook.pdf) Chapter 15 
 
-Code: [GPML for Matlab](http://mlg.eng.cam.ac.uk/carl/gpml/) | [GPy for Python](https://sheffieldml.github.io/GPy/) | [Gausspr in R](https://rdrr.io/cran/kernlab/man/gausspr.html) | [Gaussianprocesses.jl in Julia](https://github.com/STOR-i/GaussianProcesses.jl) | [GPyTorch - GPs in PyTorch](https://gpytorch.ai/) \
+Code: [GPML for Matlab](http://mlg.eng.cam.ac.uk/carl/gpml/) | [GPy for Python](https://sheffieldml.github.io/GPy/) | [Gausspr in R](https://rdrr.io/cran/kernlab/man/gausspr.html) | [Gaussianprocesses.jl in Julia](https://github.com/STOR-i/GaussianProcesses.jl) | [GPyTorch - GPs in PyTorch](https://gpytorch.ai/) 
 
 Other material: [Visualize GP kernels](https://smlbook.org/GP/)
 
@@ -43,7 +43,7 @@ Other material: [Visualize GP kernels](https://smlbook.org/GP/)
 
 ### Topic 2 - Mixture models and Bayesian nonparametrics
 
-Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 23 | [The Neal (2000) article on MCMC for Dirichlet Process Mixtures](https://www.cs.princeton.edu/courses/archive/fall11/cos597C/reading/Neal2000a.pdf)  
+Reading: [Bayesian Data Analysis](http://www.stat.columbia.edu/~gelman/book/BDA3.pdf) - Chapter 23 or [Bayesian Learning](https://github.com/mattiasvillani/BayesianLearningBook/raw/main/pdf/BayesBook.pdf) Chapter 13 and 16 | [The Neal (2000) article on MCMC for Dirichlet Process Mixtures](https://www.cs.princeton.edu/courses/archive/fall11/cos597C/reading/Neal2000a.pdf)  
 
 Widgets: [Dirichlet distribution](https://observablehq.com/@mattiasvillani/dirichlet-distribution) | [Bayes for multinomial data](https://observablehq.com/@mattiasvillani/multinomial-dirichlet) | [mixture of normals](https://observablehq.com/@mattiasvillani/normal-mixture) | [mixture of Poissons](https://observablehq.com/@mattiasvillani/mixture-of-poissons)
 
@@ -66,7 +66,7 @@ Other material: [Kullback-Leibler widget](https://observablehq.com/@mattiasvilla
 
 **Lecture 5 - May 13, hours 10-12** in [Lärosal 27](https://www.su.se/download/18.7b9fb02419936f8648810abc/1758613821031/Undervisningssalar,%20Albano.pdf)\
 [slides](/Slides/ABL5.pdf)  
-**Lecture 6 - May 13, hours 13-15** in TBA\
+**Lecture 6 - May 13, hours 13-15** in [Lärosal 13](https://www.su.se/download/18.7b9fb02419936f8648810abc/1758613821031/Undervisningssalar,%20Albano.pdf)\
 [slides](/Slides/ABL6.pdf)
 
 **Lab Topic 3**  
@@ -80,7 +80,7 @@ Other material: [Kullback-Leibler widget](https://observablehq.com/@mattiasvilla
 
 Reading: Sections 12.2-12.5 and 14.6 of [Bayesian Learning book](https://github.com/mattiasvillani/BayesianLearningBook/raw/main/pdf/BayesBook.pdf) | [Handbook chapter on variable selection](https://bpb-us-e1.wpmucdn.com/blogs.rice.edu/dist/0/5714/files/2022/06/book_chapter.pdf) | [Article on Bayesian regularization](https://wires.onlinelibrary.wiley.com/doi/full/10.1002/wics.1463?casa_token=TRIRvJPG7fAAAAAA%3AErexRs49LFd9QFMR5ZlGJ9RyWs9r7Q_Fc5Hird767zNVPf2CRfKC5O91y2isnLAGJub1yArfEt-RfJhH)
 
-**Lecture 7 - May 26, hours 10-12** in TBA\
+**Lecture 7 - May 26, hours 10-12** in [Lärosal 25](https://www.su.se/download/18.7b9fb02419936f8648810abc/1758613821031/Undervisningssalar,%20Albano.pdf)\
 [slides](/Slides/ABL7.pdf)  
 **Lecture 8 - May 26, hours 13-15** in [Lärosal 27](https://www.su.se/download/18.7b9fb02419936f8648810abc/1758613821031/Undervisningssalar,%20Albano.pdf)\
 [slides](/Slides/ABL8.pdf)
