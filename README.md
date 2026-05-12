@@ -62,7 +62,14 @@ Widgets: [Dirichlet distribution](https://observablehq.com/@mattiasvillani/diric
 ### Topic 3 -  Variational inference
 
 Reading: [Blei et al JASA](https://amstat.tandfonline.com/doi/abs/10.1080/01621459.2017.1285773#.XraDPXUzaLI) | [Tran's VI Notes](/Material/VBnotesMNT.pdf) \
-Other material: [Kullback-Leibler widget](https://observablehq.com/@mattiasvillani/kl-divergence-continuous) | [My recent talk with some VI](https://github.com/mattiasvillani/Talks/raw/master/VillaniStatSUMarch2024.pdf) | [Natural gradient notes](https://wiseodd.github.io/techblog/2018/03/14/natural-gradient/) | [autograd in python](https://github.com/HIPS/autograd) | [ForwardDiff in Julia](https://github.com/JuliaDiff/ForwardDiff.jl)
+Other material: [Kullback-Leibler widget](https://observablehq.com/@mattiasvillani/kl-divergence-continuous) | 
+[Talk about a paper that uses VI in Stan](https://github.com/mattiasvillani/Talks/raw/master/VillaniStatSUMarch2024.pdf) | 
+[Natural gradients](https://andrewcharlesjones.github.io/journal/natural-gradients.html)\
+Autodiff:
+
+- [RTMB - autodiff in R](https://cran.r-project.org/web/packages/RTMB/) and [toy example](Code/RTMBExample.R)
+- [JAX - autodiff in Python](https://docs.jax.dev/en/latest/notebooks/thinking_in_jax.html) and [toy example](Code/JAXExample.py)
+- [ForwardDiff in Julia](https://github.com/JuliaDiff/ForwardDiff.jl) and [toy example](Code/JuliaForwardDiffExample.jl)
 
 **Lecture 5 - May 13, hours 10-12** in [Lärosal 27](https://www.su.se/download/18.7b9fb02419936f8648810abc/1758613821031/Undervisningssalar,%20Albano.pdf)\
 [slides](/Slides/ABL5.pdf)  
