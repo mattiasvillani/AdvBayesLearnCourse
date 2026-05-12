@@ -240,6 +240,7 @@ Stockholm University
 \end_layout
 
 \begin_layout Standard
+´
 \begin_inset Separator parbreak
 \end_inset
 
@@ -2125,6 +2126,133 @@ Probit example
 \begin_inset Graphics
 	filename ../../BayesLearningLiU/Slides/Images/Probit_LowerBound.eps
 	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
+VI is excellent for repeated estimation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Structured VI for Steady-state VAR with many time series (
+\begin_inset Formula $p$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Log Predictive Scores
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+MCMC/Gibbs sampling is slow (red line in left figure)
+\end_layout
+
+\begin_layout Itemize
+VI scales well with 
+\begin_inset Formula $p$
+\end_inset
+
+ (blue line in left figure)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+VI:
+ really good initial values going from time 
+\begin_inset Formula $t$
+\end_inset
+
+ to 
+\begin_inset Formula $t+1$
+\end_inset
+
+.
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\size tiny
+Nott,
+ Villani and Kohn (2012).
+ 
+\emph on
+JCGS
+\emph default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+VI iterations until convergence (right) increases slowly in 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\size tiny
+Gustafsson and Villani (2018).
+ Variational inference for steady-state BVARs.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\begin_inset Graphics
+	filename Figures/Speed_comparison.png
+	scale 25
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Figures/iterations_VI.eps
+	scale 25
 
 \end_inset
 
