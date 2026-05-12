@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,14 +25,16 @@
 
 \date{} % Date, can be changed to a custom date
 
-\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}\hspace*{3.5cm}~%
-   \includegraphics[width=2cm]{LiU_secondary_1_black.png}
+\titlegraphic{
+\vspace{-0.6cm}
+\includegraphics[width=1.5cm]{../Misc/LogoBlueJustRing.jpg}\break
 }
 
 
 \definecolor{blue}{RGB}{38, 122, 181}
 \definecolor{orange}{RGB}{255, 128, 0}
 \definecolor{red}{RGB}{255, 128, 0}
+
 
 \setbeamertemplate{itemize item}{\color{orange}$\blacksquare$}
 \setbeamertemplate{itemize subitem}{\color{orange}$\blacktriangleright$}
@@ -41,15 +43,31 @@
 \usepackage{wasysym}
 \SetKwInput{KwInput}{Input}
 \SetKwInput{KwOutput}{Output}
-\newtheorem{algorithm2}{Algorithm}
+
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\setbeamertemplate{footline}
+{%
+  \hfill%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}\vskip2pt
+}
 \end_preamble
 \options xcolor=svgnames, handout
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "palatino" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -57,7 +75,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -67,6 +87,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -91,7 +113,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -107,11 +131,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -121,15 +150,37 @@
 \size largest
 \color orange
 Advanced Bayesian Learning
-\size default
+\begin_inset Newline newline
+\end_inset
 
+Variational inference
+\begin_inset Newline newline
+\end_inset
+
+
+\size large
+Lecture 6
+\size default
+ 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \color gray
-Variational inference
+STM course
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.7cm}
+\backslash
+insertframenumber/
+\backslash
+inserttotalframenumber
 \end_layout
 
 \end_inset
@@ -137,10 +188,9 @@ Variational inference
 
 \end_layout
 
-\begin_layout Subtitle
+\end_inset
 
-\color orange
-Lecture 6 - Beyond mean-field VI
+
 \end_layout
 
 \begin_layout Author
@@ -152,7 +202,7 @@ status open
 
 \series bold
 \color gray
-Advanced Bayesian Learning
+Mattias Villani
 \end_layout
 
 \end_inset
@@ -169,31 +219,21 @@ Department of Statistics
 
 Stockholm University
 \series default
- 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
-
-\end_inset
-
- Department of Computer and Information Science
-\begin_inset Newline newline
-\end_inset
-
-Linköping University 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Linköping and Stockholm University
+Stockholm University
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -235,6 +275,10 @@ mean field VI is restrictive
 \series default
 \color inherit
 .
+\end_layout
+
+\begin_layout Itemize
+Blocking parameters as in structural VI often helps a lot.
 \begin_inset VSpace medskip
 \end_inset
 
@@ -248,7 +292,8 @@ mean field VI is restrictive
 Fixed form VI
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset VSpace medskip
 \end_inset
 
@@ -273,7 +318,7 @@ Assume parametric form
 \end_layout
 
 \begin_layout Itemize
-Optimize 
+Minimize 
 \begin_inset Formula $\mathrm{KL}\left[q_{\boldsymbol{\lambda}}(\boldsymbol{\theta})\left\Vert p(\boldsymbol{\theta}\vert\boldsymbol{y})\right.\right]$
 \end_inset
 
@@ -290,8 +335,9 @@ Optimize
 
 \end_deeper
 \begin_layout Itemize
-As before, we actually optimize lower bound 
-\begin_inset Formula $\mathrm{LB}(\boldsymbol{\lambda})$
+As before,
+ we actually maximize 
+\begin_inset Formula $\mathrm{ELBO}(\boldsymbol{\lambda})$
 \end_inset
 
 .
@@ -302,15 +348,18 @@ As before, we actually optimize lower bound
 \end_layout
 
 \begin_layout Itemize
-Ex 1: 
+Ex 1:
+ 
 \begin_inset Formula $q_{\boldsymbol{\lambda}}=N(\boldsymbol{\theta}\vert\boldsymbol{\mu},\Sigma)$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\boldsymbol{\lambda}=(\boldsymbol{\mu},\boldsymbol{L})$
 \end_inset
 
-, with Cholesky 
+,
+ with Cholesky 
 \begin_inset Formula $\Sigma=\boldsymbol{LL}^{T}$
 \end_inset
 
@@ -322,19 +371,23 @@ Ex 1:
 \end_layout
 
 \begin_layout Itemize
-Ex 2: 
+Ex 2:
+ 
 \begin_inset Formula $q_{\boldsymbol{\lambda}}=N(\boldsymbol{\theta}\vert\boldsymbol{\mu},\boldsymbol{a}\boldsymbol{a}^{T}+\boldsymbol{D})$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\boldsymbol{\lambda}=(\boldsymbol{\mu},\boldsymbol{a},\boldsymbol{d})$
 \end_inset
 
-, where 
+,
+ where 
 \begin_inset Formula $\boldsymbol{a}$
 \end_inset
 
- is a vector, 
+ is a vector,
+ 
 \begin_inset Formula $\boldsymbol{D}=\mathrm{Diag}(\boldsymbol{d})$
 \end_inset
 
@@ -347,11 +400,13 @@ Ex 2:
 \end_layout
 
 \begin_layout Itemize
-Ex 3: 
+Ex 3:
+ 
 \begin_inset Formula $q_{\boldsymbol{\lambda}}$
 \end_inset
 
- is a copula, mixture of normals etc etc
+ is a copula,
+ mixture of normals etc etc
 \begin_inset VSpace medskip
 \end_inset
 
@@ -359,7 +414,8 @@ Ex 3:
 \end_layout
 
 \begin_layout Itemize
-From now on: vectors will not be 
+From now on:
+ vectors will not be 
 \series bold
 bold
 \series default
@@ -402,8 +458,9 @@ Fixed form VI - Gradient based optimization
 Gradient ascent
 \series default
 \color inherit
-: optimize 
-\begin_inset Formula $\mathrm{LB}(\lambda)$
+:
+ optimize 
+\begin_inset Formula $\mathrm{ELBO}(\lambda)$
 \end_inset
 
  wrt 
@@ -418,7 +475,7 @@ Gradient ascent
 \begin_inset Formula 
 \begin{align*}
 \text{for }t & =1,2,...\text{ until convergence do: }\\
- & \lambda^{(t+1)}=\lambda^{(t)}+a\cdot\nabla_{\lambda}\mathrm{LB}(\lambda^{(t)})
+ & \lambda^{(t+1)}=\lambda^{(t)}+a\cdot\nabla_{\lambda}\mathrm{ELBO}(\lambda^{(t)})
 \end{align*}
 
 \end_inset
@@ -428,7 +485,7 @@ Gradient ascent
 
 \begin_layout Itemize
 Stop when changes in 
-\begin_inset Formula $\mathrm{LB}(\lambda^{(t)})$
+\begin_inset Formula $\mathrm{ELBO}(\lambda^{(t)})$
 \end_inset
 
  
@@ -436,6 +493,10 @@ Stop when changes in
 \end_inset
 
 .
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -449,7 +510,7 @@ Lower Bound
 
 \begin_inset Formula 
 \[
-\mathrm{LB}(\lambda)=\mathbb{E}_{q_{\lambda}}\left[\log\frac{p(y\vert\theta)p(\theta)}{q_{\lambda}(\theta)}\right]=\int q_{\lambda}(\theta)h_{\lambda}(\theta)d\theta
+\mathrm{ELBO}(\lambda)=\mathbb{E}_{q_{\lambda}}\left[\log\frac{p(y\vert\theta)p(\theta)}{q_{\lambda}(\theta)}\right]=\int q_{\lambda}(\theta)h_{\lambda}(\theta)d\theta
 \]
 
 \end_inset
@@ -499,8 +560,8 @@ Gradient of LB is an expectation wrt
 \size footnotesize
 \begin_inset Formula 
 \begin{align*}
-\nabla_{\lambda}\mathrm{LB}(\lambda) & =\int\nabla_{\lambda}\left(q_{\lambda}(\theta)h_{\lambda}(\theta)\right)d\theta\text{ [interchange }\int\text{ and }\nabla_{\lambda}]\\
- & =\int\left(\left(\nabla_{\lambda}q_{\lambda}(\theta)\right)h_{\lambda}(\theta)+q_{\lambda}(\theta)\left(\nabla_{\lambda}h_{\lambda}(\theta)\right)\right)d\theta\text{ [product rule}]
+\nabla_{\lambda}\mathrm{ELBO}(\lambda) & =\int\nabla_{\lambda}\left(q_{\lambda}(\theta)h_{\lambda}(\theta)\right)d\theta\text{ \textcolor{blue}{[interchange \int\text{ and }\nabla_{\lambda}]} }\\
+ & =\int\left(\left(\nabla_{\lambda}q_{\lambda}(\theta)\right)h_{\lambda}(\theta)+q_{\lambda}(\theta)\left(\nabla_{\lambda}h_{\lambda}(\theta)\right)\right)d\theta\text{ {\normalcolor \textcolor{blue}{[product rule]}}}
 \end{align*}
 
 \end_inset
@@ -528,7 +589,7 @@ Using that
 
 \begin_inset Formula 
 \begin{align*}
-\nabla_{\lambda}\mathrm{LB}(\lambda) & =\int\left(\left(\nabla_{\lambda}q_{\lambda}(\theta)\right)h_{\lambda}(\theta)+q_{\lambda}(\theta)\left(\nabla_{\lambda}h_{\lambda}(\theta)\right)\right)d\theta\\
+\nabla_{\lambda}\mathrm{ELBO}(\lambda) & =\int\left(\left(\nabla_{\lambda}q_{\lambda}(\theta)\right)h_{\lambda}(\theta)+q_{\lambda}(\theta)\left(\nabla_{\lambda}h_{\lambda}(\theta)\right)\right)d\theta\\
  & =\int q_{\lambda}(\theta)\left(\nabla_{\lambda}\log q_{\lambda}(\theta)\right)h_{\lambda}(\theta)d\theta-\int q_{\lambda}(\theta)\left(\frac{\nabla_{\lambda}q_{\lambda}(\theta)}{q_{\lambda}(\theta)}\right)d\theta\\
  & =\int q_{\lambda}(\theta)\left(\nabla_{\lambda}\log q_{\lambda}(\theta)\right)h_{\lambda}(\theta)d\theta\\
  & =\textcolor{orange}{\mathbb{E}_{q_{\lambda}}}\left(h_{\lambda}(\theta)\nabla_{\lambda}\log q_{\lambda}(\theta)\right)
@@ -544,10 +605,6 @@ Using that
 \begin_inset Separator parbreak
 \end_inset
 
-
-\end_layout
-
-\begin_layout Frame
 
 \end_layout
 
@@ -591,7 +648,7 @@ Gradient of LB is an expectation wrt
 
 \begin_inset Formula 
 \begin{align*}
-\nabla_{\lambda}\mathrm{LB}(\lambda) & =\mathbb{E}_{q_{\lambda}}\left[\nabla_{\lambda}\log q_{\lambda}(\theta)\times h_{\lambda}(\theta)\right]
+\nabla_{\lambda}\mathrm{ELBO}(\lambda) & =\mathbb{E}_{q_{\lambda}}\left[\nabla_{\lambda}\log q_{\lambda}(\theta)\times h_{\lambda}(\theta)\right]
 \end{align*}
 
 \end_inset
@@ -607,14 +664,15 @@ Gradient of LB is an expectation wrt
 Monte Carlo
 \series default
 \color inherit
-: simulate 
+:
+ simulate 
 \begin_inset Formula $\theta^{(1)},\ldots,\theta^{(S)}\sim q_{\lambda}(\theta)$
 \end_inset
 
  and estimate
 \begin_inset Formula 
 \[
-\widehat{\nabla_{\lambda}\mathrm{LB}(\lambda)}=\frac{1}{S}\sum_{s=1}^{S}\nabla_{\lambda}\log q_{\lambda}(\theta_{s})\times h_{\lambda}(\theta_{s})
+\widehat{\nabla_{\lambda}\mathrm{ELBO}(\lambda)}=\frac{1}{S}\sum_{s=1}^{S}\nabla_{\lambda}\log q_{\lambda}(\theta_{s})\times h_{\lambda}(\theta_{s})
 \]
 
 \end_inset
@@ -629,6 +687,19 @@ Monte Carlo
 	lyxscale 40
 	scale 11
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the sequel,
+ 
+\begin_inset Formula $\mathrm{ELBO}$
+\end_inset
+
+ is sometimes written as 
+\begin_inset Formula $\mathrm{LB}.$
 \end_inset
 
 
@@ -670,7 +741,8 @@ Monitoring convergence
 Sufficient conditions for convergence
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula 
 \[
 a_{t}>0,\;\;\sum_{t}a_{t}=\infty\text{ and }\sum_{t}a_{t}^{2}<\infty
@@ -682,7 +754,8 @@ a_{t}>0,\;\;\sum_{t}a_{t}=\infty\text{ and }\sum_{t}a_{t}^{2}<\infty
 \end_layout
 
 \begin_layout Itemize
-Example: 
+Example:
+ 
 \begin_inset Formula 
 \[
 a_{t}=\begin{cases}
@@ -711,7 +784,8 @@ Hard to monitor convergence on
 Check convergence 
 \series default
 \color inherit
-on local average: 
+on local average:
+ 
 \begin_inset Formula 
 \[
 \overline{\mathrm{LB}}(\lambda^{(t+1)})=t_{W}^{-1}\sum_{k=1}^{t_{W}}\widehat{\mathrm{LB}(\lambda^{(t-k+1)})}
@@ -723,7 +797,8 @@ on local average:
 \end_layout
 
 \begin_layout Itemize
-MNT: 
+MNT:
+ 
 \begin_inset Formula $t_{W}=20$
 \end_inset
 
@@ -782,8 +857,9 @@ Learning rate
 \begin_inset Formula $\mathbb{V}\left(\widehat{\nabla_{\lambda}\mathrm{LB}(\lambda^{(t)})}\right)$
 \end_inset
 
- is large, otherwise optimizer may backtrack.
-\begin_inset VSpace medskip
+ is large,
+ otherwise optimizer may backtrack.
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -805,7 +881,7 @@ same learning rate
 \end_inset
 
 .
-\begin_inset VSpace medskip
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -822,7 +898,7 @@ But
 
 .
  
-\begin_inset VSpace medskip
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -834,7 +910,7 @@ Scale gradients with moving average of
 \end_inset
 
 
-\begin_inset VSpace medskip
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -849,7 +925,8 @@ Let
 \begin_inset Formula $v_{t}=g_{t}^{2}$
 \end_inset
 
- (elementwise, i.e.
+ (elementwise,
+ i.e.
  
 \begin_inset Formula $g_{t}\odot g_{t}$
 \end_inset
@@ -948,7 +1025,8 @@ Same distance in
 \end_layout
 
 \begin_layout Itemize
-Example: changing the mean of 
+Example:
+ changing the mean of 
 \begin_inset Formula $q_{\lambda}(\theta)$
 \end_inset
 
@@ -1015,7 +1093,8 @@ Solve approximately
 \end_layout
 
 \begin_layout Itemize
-In exponential families, 
+In exponential families,
+ 
 \begin_inset Formula $\nabla_{\lambda}\mathrm{LB}(\lambda)^{\mathrm{nat}}$
 \end_inset
 
@@ -1023,7 +1102,8 @@ In exponential families,
 \begin_inset Formula $\nabla_{\lambda}\mathrm{LB}(\lambda)$
 \end_inset
 
-, see Blei et al.
+,
+ see Blei et al.
  (2017).
 \end_layout
 
@@ -1135,7 +1215,7 @@ Lower variance
 \series bold
 \color blue
 Optimal 
-\begin_inset Formula $c_{i}$
+\begin_inset Formula $c_{k}$
 \end_inset
 
 
@@ -1157,14 +1237,15 @@ Optimal
 \series bold
 \color blue
 Optimal 
-\begin_inset Formula $c_{i}$
+\begin_inset Formula $c_{k}$
 \end_inset
 
 
 \series default
 \color inherit
  estimated in gradient ascent.
- Algorithm 3, MNT.
+ Algorithm 3,
+ MNT.
 \end_layout
 
 \end_deeper
@@ -1213,11 +1294,13 @@ Suppose we can generate
 \end_layout
 
 \begin_layout Itemize
-Ex: 
+Ex:
+ 
 \begin_inset Formula $q_{\lambda}(\cdot)=N(\mu,\Sigma)$
 \end_inset
 
-, then 
+,
+ then 
 \begin_inset Formula $g(\lambda,\varepsilon)=\mu+\Sigma^{1/2}\varepsilon,$
 \end_inset
 
@@ -1267,7 +1350,7 @@ gradient
 \end_inset
 
 since 
-\begin_inset Formula $\mathbb{E}_{p_{\varepsilon}}\left(\nabla_{\theta}h_{\lambda}(\theta)\right)=0$
+\begin_inset Formula $\mathbb{E}_{p_{\varepsilon}}\left(\nabla_{\lambda}h_{\lambda}(\theta)\right)=0$
 \end_inset
 
  (MNT).

@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,8 +25,9 @@
 
 \date{} % Date, can be changed to a custom date
 
-\titlegraphic{\includegraphics[width=2cm]{LogoBlueJustRing.jpg}\hspace*{3.5cm}~%
-   \includegraphics[width=2cm]{LiU_secondary_1_black.png}
+\titlegraphic{
+\vspace{-0.6cm}
+\includegraphics[width=1.5cm]{../Misc/LogoBlueJustRing.jpg}\break
 }
 
 
@@ -42,14 +43,31 @@
 \usepackage{wasysym}
 \SetKwInput{KwInput}{Input}
 \SetKwInput{KwOutput}{Output}
+
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\setbeamertemplate{footline}
+{%
+  \hfill%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}\vskip2pt
+}
 \end_preamble
 \options xcolor=svgnames, handout
 \use_default_options false
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "palatino" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -57,7 +75,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -67,6 +87,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -91,7 +113,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -107,11 +131,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -121,15 +150,37 @@
 \size largest
 \color orange
 Advanced Bayesian Learning
-\size default
+\begin_inset Newline newline
+\end_inset
 
+Variational inference
+\begin_inset Newline newline
+\end_inset
+
+
+\size large
+Lecture 5
+\size default
+ 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 
 \color gray
-Variational Inference
+STM course
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2.7cm}
+\backslash
+insertframenumber/
+\backslash
+inserttotalframenumber
 \end_layout
 
 \end_inset
@@ -137,10 +188,9 @@ Variational Inference
 
 \end_layout
 
-\begin_layout Subtitle
+\end_inset
 
-\color orange
-Lecture 5 - Mean field and stochastic variational inference
+
 \end_layout
 
 \begin_layout Author
@@ -152,7 +202,7 @@ status open
 
 \series bold
 \color gray
-Advanced Bayesian Learning
+Mattias Villani
 \end_layout
 
 \end_inset
@@ -169,31 +219,21 @@ Department of Statistics
 
 Stockholm University
 \series default
- 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-and
-\end_layout
-
-\end_inset
-
- Department of Computer and Information Science
-\begin_inset Newline newline
-\end_inset
-
-Linköping University 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Linköping and Stockholm University
+Stockholm University
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+\begin_inset space \thinspace{}
 \end_inset
 
 
@@ -340,16 +380,19 @@ Variational inference
 
 \begin_deeper
 \begin_layout Itemize
-Literature: 
+Literature:
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \emph on
-Variational Inference: A Review for Statisticians
+Variational Inference:
+ A Review for Statisticians
 \emph default
-, JASA article by Blei et al (2017).
+,
+ JASA article by Blei et al (2017).
 \end_layout
 
 \begin_layout Itemize
@@ -366,7 +409,8 @@ A practical tutorial on Variational Bayes
 
 \end_deeper
 \begin_layout Itemize
-Aim: approximate 
+Aim:
+ approximate 
 \begin_inset Formula $p(\boldsymbol{\theta}|\boldsymbol{y})$
 \end_inset
 
@@ -388,7 +432,8 @@ Aim: approximate
 Laplace approximation
 \series default
 \color inherit
- from optimization: 
+ from optimization:
+ 
 \begin_inset Formula 
 \[
 q(\boldsymbol{\theta})=N\left[\tilde{\boldsymbol{\theta}},\left(-\nabla\nabla^{T}\log p(\boldsymbol{\theta}\vert\boldsymbol{y})\vert_{\tilde{\boldsymbol{\theta}}}\right)^{-1}\right]
@@ -468,6 +513,69 @@ status open
 
 \series bold
 \color orange
+Interactive - KL divergence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "1pt"
+separation "1pt"
+shadowsize "4pt"
+framecolor "orange"
+backgroundcolor "white"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset href
+LatexCommand href
+name "\\includegraphics[width=0.7\\textwidth]{Figures/KLwidget.png}"
+target "https://observablehq.com/@mattiasvillani/https://observablehq.com/@mattiasvillani/kl-divergence-continuous"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color orange
 Variational inference
 \end_layout
 
@@ -488,7 +596,8 @@ Variational inference
 VI
 \series default
 \color inherit
-: approximate 
+:
+ approximate 
 \begin_inset Formula $p(\boldsymbol{\theta}|\boldsymbol{y})$
 \end_inset
 
@@ -508,11 +617,13 @@ q^{\star}(\theta)=\underset{q(\theta)\in\mathcal{Q}}{\arg\min}\mathrm{\:KL}(q\le
 \end_layout
 
 \begin_layout Itemize
-Turns an inference problem, 
+Turns an inference problem,
+ 
 \begin_inset Formula $p(\boldsymbol{\theta}|\boldsymbol{y})$
 \end_inset
 
-, into 
+,
+ into 
 \series bold
 \color blue
 optimization
@@ -532,7 +643,8 @@ optimization
 Ideal
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset VSpace medskip
 \end_inset
 
@@ -600,7 +712,8 @@ Early
 VI
 \series default
 \color inherit
-: use restrictive 
+:
+ use restrictive 
 \begin_inset Formula $\mathcal{Q}$
 \end_inset
 
@@ -646,7 +759,8 @@ Modern
 VI
 \series default
 \color inherit
-: use larger 
+:
+ use larger 
 \begin_inset Formula $\mathcal{Q}$
 \end_inset
 
@@ -681,7 +795,8 @@ From Bishop's book
 \emph on
 Pattern Recognition and Machine Learning
 \emph default
-, Springer.
+,
+ Springer.
 \end_layout
 
 \end_inset
@@ -842,11 +957,12 @@ ELBO - evidence lower bound
 \begin_inset Formula $p(\boldsymbol{\theta}|\boldsymbol{y})$
 \end_inset
 
- is intractable, but
+ is intractable,
+ but
 \begin_inset Formula 
 \begin{align*}
 \mathrm{KL}(q\left\Vert p\right.) & =\int q(\boldsymbol{\theta})\ln\frac{q(\boldsymbol{\theta})}{p(\boldsymbol{\theta}|\boldsymbol{y})}d\theta=\int q(\boldsymbol{\theta})\ln\frac{p(\boldsymbol{y})q(\boldsymbol{\theta})}{p(\boldsymbol{y}|\boldsymbol{\theta})p(\boldsymbol{\theta})}d\theta\\
- & =-\int q(\boldsymbol{\theta})\ln\frac{p(\boldsymbol{y}|\boldsymbol{\theta})p(\boldsymbol{\theta})}{q(\boldsymbol{\theta})}d\theta+\int\ln p(\boldsymbol{y})q(\boldsymbol{\theta})d\theta
+ & =\int\ln p(\boldsymbol{y})q(\boldsymbol{\theta})d\boldsymbol{\theta}-\int q(\boldsymbol{\theta})\ln\frac{p(\boldsymbol{y}|\boldsymbol{\theta})p(\boldsymbol{\theta})}{q(\boldsymbol{\theta})}d\theta
 \end{align*}
 
 \end_inset
@@ -856,21 +972,75 @@ ELBO - evidence lower bound
 
 \begin_layout Itemize
 Hence 
-\begin_inset Formula $\mathrm{KL}(q\left\Vert p\right.)=-\mathrm{LB}(q)+\ln p(\boldsymbol{y})$
+\begin_inset Formula $\mathrm{KL}(q\left\Vert p\right.)=\ln p(\boldsymbol{y})-\mathrm{ELBO}(q)$
 \end_inset
 
- where 
+ 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathrm{ELBO}(q)$
+\end_inset
+
+ 
+\series bold
+\color blue
+evidence lower bound
+\series default
+\color inherit
+
 \begin_inset Formula 
 \[
-\mathrm{LB}(q)\overset{\mathrm{def}}{=}\int q(\boldsymbol{\theta})\ln\frac{p(\boldsymbol{y}|\boldsymbol{\theta})p(\boldsymbol{\theta})}{q(\boldsymbol{\theta})}d\theta
+\mathrm{ELBO}(q)\overset{\mathrm{def}}{=}\int q(\boldsymbol{\theta})\ln\frac{p(\boldsymbol{y}|\boldsymbol{\theta})p(\boldsymbol{\theta})}{q(\boldsymbol{\theta})}d\theta
 \]
 
 \end_inset
 
-is a 
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Minimizing 
+\begin_inset Formula $\mathrm{KL}(q\left\Vert p\right.)$
+\end_inset
+
+ wrt 
+\begin_inset Formula $q$
+\end_inset
+
+ 
+\begin_inset Formula $\Longleftrightarrow$
+\end_inset
+
+ maximizing 
+\begin_inset Formula $\mathrm{ELBO}(q)$
+\end_inset
+
+ wrt 
+\begin_inset Formula $q$
+\end_inset
+
+.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ELBO is 
 \series bold
 \color blue
-lower bound for the (log) marginal likelihood
+lower bounds the (log) marginal likelihood
 \series default
 \color inherit
  
@@ -880,31 +1050,12 @@ lower bound for the (log) marginal likelihood
  
 \begin_inset Formula 
 \[
-\mathrm{KL}(q\left\Vert p\right.)\geq0\Longrightarrow\mathrm{LB}(q)\leq\ln p(\boldsymbol{y})
+\mathrm{KL}(q\left\Vert p\right.)\geq0\Longrightarrow\mathrm{ELBO}(q)\leq\ln p(\boldsymbol{y})
 \]
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\mathrm{LB}(q)$
-\end_inset
-
- sometimes called 
-\series bold
-\color blue
-evidence lower bound
-\series default
-\color inherit
- (
-\series bold
-\color blue
-ELBO
-\series default
-\color inherit
-).
 \end_layout
 
 \end_deeper
@@ -946,7 +1097,7 @@ Mean field VI
  is based on factorized approximation:
 \begin_inset Formula 
 \[
-q(\theta)=\prod_{j=1}^{p}q_{j}(\theta_{j})
+q(\boldsymbol{\theta})=\prod_{j=1}^{p}q_{j}(\theta_{j})
 \]
 
 \end_inset
@@ -965,7 +1116,7 @@ No specific functional forms
 are assumed
 \color inherit
  for the 
-\begin_inset Formula $q_{j}(\theta)$
+\begin_inset Formula $q_{j}(\theta_{j})$
 \end_inset
 
 .
@@ -985,7 +1136,7 @@ Optimal densities
  can be shown to satisfy (MNT Notes):
 \begin_inset Formula 
 \[
-q_{j}(\theta)\propto\exp\left(E_{-\theta_{j}}\ln p(\mathbf{y},\theta)\right)
+q_{j}(\theta)\propto\exp\left(E_{-\theta_{j}}\ln p(\mathbf{y},\boldsymbol{\theta})\right)
 \]
 
 \end_inset
@@ -1047,7 +1198,8 @@ Mean field VI - algorithm
 
 \begin_deeper
 \begin_layout Itemize
-Initialize: 
+Initialize:
+ 
 \begin_inset Formula $q_{2}^{*}(\theta_{2}),...,q_{M}^{*}(\theta_{p})$
 \end_inset
 
@@ -1072,7 +1224,7 @@ Repeat until convergence:
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $q_{1}^{*}(\theta_{1})\leftarrow\frac{\exp\left[E_{-\theta_{1}}\ln p(\mathbf{y},\theta)\right]}{\int\exp\left[E_{-\theta_{1}}\ln p(\mathbf{y},\theta)\right]d\theta_{1}}$
+\begin_inset Formula $q_{1}^{*}(\theta_{1})\leftarrow\frac{\exp\left[E_{-\theta_{1}}\ln p(\mathbf{y},\boldsymbol{\theta})\right]}{\int\exp\left[E_{-\theta_{1}}\ln p(\mathbf{y},\boldsymbol{\theta})\right]d\theta_{1}}$
 \end_inset
 
 
@@ -1083,7 +1235,7 @@ Repeat until convergence:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $q_{2}^{*}(\theta_{2})\leftarrow\frac{\exp\left[E_{-\theta_{2}}\ln p(\mathbf{y},\theta)\right]}{\int\exp\left[E_{-\theta_{2}}\ln p(\mathbf{y},\theta)\right]d\theta_{2}}$
+\begin_inset Formula $q_{2}^{*}(\theta_{2})\leftarrow\frac{\exp\left[E_{-\theta_{2}}\ln p(\mathbf{y},\boldsymbol{\theta})\right]}{\int\exp\left[E_{-\theta_{2}}\ln p(\mathbf{y},\boldsymbol{\theta})\right]d\theta_{2}}$
 \end_inset
 
 
@@ -1105,7 +1257,7 @@ Repeat until convergence:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $q_{p}^{*}(\theta_{p})\leftarrow\frac{\exp\left[E_{-\theta_{p}}\ln p(\mathbf{y},\theta)\right]}{\int\exp\left[E_{-\theta_{p}}\ln p(\mathbf{y},\theta)\right]d\theta_{p}}$
+\begin_inset Formula $q_{p}^{*}(\theta_{p})\leftarrow\frac{\exp\left[E_{-\theta_{p}}\ln p(\mathbf{y},\boldsymbol{\theta})\right]}{\int\exp\left[E_{-\theta_{p}}\ln p(\mathbf{y},\boldsymbol{\theta})\right]d\theta_{p}}$
 \end_inset
 
 
@@ -1124,7 +1276,7 @@ No assumptions about parametric form
 \series default
 \color inherit
  of the 
-\begin_inset Formula $q_{j}(\theta)$
+\begin_inset Formula $q_{j}(\theta_{j})$
 \end_inset
 
 .
@@ -1136,7 +1288,7 @@ No assumptions about parametric form
 
 \begin_layout Itemize
 Optimal 
-\begin_inset Formula $q_{j}(\theta)$
+\begin_inset Formula $q_{j}(\theta_{j})$
 \end_inset
 
  often 
@@ -1198,13 +1350,13 @@ Gibbs sampling
 
 \begin_inset Formula 
 \[
-q_{j}^{*}(\theta_{j})\propto\exp\left[E_{-\theta_{j}}\ln p(\theta_{j}|\theta_{-j},\boldsymbol{y})\right]
+q_{j}^{*}(\theta_{j})\propto\exp\left[E_{-\theta_{j}}\ln p(\theta_{j}|\boldsymbol{\theta}_{-j},\boldsymbol{y})\right]
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $p(\theta_{j}|\theta_{-j},\boldsymbol{y})$
+\begin_inset Formula $p(\theta_{j}|\boldsymbol{\theta}_{-j},\boldsymbol{y})$
 \end_inset
 
  is the full conditional posterior of 
@@ -1268,7 +1420,8 @@ ignore additive terms in
 \end_layout
 
 \begin_layout Itemize
-mean-field: 
+mean-field:
+ 
 \begin_inset Formula $\mathbb{E}_{-\theta_{1}}f(\theta_{2})g(\theta_{3})=\mathbb{E}_{q_{2}(\theta_{2})}f(\theta_{2})\cdot\mathbb{E}_{q_{3}(\theta_{3})}g(\theta_{3})$
 \end_inset
 
@@ -1324,7 +1477,8 @@ Mean field approximation - Normal model
 Model
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $X_{i}|\theta,\sigma^{2}\overset{iid}{\sim}N(\theta,\sigma^{2})$
 \end_inset
 
@@ -1342,7 +1496,8 @@ Model
 Prior
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $\theta\sim N(\mu_{0},\tau_{0}^{2})$
 \end_inset
 
@@ -1369,7 +1524,8 @@ independent
 Mean-field approximation
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $q(\theta,\sigma^{2})=q_{\theta}(\theta)\cdot q_{\sigma^{2}}(\sigma^{2})$
 \end_inset
 
@@ -1436,7 +1592,7 @@ Variational density for
 
 \begin_inset Formula 
 \[
-\sigma^{2}\sim Inv-\chi^{2}\left(\tilde{\nu}_{n},\tilde{\sigma}_{n}^{2}\right)
+\sigma^{2}\sim\mathrm{Inv}-\chi^{2}\left(\tilde{\nu}_{n},\tilde{\sigma}_{n}^{2}\right)
 \]
 
 \end_inset
@@ -1536,7 +1692,8 @@ From Bishop's book
 \emph on
 Pattern Recognition and Machine Learning
 \emph default
-, Springer.
+,
+ Springer.
 \end_layout
 
 \end_inset
@@ -1717,7 +1874,8 @@ status open
 From Ormerod and Wand (2010).
  
 \emph on
-Explaining Variational Approximation, Amer Stat.
+Explaining Variational Approximation,
+ Amer Stat.
 \end_layout
 
 \end_inset
@@ -1742,7 +1900,8 @@ Explaining Variational Approximation, Amer Stat.
 Model
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula 
 \[
 \mathrm{Pr}\left(y_{i}=1|\mathbf{x}_{i}\right)=\Phi(\mathbf{x}_{i}^{T}\beta)
@@ -1760,12 +1919,14 @@ Model
 Prior
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $\beta\sim N(0,\Sigma_{\beta})$
 \end_inset
 
 .
- For example: 
+ For example:
+ 
 \begin_inset Formula $\Sigma_{\beta}=\tau^{2}I$
 \end_inset
 
@@ -2018,7 +2179,7 @@ Exponential family
 
 \begin_inset Formula 
 \[
-p(\boldsymbol{\boldsymbol{x}}\vert\boldsymbol{\theta})=h(\boldsymbol{x})\exp\left\{ \eta(\boldsymbol{\theta})^{T}\boldsymbol{t}(\boldsymbol{x})-a(\boldsymbol{\theta})\right\} 
+p(\boldsymbol{\boldsymbol{x}}\vert\boldsymbol{\theta})=h(\boldsymbol{x})\exp\left\{ \eta(\boldsymbol{\theta})^{\top}\boldsymbol{t}(\boldsymbol{x})-a(\boldsymbol{\theta})\right\} 
 \]
 
 \end_inset
@@ -2061,8 +2222,7 @@ Each
 \begin_inset Formula $q(\theta_{j})$
 \end_inset
 
- has same exponential family as its full conditional but with parameter
- 
+ has same exponential family as its full conditional but with parameter 
 \begin_inset Formula $\mathbb{E}_{-j}\left[\eta_{j}(\boldsymbol{\theta}_{-j},\boldsymbol{y})\right]$
 \end_inset
 
@@ -2108,7 +2268,7 @@ Exponential family
  in the canonical parametrization
 \begin_inset Formula 
 \[
-p(x\vert\theta)=h(x)\exp\left(\theta^{T}\mathbf{t}(x)-A(\theta)\right)
+p(x\vert\boldsymbol{\theta})=h(x)\exp\left(\boldsymbol{\theta}^{\top}\mathbf{t}(x)-A(\boldsymbol{\theta})\right)
 \]
 
 \end_inset
@@ -2126,7 +2286,7 @@ Likelihood
 
 \begin_inset Formula 
 \[
-p(x_{1},...,x_{n}\vert\theta)=\left[\prod_{i=1}^{n}h(x_{i})\right]\exp\left(\theta^{T}\sum_{i=1}^{n}\mathbf{t}(x_{i})-nA(\theta)\right)
+p(x_{1},...,x_{n}\vert\theta)=\left[\prod_{i=1}^{n}h(x_{i})\right]\exp\left(\boldsymbol{\theta}^{\top}\sum_{i=1}^{n}\mathbf{t}(x_{i})-nA(\boldsymbol{\theta})\right)
 \]
 
 \end_inset
@@ -2144,13 +2304,13 @@ Conjugate prior
 
 \begin_inset Formula 
 \[
-p(\theta)=H(\tau_{0},n_{0})\exp\left(\theta^{T}\tau_{0}-n_{0}A(\theta)\right),
+p(\boldsymbol{\theta})=H(\tau_{0},n_{0})\exp\left(\boldsymbol{\theta}^{\top}\boldsymbol{\tau}_{0}-n_{0}A(\boldsymbol{\theta})\right),
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\tau_{0}$
+\begin_inset Formula $\boldsymbol{\tau}_{0}$
 \end_inset
 
  and 
@@ -2158,7 +2318,7 @@ where
 \end_inset
 
  are prior hyperparameters and 
-\begin_inset Formula $H(\tau_{0},n_{0})$
+\begin_inset Formula $H(\boldsymbol{\tau}_{0},n_{0})$
 \end_inset
 
  is the normalizing constant which is known to exist if 
@@ -2207,7 +2367,7 @@ Conjugate prior
 
 \begin_inset Formula 
 \[
-p(\theta)=H(\tau_{0},n_{0})\exp\left(\theta^{T}\tau_{0}-n_{0}A(\theta)\right)
+p(\boldsymbol{\theta})=H(\tau_{0},n_{0})\exp\left(\boldsymbol{\theta}^{\top}\boldsymbol{\tau}_{0}-n_{0}A(\boldsymbol{\theta})\right)
 \]
 
 \end_inset
@@ -2225,7 +2385,7 @@ Posterior
 
 \begin_inset Formula 
 \[
-p(\theta\vert x_{1},...,x_{n})\propto\exp\left[\theta^{T}\left(\tau_{0}+\sum_{i=1}^{n}\mathbf{t}(x_{i})\right)-(n_{0}+n)A(\theta)\right]
+p(\boldsymbol{\theta}\vert x_{1},...,x_{n})\propto\exp\left[\boldsymbol{\theta}^{\top}\left(\boldsymbol{\tau}_{0}+\sum_{i=1}^{n}\mathbf{t}(x_{i})\right)-(n_{0}+n)A(\boldsymbol{\theta})\right]
 \]
 
 \end_inset
@@ -2243,7 +2403,7 @@ Prior-to-posterior updating
 
 \begin_inset Formula 
 \begin{align*}
-\tau_{0} & \Longrightarrow\tau_{n}=\tau_{0}+\sum_{i=1}^{n}\mathbf{t}(x_{i})\\
+\boldsymbol{\tau}_{0} & \Longrightarrow\boldsymbol{\tau}_{n}=\boldsymbol{\tau}_{0}+\sum_{i=1}^{n}\mathbf{t}(x_{i})\\
 n_{0} & \Longrightarrow n_{0}+n
 \end{align*}
 
@@ -2293,7 +2453,7 @@ Exponential family
 
 \begin_inset Formula 
 \[
-p(x\vert\theta)=h(x)\exp\left(\phi(\theta)^{T}\mathbf{t}(x)-A(\theta)\right)
+p(x\vert\boldsymbol{\theta})=h(x)\exp\left(\boldsymbol{\phi}(\boldsymbol{\theta})^{\top}\mathbf{t}(x)-A(\boldsymbol{\theta})\right)
 \]
 
 \end_inset
@@ -2312,7 +2472,7 @@ Conjugate prior
 
 \begin_inset Formula 
 \[
-p(\theta)=H(\tau_{0},n_{0})\exp\left(\phi(\theta)^{T}\tau_{0}-n_{0}A(\theta)\right)
+p(\boldsymbol{\theta})=H(\tau_{0},n_{0})\exp\left(\boldsymbol{\phi}(\boldsymbol{\theta})^{\top}\boldsymbol{\tau}_{0}-n_{0}A(\boldsymbol{\theta})\right)
 \]
 
 \end_inset
@@ -2371,7 +2531,15 @@ Conjugate prior
 
 \end_inset
 
+which corresponds to an imaginary sample with 
+\begin_inset Formula $\tau_{0}$
+\end_inset
 
+ successes in 
+\begin_inset Formula $n_{0}$
+\end_inset
+
+ trials.
 \end_layout
 
 \end_deeper
@@ -2390,7 +2558,8 @@ status open
 
 \series bold
 \color orange
-Stochastic variational inference, Blei et al 2017
+Stochastic variational inference,
+ Blei et al 2017
 \end_layout
 
 \end_inset
@@ -2406,7 +2575,8 @@ Stochastic variational inference, Blei et al 2017
 Mixture
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $\mathrm{Pr}(z_{i}=k)=\omega_{k}$
 \end_inset
 
@@ -2432,7 +2602,8 @@ p(\boldsymbol{x},\boldsymbol{z},\boldsymbol{\mu},\boldsymbol{\sigma},\boldsymbol
 Global parameters
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $\boldsymbol{\theta}=(\boldsymbol{\mu},\boldsymbol{\sigma},\boldsymbol{\omega})^{T}$
 \end_inset
 
@@ -2453,7 +2624,8 @@ Local
 parameters
 \series default
 \color inherit
-: 
+:
+ 
 \begin_inset Formula $z_{i}$
 \end_inset
 
