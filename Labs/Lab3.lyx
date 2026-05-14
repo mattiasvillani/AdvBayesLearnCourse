@@ -1,16 +1,16 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
 \use_default_options true
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -18,7 +18,9 @@
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -52,7 +54,9 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -72,11 +76,16 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -256,7 +265,8 @@ height "1pt"
 \begin_inset Text
 
 \begin_layout Plain Layout
-The labs are the only examination, so you should do the labs 
+The labs are the only examination,
+ so you should do the labs 
 \series bold
 individually
 \series default
@@ -271,7 +281,8 @@ individually
 \begin_inset Text
 
 \begin_layout Plain Layout
-You can use any programming language you prefer, but do 
+You can use any programming language you prefer,
+ but do 
 \series bold
 submit the code
 \series default
@@ -365,7 +376,8 @@ for
 \begin_inset Formula $\mu\sim N(0,\sigma_{\mu}^{2})$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\phi\vert\sigma^{2}\sim N(0,\sigma^{2}/\kappa_{0})$
 \end_inset
 
@@ -378,11 +390,13 @@ for
 \begin_inset Formula $-1<\phi<1$
 \end_inset
 
-, but instead set 
+,
+ but instead set 
 \begin_inset Formula $\sigma_{0}^{2}=1$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $\kappa_{0}=8$
 \end_inset
 
@@ -390,7 +404,8 @@ for
 \begin_inset Formula $\nu_{0}=4$
 \end_inset
 
-, so the process is stationary with prior probability 
+,
+ so the process is stationary with prior probability 
 \begin_inset Formula $\approx0.95$
 \end_inset
 
@@ -424,7 +439,8 @@ literal "false"
 \begin_inset Formula $p(\mu,\phi,\sigma^{2}\vert\boldsymbol{y})$
 \end_inset
 
-, where 
+,
+ where 
 \begin_inset Formula $\boldsymbol{y}$
 \end_inset
 
@@ -456,8 +472,9 @@ Derive a mean-field variational approximation for the posterior
 \begin_inset Formula $p(\mu,\phi,\sigma^{2}\vert\boldsymbol{y})$
 \end_inset
 
-, code it up, and compare the mean-field VI approximation to the results
- in 1a).
+,
+ code it up,
+ and compare the mean-field VI approximation to the results in 1a).
 \end_layout
 
 \begin_layout Enumerate
@@ -470,7 +487,8 @@ literal "false"
 
 \end_inset
 
- i R/Python, 
+ i R/Python,
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "Turing.jl"
@@ -479,8 +497,8 @@ literal "false"
 
 \end_inset
 
- in Julia, or some other probabilistic programming language to find a variationa
-l approximation of 
+ in Julia,
+ or some other probabilistic programming language to find a variational approximation of 
 \begin_inset Formula $p(\mu,\phi,\sigma^{2}\vert\boldsymbol{y})$
 \end_inset
 
@@ -494,8 +512,7 @@ timeseries.csv
 \end_inset
 
  and compare with your home-cooked version in 1b).
- Then do a variational approximation using a multivariate normal approximation
- 
+ Then do a variational approximation using a multivariate normal approximation 
 \begin_inset Formula $q(\mu,\phi,\sigma^{2})=N(\boldsymbol{\mu},\boldsymbol{\Sigma})$
 \end_inset
 
@@ -505,7 +522,8 @@ timeseries.csv
 
 .
  Compare the accuracy of the two approximations and the computing times.
- [Hint: here are the 
+ [Hint:
+ here are the 
 \begin_inset CommandInset href
 LatexCommand href
 name "rstan documention for AR processes"
@@ -514,7 +532,8 @@ literal "false"
 
 \end_inset
 
-, which is easily transferred to Turing.jl if you prefer that language]
+,
+ which is easily transferred to Turing.jl if you prefer that language]
 \end_layout
 
 \end_deeper
@@ -526,8 +545,8 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Good luck! Remember that sometimes an approximate answer is the correct
- answer!
+Good luck!
+ Remember that sometimes an approximate answer is the right answer!
 \end_layout
 
 \end_body

@@ -77,7 +77,7 @@ Autodiff:
 [slides](/Slides/ABL6.pdf)
 
 **Lab Topic 3**  
-[Problems](/Labs/Lab3_v2024.pdf) | [Time series data](/Labs/timeseries.csv)
+[Problems](/Labs/Lab3.pdf) | [Time series data](/Labs/timeseries.csv)
 
 
 ---
@@ -87,9 +87,9 @@ Autodiff:
 
 Reading: Sections 12.2-12.5 and 14.6 of [Bayesian Learning book](https://github.com/mattiasvillani/BayesianLearningBook/raw/main/pdf/BayesBook.pdf) | [Handbook chapter on variable selection](https://bpb-us-e1.wpmucdn.com/blogs.rice.edu/dist/0/5714/files/2022/06/book_chapter.pdf) | [Article on Bayesian regularization](https://wires.onlinelibrary.wiley.com/doi/full/10.1002/wics.1463?casa_token=TRIRvJPG7fAAAAAA%3AErexRs49LFd9QFMR5ZlGJ9RyWs9r7Q_Fc5Hird767zNVPf2CRfKC5O91y2isnLAGJub1yArfEt-RfJhH)
 
-**Lecture 7 - May 26, hours 10-12** in [Lärosal 25](https://www.su.se/download/18.7b9fb02419936f8648810abc/1758613821031/Undervisningssalar,%20Albano.pdf)\
+**Lecture 7 - May 25, hours 10-12** in [TBA](https://www.su.se/download/18.7b9fb02419936f8648810abc/1758613821031/Undervisningssalar,%20Albano.pdf)\
 [slides](/Slides/ABL7.pdf)  
-**Lecture 8 - May 26, hours 13-15** in [Lärosal 27](https://www.su.se/download/18.7b9fb02419936f8648810abc/1758613821031/Undervisningssalar,%20Albano.pdf)\
+**Lecture 8 - May 25, hours 13-15** in [TBA](https://www.su.se/download/18.7b9fb02419936f8648810abc/1758613821031/Undervisningssalar,%20Albano.pdf)\
 [slides](/Slides/ABL8.pdf)
 
 **Lab Topic 4**  
